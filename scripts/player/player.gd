@@ -1,0 +1,74 @@
+extends CharacterBody3D
+## Malik's third-person controller.
+## WASD moves relative to facing, mouse orbits (X turns the body, Y pitches the
+## camera arm), Shift sprints, E interacts with the nearest Interactable in
+## range. All input freezes while a dialogue is active.
+
+signal interact_target_changed(prompt: String)
+
+const WALK_SPEED := 3.2
+const SPRINT_SPEED := 5.5
+const GRAVITY := 18.0
+const MOUSE_SENSITIVITY := 0.0025
+const PITCH_MIN := -1.1
+const PITCH_MAX := 0.5
+
+@onready var _pivot: Node3D = $CameraPivot
+
+var _nearest: Interactable = null
+
+
+func _ready() -> void:
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+
+
+func _unhandled_input(event: InputEvent) -> void:
+	if DialogueManager.active:
+		return
+	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
+		rotate_y(-event.relative.x * MOUSE_SENSITIVITY)
+		_pivot.rotation.x = clampf(
+			_pivot.rotation.x - event.relative.y * MOUSE_SENSITIVITY, PITCH_MIN, PITCH_MAX
+		)
+	elif event.is_action_pressed("interact") and _nearest != null:
+		_nearest.interact()
+	elif event.is_action_pressed("ui_cancel"):
+		if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
+			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		else:
+			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+
+
+func _physics_process(delta: float) -> void:
+	if not is_on_floor():
+		velocity.y -= GRAVITY * delta
+
+	var input_dir := Vector2.ZERO
+	if not DialogueManager.active:
+		input_dir = Input.get_vector("move_left", "move_right", "move_forward", "move_back")
+
+	var direction := (transform.basis * Vector3(input_dir.x, 0.0, input_dir.y)).normalized()
+	var speed := SPRINT_SPEED if Input.is_action_pressed("sprint") else WALK_SPEED
+	if direction != Vector3.ZERO:
+		velocity.x = direction.x * speed
+		velocity.z = direction.z * speed
+	else:
+		velocity.x = move_toward(velocity.x, 0.0, speed)
+		velocity.z = move_toward(velocity.z, 0.0, speed)
+
+	move_and_slide()
+	_update_nearest_interactable()
+
+
+func _update_nearest_interactable() -> void:
+	var best: Interactable = null
+	var best_dist := INF
+	for area in $InteractionSensor.get_overlapping_areas():
+		if area is Interactable:
+			var dist := global_position.distance_squared_to(area.global_position)
+			if dist < best_dist:
+				best_dist = dist
+				best = area
+	if best != _nearest:
+		_nearest = best
+		interact_target_changed.emit(_nearest.prompt if _nearest != null else "")

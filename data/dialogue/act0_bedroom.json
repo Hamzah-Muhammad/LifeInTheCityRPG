@@ -1,0 +1,61 @@
+{
+	"phone_1": {
+		"speaker": "",
+		"text": "Malik's phone buzzes against the desk. 11:47 PM. Three unread from Ty.",
+		"next": "phone_2"
+	},
+	"phone_2": {
+		"speaker": "Ty (texts)",
+		"text": "\"yo malik. u up?\"\n\"big tings tonight ahlie\"\n\"pull up to the lot behind the building. 10 mins. dont be a wasteman\"",
+		"choices": [
+			{
+				"text": "Text back: \"say less. omw.\"",
+				"next": "phone_yes",
+				"effects": { "rep": 1, "flags": ["checked_phone", "texted_ty"] }
+			},
+			{
+				"text": "Leave him on read. Not tonight.",
+				"next": "phone_no",
+				"effects": { "loyalty": -1, "flags": ["checked_phone"] }
+			}
+		]
+	},
+	"phone_yes": {
+		"speaker": "Malik",
+		"text": "Malik pulls his hoodie off the chair. Ma's asleep. Baba's on nights at the warehouse until six. Ten minutes. Whatever Ty's got going in that lot, it starts tonight.",
+		"next": "end"
+	},
+	"phone_no": {
+		"speaker": "Malik",
+		"text": "He flips the phone face-down. Ty's gonna chirp him about it tomorrow — 'man's got school in the morning' — like that's ever stopped anybody around here. Still. Not tonight.",
+		"next": "end"
+	},
+	"window_1": {
+		"speaker": "",
+		"text": "Fourteen floors up. Jane and Finch spread out under the sodium lights — the towers across the lot, the plaza, the 36 hissing down toward Finch station. Somewhere past all of it, downtown glows like it's a different city. From up here you can see everything Malik wants and every way there is to lose it.",
+		"next": "end"
+	},
+	"parents_1": {
+		"speaker": "",
+		"text": "Ma and Baba's room. Door's shut. Baba's on night shift; Ma fell asleep with the recitation still playing off her phone, same as every night. Keep it quiet.",
+		"next": "end"
+	},
+	"bathroom_1": {
+		"speaker": "",
+		"text": "The bathroom. Somebody's towel is on the floor again. It's Malik's. It's always Malik's.",
+		"next": "end"
+	},
+	"front_1": {
+		"speaker": "Malik",
+		"text": "The front door. Eighteen years coming in and out of this door with groceries, school bags, excuses. Once he starts stepping out at midnight, that's a choice that doesn't un-choose itself.",
+		"choices": [
+			{ "text": "Head out to the lot", "next": "front_2" },
+			{ "text": "Stay in tonight", "next": "end" }
+		]
+	},
+	"front_2": {
+		"speaker": "",
+		"text": "— END OF TEST SCENE — \nAct 1, Scene 1: \"The Lot\" is coming next. This is where Malik's story really starts.",
+		"next": "end"
+	}
+}
