@@ -1,0 +1,145 @@
+[gd_scene load_steps=18 format=3]
+
+[sub_resource type="StandardMaterial3D" id="mat_skin"]
+albedo_color = Color(0.72, 0.55, 0.4, 1)
+
+[sub_resource type="StandardMaterial3D" id="mat_hoodie"]
+albedo_color = Color(0.13, 0.16, 0.24, 1)
+
+[sub_resource type="StandardMaterial3D" id="mat_hoodie_dark"]
+albedo_color = Color(0.1, 0.12, 0.19, 1)
+
+[sub_resource type="StandardMaterial3D" id="mat_jeans"]
+albedo_color = Color(0.16, 0.18, 0.28, 1)
+
+[sub_resource type="StandardMaterial3D" id="mat_sneaker"]
+albedo_color = Color(0.9, 0.9, 0.92, 1)
+
+[sub_resource type="StandardMaterial3D" id="mat_hair"]
+albedo_color = Color(0.08, 0.07, 0.06, 1)
+
+[sub_resource type="SphereMesh" id="mesh_head"]
+radius = 0.125
+height = 0.25
+
+[sub_resource type="SphereMesh" id="mesh_hair"]
+radius = 0.128
+height = 0.256
+
+[sub_resource type="SphereMesh" id="mesh_hood"]
+radius = 0.09
+height = 0.18
+
+[sub_resource type="CylinderMesh" id="mesh_neck"]
+top_radius = 0.04
+bottom_radius = 0.04
+height = 0.08
+
+[sub_resource type="CapsuleMesh" id="mesh_torso"]
+radius = 0.105
+height = 0.62
+
+[sub_resource type="BoxMesh" id="mesh_pocket"]
+size = Vector3(0.16, 0.1, 0.04)
+
+[sub_resource type="CylinderMesh" id="mesh_string"]
+top_radius = 0.008
+bottom_radius = 0.008
+height = 0.12
+
+[sub_resource type="CapsuleMesh" id="mesh_arm"]
+radius = 0.05
+height = 0.52
+
+[sub_resource type="SphereMesh" id="mesh_hand"]
+radius = 0.05
+height = 0.1
+
+[sub_resource type="CapsuleMesh" id="mesh_leg"]
+radius = 0.06
+height = 0.85
+
+[sub_resource type="BoxMesh" id="mesh_sneaker"]
+size = Vector3(0.14, 0.09, 0.26)
+
+[node name="Malik" type="Node3D"]
+
+[node name="Head" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.64, 0)
+mesh = SubResource("mesh_head")
+surface_material_override/0 = SubResource("mat_skin")
+
+[node name="Hair" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.68, 0.02)
+mesh = SubResource("mesh_hair")
+surface_material_override/0 = SubResource("mat_hair")
+
+[node name="Hood" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0.1)
+mesh = SubResource("mesh_hood")
+surface_material_override/0 = SubResource("mat_hoodie_dark")
+
+[node name="Neck" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.52, 0)
+mesh = SubResource("mesh_neck")
+surface_material_override/0 = SubResource("mat_skin")
+
+[node name="Torso" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.17, 0)
+mesh = SubResource("mesh_torso")
+surface_material_override/0 = SubResource("mat_hoodie")
+
+[node name="Pocket" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.02, -0.115)
+mesh = SubResource("mesh_pocket")
+surface_material_override/0 = SubResource("mat_hoodie_dark")
+
+[node name="StringL" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.04, 1.32, -0.1)
+mesh = SubResource("mesh_string")
+surface_material_override/0 = SubResource("mat_sneaker")
+
+[node name="StringR" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.04, 1.32, -0.1)
+mesh = SubResource("mesh_string")
+surface_material_override/0 = SubResource("mat_sneaker")
+
+[node name="ArmL" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.9888, 0.1494, 0, -0.1494, 0.9888, 0, 0, 0, 1, -0.3, 1.12, 0)
+mesh = SubResource("mesh_arm")
+surface_material_override/0 = SubResource("mat_hoodie")
+
+[node name="ArmR" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.9888, -0.1494, 0, 0.1494, 0.9888, 0, 0, 0, 1, 0.3, 1.12, 0)
+mesh = SubResource("mesh_arm")
+surface_material_override/0 = SubResource("mat_hoodie")
+
+[node name="HandL" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.34, 0.85, 0)
+mesh = SubResource("mesh_hand")
+surface_material_override/0 = SubResource("mat_skin")
+
+[node name="HandR" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.34, 0.85, 0)
+mesh = SubResource("mesh_hand")
+surface_material_override/0 = SubResource("mat_skin")
+
+[node name="LegL" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.115, 0.425, 0)
+mesh = SubResource("mesh_leg")
+surface_material_override/0 = SubResource("mat_jeans")
+
+[node name="LegR" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.115, 0.425, 0)
+mesh = SubResource("mesh_leg")
+surface_material_override/0 = SubResource("mat_jeans")
+
+[node name="SneakerL" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.115, 0.045, -0.04)
+mesh = SubResource("mesh_sneaker")
+surface_material_override/0 = SubResource("mat_sneaker")
+
+[node name="SneakerR" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.115, 0.045, -0.04)
+mesh = SubResource("mesh_sneaker")
+surface_material_override/0 = SubResource("mat_sneaker")

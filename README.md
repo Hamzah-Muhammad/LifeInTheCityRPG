@@ -56,6 +56,8 @@ Dialogue lives in `data/dialogue/*.json` — a dictionary of nodes. Each node ha
 
 - [x] Bones: player controller, interaction, dialogue engine, stats, HUD
 - [x] Act 0 test scene: Malik's bedroom, Jane & Finch apartment
+- [x] Placeholder characters: Malik (hoodie, jeans, sneakers) + Ma (shawl, dress) — `scenes/characters/`
+- [x] Full 2BR apartment: washroom, master bedroom + ensuite, balcony with skyline view
 - [ ] Act 1, Scene 1: "The Lot"
 - [ ] Conditional dialogue (branch on flags/stats)
 - [ ] QTE fight system
