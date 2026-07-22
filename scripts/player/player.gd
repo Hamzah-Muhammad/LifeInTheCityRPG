@@ -9,7 +9,6 @@ signal interact_target_changed(prompt: String)
 const WALK_SPEED := 3.2
 const SPRINT_SPEED := 5.5
 const GRAVITY := 18.0
-const MOUSE_SENSITIVITY := 0.0025
 const PITCH_MIN := -1.1
 const PITCH_MAX := 0.5
 
@@ -30,9 +29,12 @@ func _unhandled_input(event: InputEvent) -> void:
 	if DialogueManager.active or StationManager.active:
 		return
 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
-		rotate_y(-event.relative.x * MOUSE_SENSITIVITY)
+		var sensitivity := (
+			SettingsManager.BASE_MOUSE_SENSITIVITY * SettingsManager.mouse_sensitivity_multiplier
+		)
+		rotate_y(-event.relative.x * sensitivity)
 		_pivot.rotation.x = clampf(
-			_pivot.rotation.x - event.relative.y * MOUSE_SENSITIVITY, PITCH_MIN, PITCH_MAX
+			_pivot.rotation.x - event.relative.y * sensitivity, PITCH_MIN, PITCH_MAX
 		)
 	elif event.is_action_pressed("interact") and _nearest != null:
 		_nearest.interact()

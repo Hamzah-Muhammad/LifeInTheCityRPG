@@ -1,0 +1,202 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/ui/main_menu.gd" id="1_menu"]
+
+[node name="MainMenu" type="CanvasLayer"]
+script = ExtResource("1_menu")
+
+[node name="Background" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.05, 0.05, 0.07, 1)
+
+[node name="TitleBlock" type="VBoxContainer" parent="."]
+anchor_left = 0.25
+anchor_top = 0.08
+anchor_right = 0.75
+anchor_bottom = 0.24
+grow_horizontal = 2
+theme_override_constants/separation = 6
+
+[node name="Title" type="Label" parent="TitleBlock"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.82, 0.4, 1)
+theme_override_font_sizes/font_size = 40
+horizontal_alignment = 1
+text = "LIFE IN THE CITY"
+
+[node name="Subtitle" type="Label" parent="TitleBlock"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.75, 0.75, 0.78, 1)
+theme_override_font_sizes/font_size = 16
+horizontal_alignment = 1
+text = "Jane & Finch to the Penthouse"
+
+[node name="MenuPanel" type="PanelContainer" parent="."]
+anchor_left = 0.38
+anchor_top = 0.42
+anchor_right = 0.62
+anchor_bottom = 0.78
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Margin" type="MarginContainer" parent="MenuPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 16
+
+[node name="VBox" type="VBoxContainer" parent="MenuPanel/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="NewGameButton" type="Button" parent="MenuPanel/Margin/VBox"]
+layout_mode = 2
+text = "New Game"
+
+[node name="LoadGameButton" type="Button" parent="MenuPanel/Margin/VBox"]
+layout_mode = 2
+tooltip_text = "No save file yet — save/load is still in development."
+disabled = true
+text = "Load Game"
+
+[node name="OptionsButton" type="Button" parent="MenuPanel/Margin/VBox"]
+layout_mode = 2
+text = "Options"
+
+[node name="QuitButton" type="Button" parent="MenuPanel/Margin/VBox"]
+layout_mode = 2
+text = "Quit"
+
+[node name="OptionsPanel" type="PanelContainer" parent="."]
+visible = false
+anchor_left = 0.22
+anchor_top = 0.08
+anchor_right = 0.78
+anchor_bottom = 0.92
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Margin" type="MarginContainer" parent="OptionsPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 18
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 18
+
+[node name="VBox" type="VBoxContainer" parent="OptionsPanel/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Title" type="Label" parent="OptionsPanel/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.82, 0.4, 1)
+theme_override_font_sizes/font_size = 26
+text = "Options"
+
+[node name="DisplayHeader" type="Label" parent="OptionsPanel/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.85, 0.88, 1)
+theme_override_font_sizes/font_size = 18
+text = "Display"
+
+[node name="DisplayGrid" type="GridContainer" parent="OptionsPanel/Margin/VBox"]
+layout_mode = 2
+theme_override_constants/h_separation = 16
+theme_override_constants/v_separation = 8
+columns = 2
+
+[node name="WindowModeLabel" type="Label" parent="OptionsPanel/Margin/VBox/DisplayGrid"]
+layout_mode = 2
+text = "Window Mode"
+
+[node name="WindowModeOption" type="OptionButton" parent="OptionsPanel/Margin/VBox/DisplayGrid"]
+custom_minimum_size = Vector2(220, 0)
+layout_mode = 2
+
+[node name="ResolutionLabel" type="Label" parent="OptionsPanel/Margin/VBox/DisplayGrid"]
+layout_mode = 2
+text = "Resolution"
+
+[node name="ResolutionOption" type="OptionButton" parent="OptionsPanel/Margin/VBox/DisplayGrid"]
+custom_minimum_size = Vector2(220, 0)
+layout_mode = 2
+
+[node name="VSyncLabel" type="Label" parent="OptionsPanel/Margin/VBox/DisplayGrid"]
+layout_mode = 2
+text = "VSync"
+
+[node name="VSyncCheck" type="CheckBox" parent="OptionsPanel/Margin/VBox/DisplayGrid"]
+layout_mode = 2
+
+[node name="GraphicsHeader" type="Label" parent="OptionsPanel/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.85, 0.88, 1)
+theme_override_font_sizes/font_size = 18
+text = "Graphics"
+
+[node name="GraphicsGrid" type="GridContainer" parent="OptionsPanel/Margin/VBox"]
+layout_mode = 2
+theme_override_constants/h_separation = 16
+theme_override_constants/v_separation = 8
+columns = 2
+
+[node name="AntiAliasingLabel" type="Label" parent="OptionsPanel/Margin/VBox/GraphicsGrid"]
+layout_mode = 2
+text = "Anti-Aliasing"
+
+[node name="AntiAliasingCheck" type="CheckBox" parent="OptionsPanel/Margin/VBox/GraphicsGrid"]
+layout_mode = 2
+
+[node name="AudioHeader" type="Label" parent="OptionsPanel/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.85, 0.88, 1)
+theme_override_font_sizes/font_size = 18
+text = "Audio"
+
+[node name="AudioGrid" type="GridContainer" parent="OptionsPanel/Margin/VBox"]
+layout_mode = 2
+theme_override_constants/h_separation = 16
+theme_override_constants/v_separation = 8
+columns = 2
+
+[node name="MasterVolumeLabel" type="Label" parent="OptionsPanel/Margin/VBox/AudioGrid"]
+layout_mode = 2
+text = "Master Volume"
+
+[node name="MasterVolumeSlider" type="HSlider" parent="OptionsPanel/Margin/VBox/AudioGrid"]
+custom_minimum_size = Vector2(220, 0)
+layout_mode = 2
+min_value = 0.0
+max_value = 1.0
+step = 0.05
+value = 1.0
+
+[node name="ControlsHeader" type="Label" parent="OptionsPanel/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.85, 0.88, 1)
+theme_override_font_sizes/font_size = 18
+text = "Controls"
+
+[node name="ControlsGrid" type="GridContainer" parent="OptionsPanel/Margin/VBox"]
+layout_mode = 2
+theme_override_constants/h_separation = 16
+theme_override_constants/v_separation = 8
+columns = 2
+
+[node name="MouseSensitivityLabel" type="Label" parent="OptionsPanel/Margin/VBox/ControlsGrid"]
+layout_mode = 2
+text = "Mouse Sensitivity"
+
+[node name="MouseSensitivitySlider" type="HSlider" parent="OptionsPanel/Margin/VBox/ControlsGrid"]
+custom_minimum_size = Vector2(220, 0)
+layout_mode = 2
+min_value = 0.25
+max_value = 3.0
+step = 0.05
+value = 1.0
+
+[node name="BackButton" type="Button" parent="OptionsPanel/Margin/VBox"]
+layout_mode = 2
+text = "Back"

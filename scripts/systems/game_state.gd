@@ -36,3 +36,11 @@ func set_flag(flag: String) -> void:
 
 func has_flag(flag: String) -> bool:
 	return flags.get(flag, false)
+
+
+func reset() -> void:
+	rep = 0
+	heat = 0
+	loyalty = 0
+	cash = 40
+	flags.clear()
