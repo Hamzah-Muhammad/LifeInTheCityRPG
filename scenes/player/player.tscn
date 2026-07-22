@@ -11,6 +11,7 @@ height = 1.75
 radius = 1.7
 
 [node name="Player" type="CharacterBody3D" groups=["player"]]
+collision_layer = 4
 script = ExtResource("1_player")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -23,12 +24,10 @@ shape = SubResource("shape_body")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.35, 1.5, 0)
 
 [node name="SpringArm3D" type="SpringArm3D" parent="CameraPivot"]
-transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, 0, 0, 0)
 spring_length = 2.4
 margin = 0.2
 
 [node name="Camera3D" type="Camera3D" parent="CameraPivot/SpringArm3D"]
-transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, 0, 0, 0)
 fov = 70.0
 current = true
 
