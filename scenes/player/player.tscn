@@ -1,13 +1,7 @@
-[gd_scene load_steps=6 format=3]
+[gd_scene load_steps=5 format=3]
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_player"]
-
-[sub_resource type="StandardMaterial3D" id="mat_body"]
-albedo_color = Color(0.16, 0.18, 0.22, 1)
-
-[sub_resource type="CapsuleMesh" id="mesh_body"]
-radius = 0.32
-height = 1.75
+[ext_resource type="PackedScene" path="res://scenes/characters/malik.tscn" id="2_figure"]
 
 [sub_resource type="CapsuleShape3D" id="shape_body"]
 radius = 0.32
@@ -23,10 +17,7 @@ script = ExtResource("1_player")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.875, 0)
 shape = SubResource("shape_body")
 
-[node name="Mesh" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.875, 0)
-mesh = SubResource("mesh_body")
-surface_material_override/0 = SubResource("mat_body")
+[node name="Malik" parent="." instance=ExtResource("2_figure")]
 
 [node name="CameraPivot" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.35, 1.5, 0)

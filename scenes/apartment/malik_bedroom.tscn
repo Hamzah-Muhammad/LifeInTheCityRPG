@@ -1,13 +1,34 @@
-[gd_scene load_steps=70 format=3]
+[gd_scene load_steps=144 format=3]
 
 [ext_resource type="Script" path="res://scripts/interaction/interactable.gd" id="1_interact"]
 [ext_resource type="PackedScene" path="res://scenes/player/player.tscn" id="2_player"]
 [ext_resource type="PackedScene" path="res://scenes/ui/hud.tscn" id="3_hud"]
 [ext_resource type="PackedScene" path="res://scenes/ui/dialogue_ui.tscn" id="4_dlgui"]
+[ext_resource type="PackedScene" path="res://scenes/characters/ma.tscn" id="5_figure"]
+[ext_resource type="PackedScene" path="res://assets/kenney_furniture_kit/models/bedSingle.glb" id="6_bed_single"]
+[ext_resource type="PackedScene" path="res://assets/kenney_furniture_kit/models/desk.glb" id="7_desk"]
+[ext_resource type="PackedScene" path="res://assets/kenney_furniture_kit/models/chairDesk.glb" id="8_chair_desk"]
+[ext_resource type="PackedScene" path="res://assets/kenney_furniture_kit/models/bookcaseClosedWide.glb" id="9_bookcase_wide"]
+[ext_resource type="PackedScene" path="res://assets/kenney_furniture_kit/models/bedDouble.glb" id="10_bed_double"]
+[ext_resource type="PackedScene" path="res://assets/kenney_furniture_kit/models/cabinetTelevisionDoors.glb" id="11_dresser"]
+[ext_resource type="PackedScene" path="res://assets/kenney_furniture_kit/models/sideTableDrawers.glb" id="12_nightstand"]
+[ext_resource type="PackedScene" path="res://assets/kenney_furniture_kit/models/toilet.glb" id="13_toilet"]
+[ext_resource type="PackedScene" path="res://assets/kenney_furniture_kit/models/bathroomSink.glb" id="14_sink"]
+[ext_resource type="PackedScene" path="res://assets/kenney_furniture_kit/models/bathroomMirror.glb" id="15_mirror"]
+[ext_resource type="PackedScene" path="res://assets/kenney_furniture_kit/models/bathtub.glb" id="16_tub"]
+[ext_resource type="PackedScene" path="res://assets/kenney_furniture_kit/models/shower.glb" id="17_shower"]
+[ext_resource type="PackedScene" path="res://assets/kenney_furniture_kit/models/loungeSofaLong.glb" id="18_sofa"]
+[ext_resource type="PackedScene" path="res://assets/kenney_furniture_kit/models/tableCoffee.glb" id="19_coffee_table"]
+[ext_resource type="PackedScene" path="res://assets/kenney_furniture_kit/models/cabinetTelevision.glb" id="20_tv_stand"]
+[ext_resource type="PackedScene" path="res://assets/kenney_furniture_kit/models/televisionModern.glb" id="21_tv"]
+[ext_resource type="PackedScene" path="res://assets/kenney_furniture_kit/models/table.glb" id="22_dining_table"]
+[ext_resource type="PackedScene" path="res://assets/kenney_furniture_kit/models/kitchenFridge.glb" id="23_fridge"]
+[ext_resource type="PackedScene" path="res://assets/kenney_furniture_kit/models/kitchenCabinet.glb" id="24_kitchen_cabinet"]
+[ext_resource type="Script" path="res://scripts/interaction/apartment_front_door.gd" id="25_front_door"]
 
 [sub_resource type="Environment" id="env"]
 background_mode = 1
-background_color = Color(0.04, 0.05, 0.08, 1)
+background_color = Color(0.03, 0.04, 0.08, 1)
 ambient_light_source = 2
 ambient_light_color = Color(0.5, 0.52, 0.6, 1)
 ambient_light_energy = 0.5
@@ -69,23 +90,87 @@ emission_energy_multiplier = 1.2
 [sub_resource type="StandardMaterial3D" id="mat_chair"]
 albedo_color = Color(0.25, 0.25, 0.28, 1)
 
-[sub_resource type="BoxMesh" id="m_floor"]
-size = Vector3(12.4, 0.2, 9.4)
+[sub_resource type="StandardMaterial3D" id="mat_glass"]
+transparency = 1
+albedo_color = Color(0.6, 0.75, 0.85, 0.25)
 
-[sub_resource type="BoxMesh" id="m_wall_ns"]
-size = Vector3(12.6, 2.6, 0.2)
+[sub_resource type="StandardMaterial3D" id="mat_concrete"]
+albedo_color = Color(0.52, 0.52, 0.54, 1)
+
+[sub_resource type="StandardMaterial3D" id="mat_blanket"]
+albedo_color = Color(0.45, 0.18, 0.22, 1)
+
+[sub_resource type="StandardMaterial3D" id="mat_mirror"]
+albedo_color = Color(0.65, 0.72, 0.78, 1)
+emission_enabled = true
+emission = Color(0.3, 0.35, 0.4, 1)
+emission_energy_multiplier = 0.3
+
+[sub_resource type="StandardMaterial3D" id="mat_tower"]
+albedo_color = Color(0.05, 0.06, 0.1, 1)
+emission_enabled = true
+emission = Color(0.25, 0.3, 0.5, 1)
+emission_energy_multiplier = 0.5
+
+[sub_resource type="StandardMaterial3D" id="mat_cn"]
+albedo_color = Color(0.3, 0.32, 0.36, 1)
+emission_enabled = true
+emission = Color(0.5, 0.55, 0.7, 1)
+emission_energy_multiplier = 0.35
+
+[sub_resource type="BoxMesh" id="m_wall_s"]
+size = Vector3(14.6, 2.6, 0.2)
+
+[sub_resource type="BoxMesh" id="m_wall_n1"]
+size = Vector3(2.8, 2.6, 0.2)
+
+[sub_resource type="BoxMesh" id="m_wall_n2"]
+size = Vector3(9.3, 2.6, 0.2)
 
 [sub_resource type="BoxMesh" id="m_wall_ew"]
-size = Vector3(0.2, 2.6, 9.4)
+size = Vector3(0.2, 2.6, 10.4)
 
-[sub_resource type="BoxMesh" id="m_wall_a"]
-size = Vector3(0.2, 2.6, 4.0)
+[sub_resource type="BoxMesh" id="m_div"]
+size = Vector3(0.2, 2.6, 4.4)
 
-[sub_resource type="BoxMesh" id="m_wall_seg_s"]
-size = Vector3(0.9, 2.6, 0.2)
+[sub_resource type="BoxMesh" id="m_seg04"]
+size = Vector3(0.4, 2.6, 0.2)
 
-[sub_resource type="BoxMesh" id="m_wall_seg_l"]
-size = Vector3(2.6, 2.6, 0.2)
+[sub_resource type="BoxMesh" id="m_seg36"]
+size = Vector3(3.6, 2.6, 0.2)
+
+[sub_resource type="BoxMesh" id="m_seg08"]
+size = Vector3(0.8, 2.6, 0.2)
+
+[sub_resource type="BoxMesh" id="m_seg02"]
+size = Vector3(0.2, 2.6, 0.2)
+
+[sub_resource type="BoxMesh" id="m_wr_w"]
+size = Vector3(0.2, 2.6, 2.2)
+
+[sub_resource type="BoxMesh" id="m_es_w1"]
+size = Vector3(0.2, 2.6, 0.3)
+
+[sub_resource type="BoxMesh" id="m_es_w2"]
+size = Vector3(0.2, 2.6, 0.6)
+
+[sub_resource type="BoxMesh" id="m_es_s"]
+size = Vector3(1.8, 2.6, 0.2)
+
+[sub_resource type="BoxMesh" id="m_floor"]
+size = Vector3(14.6, 0.2, 10.4)
+
+[sub_resource type="BoxMesh" id="m_balcony_floor"]
+size = Vector3(3.5, 0.2, 1.7)
+
+[sub_resource type="BoxMesh" id="m_rail_f"]
+size = Vector3(3.5, 1.1, 0.1)
+
+[sub_resource type="BoxMesh" id="m_rail_side"]
+size = Vector3(0.1, 2.8, 1.7)
+
+[sub_resource type="BoxMesh" id="m_glasspane"]
+size = Vector3(1.1, 2.2, 0.06)
 
 [sub_resource type="BoxMesh" id="m_door"]
 size = Vector3(1.0, 2.1, 0.1)
@@ -117,11 +202,44 @@ size = Vector3(0.6, 1.9, 1.4)
 [sub_resource type="BoxMesh" id="m_rug"]
 size = Vector3(1.6, 0.02, 1.2)
 
-[sub_resource type="BoxMesh" id="m_window"]
+[sub_resource type="BoxMesh" id="m_windowpane"]
 size = Vector3(0.06, 1.2, 1.8)
 
 [sub_resource type="BoxMesh" id="m_poster"]
 size = Vector3(0.9, 1.2, 0.04)
+
+[sub_resource type="BoxMesh" id="m_bedframe_m"]
+size = Vector3(1.7, 0.35, 2.1)
+
+[sub_resource type="BoxMesh" id="m_mattress_m"]
+size = Vector3(1.6, 0.18, 2.0)
+
+[sub_resource type="BoxMesh" id="m_blanket"]
+size = Vector3(1.6, 0.1, 1.2)
+
+[sub_resource type="BoxMesh" id="m_dresser"]
+size = Vector3(1.4, 0.9, 0.5)
+
+[sub_resource type="BoxMesh" id="m_toilet"]
+size = Vector3(0.45, 0.45, 0.6)
+
+[sub_resource type="BoxMesh" id="m_sink"]
+size = Vector3(0.55, 0.85, 0.45)
+
+[sub_resource type="BoxMesh" id="m_mirror"]
+size = Vector3(0.5, 0.6, 0.03)
+
+[sub_resource type="BoxMesh" id="m_tub"]
+size = Vector3(0.7, 0.55, 1.5)
+
+[sub_resource type="BoxMesh" id="m_shower_base"]
+size = Vector3(0.9, 0.1, 0.9)
+
+[sub_resource type="BoxMesh" id="m_shower_glass"]
+size = Vector3(0.9, 1.9, 0.05)
+
+[sub_resource type="BoxMesh" id="m_towel"]
+size = Vector3(0.5, 0.03, 0.35)
 
 [sub_resource type="BoxMesh" id="m_couch_seat"]
 size = Vector3(2.2, 0.45, 0.9)
@@ -147,23 +265,85 @@ size = Vector3(1.6, 0.4, 0.4)
 [sub_resource type="BoxMesh" id="m_tv"]
 size = Vector3(1.4, 0.8, 0.08)
 
-[sub_resource type="BoxShape3D" id="s_floor"]
-size = Vector3(12.4, 0.2, 9.4)
+[sub_resource type="BoxMesh" id="m_tower1"]
+size = Vector3(6, 26, 6)
 
-[sub_resource type="BoxShape3D" id="s_wall_ns"]
-size = Vector3(12.6, 2.6, 0.2)
+[sub_resource type="BoxMesh" id="m_tower2"]
+size = Vector3(5, 34, 5)
+
+[sub_resource type="BoxMesh" id="m_tower3"]
+size = Vector3(7, 22, 7)
+
+[sub_resource type="BoxMesh" id="m_tower4"]
+size = Vector3(4, 30, 4)
+
+[sub_resource type="CylinderMesh" id="m_cn_shaft"]
+top_radius = 0.9
+bottom_radius = 1.4
+height = 30.0
+
+[sub_resource type="SphereMesh" id="m_cn_pod"]
+radius = 2.4
+height = 4.8
+
+[sub_resource type="CylinderMesh" id="m_cn_spire"]
+top_radius = 0.05
+bottom_radius = 0.15
+height = 8.0
+
+[sub_resource type="BoxShape3D" id="s_wall_s"]
+size = Vector3(14.6, 2.6, 0.2)
+
+[sub_resource type="BoxShape3D" id="s_wall_n1"]
+size = Vector3(2.8, 2.6, 0.2)
+
+[sub_resource type="BoxShape3D" id="s_wall_n2"]
+size = Vector3(9.3, 2.6, 0.2)
 
 [sub_resource type="BoxShape3D" id="s_wall_ew"]
-size = Vector3(0.2, 2.6, 9.4)
+size = Vector3(0.2, 2.6, 10.4)
 
-[sub_resource type="BoxShape3D" id="s_wall_a"]
-size = Vector3(0.2, 2.6, 4.0)
+[sub_resource type="BoxShape3D" id="s_div"]
+size = Vector3(0.2, 2.6, 4.4)
 
-[sub_resource type="BoxShape3D" id="s_wall_seg_s"]
-size = Vector3(0.9, 2.6, 0.2)
+[sub_resource type="BoxShape3D" id="s_seg04"]
+size = Vector3(0.4, 2.6, 0.2)
 
-[sub_resource type="BoxShape3D" id="s_wall_seg_l"]
-size = Vector3(2.6, 2.6, 0.2)
+[sub_resource type="BoxShape3D" id="s_seg36"]
+size = Vector3(3.6, 2.6, 0.2)
+
+[sub_resource type="BoxShape3D" id="s_seg08"]
+size = Vector3(0.8, 2.6, 0.2)
+
+[sub_resource type="BoxShape3D" id="s_seg02"]
+size = Vector3(0.2, 2.6, 0.2)
+
+[sub_resource type="BoxShape3D" id="s_wr_w"]
+size = Vector3(0.2, 2.6, 2.2)
+
+[sub_resource type="BoxShape3D" id="s_es_w1"]
+size = Vector3(0.2, 2.6, 0.3)
+
+[sub_resource type="BoxShape3D" id="s_es_w2"]
+size = Vector3(0.2, 2.6, 0.6)
+
+[sub_resource type="BoxShape3D" id="s_es_s"]
+size = Vector3(1.8, 2.6, 0.2)
+
+[sub_resource type="BoxShape3D" id="s_floor"]
+size = Vector3(14.6, 0.2, 10.4)
+
+[sub_resource type="BoxShape3D" id="s_balcony_floor"]
+size = Vector3(3.5, 0.2, 1.7)
+
+[sub_resource type="BoxShape3D" id="s_rail_f"]
+size = Vector3(3.5, 1.1, 0.1)
+
+[sub_resource type="BoxShape3D" id="s_rail_side"]
+size = Vector3(0.1, 2.8, 1.7)
+
+[sub_resource type="BoxShape3D" id="s_glasspane"]
+size = Vector3(1.1, 2.2, 0.06)
 
 [sub_resource type="BoxShape3D" id="s_door"]
 size = Vector3(1.0, 2.1, 0.1)
@@ -172,34 +352,52 @@ size = Vector3(1.0, 2.1, 0.1)
 size = Vector3(0.1, 2.1, 1.0)
 
 [sub_resource type="BoxShape3D" id="s_bed"]
-size = Vector3(1.1, 0.55, 2.1)
+size = Vector3(1.0849, 0.7125, 2.1375)
 
 [sub_resource type="BoxShape3D" id="s_desk"]
-size = Vector3(1.4, 0.78, 0.6)
+size = Vector3(1.263298, 0.661181, 0.674756)
 
 [sub_resource type="BoxShape3D" id="s_chair"]
-size = Vector3(0.45, 0.45, 0.45)
+size = Vector3(0.534475, 0.384408, 0.2223)
+
+[sub_resource type="BoxShape3D" id="s_chair_desk"]
+size = Vector3(0.465581, 0.844564, 0.436876)
 
 [sub_resource type="BoxShape3D" id="s_wardrobe"]
-size = Vector3(0.6, 1.9, 1.4)
+size = Vector3(0.6, 1.896, 1.92)
+
+[sub_resource type="BoxShape3D" id="s_bed_m"]
+size = Vector3(1.73992, 0.6825, 2.0475)
+
+[sub_resource type="BoxShape3D" id="s_dresser"]
+size = Vector3(1.4, 0.5425, 0.455)
+
+[sub_resource type="BoxShape3D" id="s_toilet"]
+size = Vector3(0.478385, 0.260753, 0.541729)
+
+[sub_resource type="BoxShape3D" id="s_sink"]
+size = Vector3(0.5304, 0.8736, 0.4524)
+
+[sub_resource type="BoxShape3D" id="s_tub"]
+size = Vector3(0.7112, 0.5334, 1.5113)
 
 [sub_resource type="BoxShape3D" id="s_couch_seat"]
-size = Vector3(2.2, 0.45, 0.9)
+size = Vector3(2.19912, 0.51612, 0.92004)
 
 [sub_resource type="BoxShape3D" id="s_coffee"]
-size = Vector3(1.1, 0.35, 0.6)
+size = Vector3(1.031154, 0.3588, 0.624)
 
 [sub_resource type="BoxShape3D" id="s_table"]
-size = Vector3(1.2, 0.75, 0.8)
+size = Vector3(1.346381, 0.522774, 0.715797)
 
 [sub_resource type="BoxShape3D" id="s_fridge"]
-size = Vector3(0.7, 1.7, 0.7)
+size = Vector3(0.7955, 1.702, 0.540078)
 
 [sub_resource type="BoxShape3D" id="s_counter"]
-size = Vector3(0.6, 0.9, 3.0)
+size = Vector3(0.59985, 0.59985, 2.86595)
 
 [sub_resource type="BoxShape3D" id="s_tvstand"]
-size = Vector3(1.6, 0.4, 0.4)
+size = Vector3(1.304, 0.5053, 0.4075)
 
 [sub_resource type="BoxShape3D" id="s_ia_phone"]
 size = Vector3(1.0, 1.4, 1.0)
@@ -207,13 +405,16 @@ size = Vector3(1.0, 1.4, 1.0)
 [sub_resource type="BoxShape3D" id="s_ia_window"]
 size = Vector3(0.9, 2.0, 2.2)
 
-[sub_resource type="BoxShape3D" id="s_ia_door"]
-size = Vector3(1.4, 2.2, 1.0)
-
 [sub_resource type="BoxShape3D" id="s_ia_door_w"]
 size = Vector3(1.0, 2.2, 1.4)
 
-[node name="MalikBedroom" type="Node3D"]
+[sub_resource type="BoxShape3D" id="s_ia_room"]
+size = Vector3(1.6, 1.8, 1.6)
+
+[sub_resource type="BoxShape3D" id="s_ia_balcony"]
+size = Vector3(2.8, 2.0, 1.2)
+
+[node name="MalikApartment" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("env")
@@ -221,24 +422,60 @@ environment = SubResource("env")
 [node name="Lights" type="Node3D" parent="."]
 
 [node name="LightBedroom" type="OmniLight3D" parent="Lights"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.75, 2.35, -2.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 2.35, -2.8)
 light_color = Color(1, 0.9, 0.75, 1)
 light_energy = 1.2
 shadow_enabled = true
 omni_range = 7.0
 
 [node name="LightHallway" type="OmniLight3D" parent="Lights"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.75, 2.35, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 2.35, 0)
 light_color = Color(1, 0.92, 0.8, 1)
 light_energy = 0.7
 omni_range = 4.0
 
 [node name="LightLiving" type="OmniLight3D" parent="Lights"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3, 2.35, 1.0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 2.35, -0.5)
 light_color = Color(1, 0.92, 0.8, 1)
 light_energy = 1.4
 shadow_enabled = true
-omni_range = 10.0
+omni_range = 12.0
+
+[node name="LightKitchen" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 2.35, 2.5)
+light_color = Color(1, 0.92, 0.8, 1)
+light_energy = 0.8
+omni_range = 6.0
+
+[node name="LightMaster" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.6, 2.4, 2.6)
+light_color = Color(0.85, 0.85, 0.95, 1)
+light_energy = 0.5
+omni_range = 7.0
+
+[node name="LightWashroom" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2.4, -3.9)
+light_color = Color(1, 0.95, 0.85, 1)
+light_energy = 0.5
+omni_range = 4.0
+
+[node name="LightEnsuite" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.1, 2.4, 4.1)
+light_color = Color(1, 0.95, 0.85, 1)
+light_energy = 0.4
+omni_range = 3.0
+
+[node name="LightBalcony" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.25, 2.45, 5.6)
+light_color = Color(1, 0.85, 0.65, 1)
+light_energy = 0.5
+omni_range = 4.0
+
+[node name="LightSkyGlow" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.25, 3, 9)
+light_color = Color(0.5, 0.6, 0.9, 1)
+light_energy = 0.6
+omni_range = 16.0
 
 [node name="Geometry" type="Node3D" parent="."]
 
@@ -257,28 +494,93 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.7, 0)
 mesh = SubResource("m_floor")
 surface_material_override/0 = SubResource("mat_ceiling")
 
-[node name="WallNorth" type="StaticBody3D" parent="Geometry"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3, 4.6)
+[node name="BalconyFloor" type="StaticBody3D" parent="Geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.25, -0.1, 6.05)
 
-[node name="Mesh" type="MeshInstance3D" parent="Geometry/WallNorth"]
-mesh = SubResource("m_wall_ns")
-surface_material_override/0 = SubResource("mat_wall")
+[node name="Mesh" type="MeshInstance3D" parent="Geometry/BalconyFloor"]
+mesh = SubResource("m_balcony_floor")
+surface_material_override/0 = SubResource("mat_concrete")
 
-[node name="Col" type="CollisionShape3D" parent="Geometry/WallNorth"]
-shape = SubResource("s_wall_ns")
+[node name="Col" type="CollisionShape3D" parent="Geometry/BalconyFloor"]
+shape = SubResource("s_balcony_floor")
+
+[node name="BalconyRoof" type="MeshInstance3D" parent="Geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.25, 2.7, 6.05)
+mesh = SubResource("m_balcony_floor")
+surface_material_override/0 = SubResource("mat_concrete")
+
+[node name="BalconyRailFront" type="StaticBody3D" parent="Geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.25, 0.55, 6.95)
+
+[node name="Mesh" type="MeshInstance3D" parent="Geometry/BalconyRailFront"]
+mesh = SubResource("m_rail_f")
+surface_material_override/0 = SubResource("mat_concrete")
+
+[node name="Col" type="CollisionShape3D" parent="Geometry/BalconyRailFront"]
+shape = SubResource("s_rail_f")
+
+[node name="BalconySideWest" type="StaticBody3D" parent="Geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.05, 1.3, 6.05)
+
+[node name="Mesh" type="MeshInstance3D" parent="Geometry/BalconySideWest"]
+mesh = SubResource("m_rail_side")
+surface_material_override/0 = SubResource("mat_concrete")
+
+[node name="Col" type="CollisionShape3D" parent="Geometry/BalconySideWest"]
+shape = SubResource("s_rail_side")
+
+[node name="BalconySideEast" type="StaticBody3D" parent="Geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45, 1.3, 6.05)
+
+[node name="Mesh" type="MeshInstance3D" parent="Geometry/BalconySideEast"]
+mesh = SubResource("m_rail_side")
+surface_material_override/0 = SubResource("mat_concrete")
+
+[node name="Col" type="CollisionShape3D" parent="Geometry/BalconySideEast"]
+shape = SubResource("s_rail_side")
+
+[node name="BalconyGlassPane" type="StaticBody3D" parent="Geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.95, 1.1, 5.1)
+
+[node name="Mesh" type="MeshInstance3D" parent="Geometry/BalconyGlassPane"]
+mesh = SubResource("m_glasspane")
+surface_material_override/0 = SubResource("mat_glass")
+
+[node name="Col" type="CollisionShape3D" parent="Geometry/BalconyGlassPane"]
+shape = SubResource("s_glasspane")
 
 [node name="WallSouth" type="StaticBody3D" parent="Geometry"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3, -4.6)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3, -5.1)
 
 [node name="Mesh" type="MeshInstance3D" parent="Geometry/WallSouth"]
-mesh = SubResource("m_wall_ns")
+mesh = SubResource("m_wall_s")
 surface_material_override/0 = SubResource("mat_wall")
 
 [node name="Col" type="CollisionShape3D" parent="Geometry/WallSouth"]
-shape = SubResource("s_wall_ns")
+shape = SubResource("s_wall_s")
+
+[node name="WallNorthWest" type="StaticBody3D" parent="Geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.9, 1.3, 5.1)
+
+[node name="Mesh" type="MeshInstance3D" parent="Geometry/WallNorthWest"]
+mesh = SubResource("m_wall_n1")
+surface_material_override/0 = SubResource("mat_wall")
+
+[node name="Col" type="CollisionShape3D" parent="Geometry/WallNorthWest"]
+shape = SubResource("s_wall_n1")
+
+[node name="WallNorthEast" type="StaticBody3D" parent="Geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.65, 1.3, 5.1)
+
+[node name="Mesh" type="MeshInstance3D" parent="Geometry/WallNorthEast"]
+mesh = SubResource("m_wall_n2")
+surface_material_override/0 = SubResource("mat_wall")
+
+[node name="Col" type="CollisionShape3D" parent="Geometry/WallNorthEast"]
+shape = SubResource("s_wall_n2")
 
 [node name="WallWest" type="StaticBody3D" parent="Geometry"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.1, 1.3, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.1, 1.3, 0)
 
 [node name="Mesh" type="MeshInstance3D" parent="Geometry/WallWest"]
 mesh = SubResource("m_wall_ew")
@@ -288,7 +590,7 @@ surface_material_override/0 = SubResource("mat_wall")
 shape = SubResource("s_wall_ew")
 
 [node name="WallEast" type="StaticBody3D" parent="Geometry"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.1, 1.3, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.1, 1.3, 0)
 
 [node name="Mesh" type="MeshInstance3D" parent="Geometry/WallEast"]
 mesh = SubResource("m_wall_ew")
@@ -297,83 +599,148 @@ surface_material_override/0 = SubResource("mat_wall")
 [node name="Col" type="CollisionShape3D" parent="Geometry/WallEast"]
 shape = SubResource("s_wall_ew")
 
-[node name="WallLivingSouth" type="StaticBody3D" parent="Geometry"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 1.3, -2.5)
+[node name="DividerSouth" type="StaticBody3D" parent="Geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1.3, -2.8)
 
-[node name="Mesh" type="MeshInstance3D" parent="Geometry/WallLivingSouth"]
-mesh = SubResource("m_wall_a")
+[node name="Mesh" type="MeshInstance3D" parent="Geometry/DividerSouth"]
+mesh = SubResource("m_div")
 surface_material_override/0 = SubResource("mat_wall")
 
-[node name="Col" type="CollisionShape3D" parent="Geometry/WallLivingSouth"]
-shape = SubResource("s_wall_a")
+[node name="Col" type="CollisionShape3D" parent="Geometry/DividerSouth"]
+shape = SubResource("s_div")
 
-[node name="WallLivingNorth" type="StaticBody3D" parent="Geometry"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 1.3, 2.5)
+[node name="DividerNorth" type="StaticBody3D" parent="Geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1.3, 2.8)
 
-[node name="Mesh" type="MeshInstance3D" parent="Geometry/WallLivingNorth"]
-mesh = SubResource("m_wall_a")
+[node name="Mesh" type="MeshInstance3D" parent="Geometry/DividerNorth"]
+mesh = SubResource("m_div")
 surface_material_override/0 = SubResource("mat_wall")
 
-[node name="Col" type="CollisionShape3D" parent="Geometry/WallLivingNorth"]
-shape = SubResource("s_wall_a")
+[node name="Col" type="CollisionShape3D" parent="Geometry/DividerNorth"]
+shape = SubResource("s_div")
 
-[node name="WallMalikWest" type="StaticBody3D" parent="Geometry"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.95, 1.3, -0.5)
+[node name="MalikWallA" type="StaticBody3D" parent="Geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2, 1.3, -0.6)
 
-[node name="Mesh" type="MeshInstance3D" parent="Geometry/WallMalikWest"]
-mesh = SubResource("m_wall_seg_s")
+[node name="Mesh" type="MeshInstance3D" parent="Geometry/MalikWallA"]
+mesh = SubResource("m_seg04")
 surface_material_override/0 = SubResource("mat_wall")
 
-[node name="Col" type="CollisionShape3D" parent="Geometry/WallMalikWest"]
-shape = SubResource("s_wall_seg_s")
+[node name="Col" type="CollisionShape3D" parent="Geometry/MalikWallA"]
+shape = SubResource("s_seg04")
 
-[node name="WallMalikEast" type="StaticBody3D" parent="Geometry"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.7, 1.3, -0.5)
+[node name="MalikWallB" type="StaticBody3D" parent="Geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.2, 1.3, -0.6)
 
-[node name="Mesh" type="MeshInstance3D" parent="Geometry/WallMalikEast"]
-mesh = SubResource("m_wall_seg_l")
+[node name="Mesh" type="MeshInstance3D" parent="Geometry/MalikWallB"]
+mesh = SubResource("m_seg36")
 surface_material_override/0 = SubResource("mat_wall")
 
-[node name="Col" type="CollisionShape3D" parent="Geometry/WallMalikEast"]
-shape = SubResource("s_wall_seg_l")
+[node name="Col" type="CollisionShape3D" parent="Geometry/MalikWallB"]
+shape = SubResource("s_seg36")
 
-[node name="WallParentsWest" type="StaticBody3D" parent="Geometry"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.95, 1.3, 0.5)
+[node name="MasterWallA" type="StaticBody3D" parent="Geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2, 1.3, 0.6)
 
-[node name="Mesh" type="MeshInstance3D" parent="Geometry/WallParentsWest"]
-mesh = SubResource("m_wall_seg_s")
+[node name="Mesh" type="MeshInstance3D" parent="Geometry/MasterWallA"]
+mesh = SubResource("m_seg04")
 surface_material_override/0 = SubResource("mat_wall")
 
-[node name="Col" type="CollisionShape3D" parent="Geometry/WallParentsWest"]
-shape = SubResource("s_wall_seg_s")
+[node name="Col" type="CollisionShape3D" parent="Geometry/MasterWallA"]
+shape = SubResource("s_seg04")
 
-[node name="WallParentsEast" type="StaticBody3D" parent="Geometry"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.7, 1.3, 0.5)
+[node name="MasterWallB" type="StaticBody3D" parent="Geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.2, 1.3, 0.6)
 
-[node name="Mesh" type="MeshInstance3D" parent="Geometry/WallParentsEast"]
-mesh = SubResource("m_wall_seg_l")
+[node name="Mesh" type="MeshInstance3D" parent="Geometry/MasterWallB"]
+mesh = SubResource("m_seg36")
 surface_material_override/0 = SubResource("mat_wall")
 
-[node name="Col" type="CollisionShape3D" parent="Geometry/WallParentsEast"]
-shape = SubResource("s_wall_seg_l")
+[node name="Col" type="CollisionShape3D" parent="Geometry/MasterWallB"]
+shape = SubResource("s_seg36")
 
-[node name="ParentsDoor" type="StaticBody3D" parent="Geometry"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9, 1.05, 0.5)
+[node name="WashroomWallNA" type="StaticBody3D" parent="Geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, 1.3, -2.8)
 
-[node name="Mesh" type="MeshInstance3D" parent="Geometry/ParentsDoor"]
+[node name="Mesh" type="MeshInstance3D" parent="Geometry/WashroomWallNA"]
+mesh = SubResource("m_seg08")
+surface_material_override/0 = SubResource("mat_wall")
+
+[node name="Col" type="CollisionShape3D" parent="Geometry/WashroomWallNA"]
+shape = SubResource("s_seg08")
+
+[node name="WashroomWallNB" type="StaticBody3D" parent="Geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9, 1.3, -2.8)
+
+[node name="Mesh" type="MeshInstance3D" parent="Geometry/WashroomWallNB"]
+mesh = SubResource("m_seg02")
+surface_material_override/0 = SubResource("mat_wall")
+
+[node name="Col" type="CollisionShape3D" parent="Geometry/WashroomWallNB"]
+shape = SubResource("s_seg02")
+
+[node name="WashroomWallW" type="StaticBody3D" parent="Geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3, -3.9)
+
+[node name="Mesh" type="MeshInstance3D" parent="Geometry/WashroomWallW"]
+mesh = SubResource("m_wr_w")
+surface_material_override/0 = SubResource("mat_wall")
+
+[node name="Col" type="CollisionShape3D" parent="Geometry/WashroomWallW"]
+shape = SubResource("s_wr_w")
+
+[node name="EnsuiteWallWA" type="StaticBody3D" parent="Geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.2, 1.3, 3.35)
+
+[node name="Mesh" type="MeshInstance3D" parent="Geometry/EnsuiteWallWA"]
+mesh = SubResource("m_es_w1")
+surface_material_override/0 = SubResource("mat_wall")
+
+[node name="Col" type="CollisionShape3D" parent="Geometry/EnsuiteWallWA"]
+shape = SubResource("s_es_w1")
+
+[node name="EnsuiteWallWB" type="StaticBody3D" parent="Geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.2, 1.3, 4.7)
+
+[node name="Mesh" type="MeshInstance3D" parent="Geometry/EnsuiteWallWB"]
+mesh = SubResource("m_es_w2")
+surface_material_override/0 = SubResource("mat_wall")
+
+[node name="Col" type="CollisionShape3D" parent="Geometry/EnsuiteWallWB"]
+shape = SubResource("s_es_w2")
+
+[node name="EnsuiteWallS" type="StaticBody3D" parent="Geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.1, 1.3, 3.2)
+
+[node name="Mesh" type="MeshInstance3D" parent="Geometry/EnsuiteWallS"]
+mesh = SubResource("m_es_s")
+surface_material_override/0 = SubResource("mat_wall")
+
+[node name="Col" type="CollisionShape3D" parent="Geometry/EnsuiteWallS"]
+shape = SubResource("s_es_s")
+
+[node name="MasterDoorOpen" type="StaticBody3D" parent="Geometry"]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 3.45, 1.05, 1.15)
+
+[node name="Mesh" type="MeshInstance3D" parent="Geometry/MasterDoorOpen"]
 mesh = SubResource("m_door")
 surface_material_override/0 = SubResource("mat_door")
 
-[node name="Col" type="CollisionShape3D" parent="Geometry/ParentsDoor"]
+[node name="Col" type="CollisionShape3D" parent="Geometry/MasterDoorOpen"]
 shape = SubResource("s_door")
 
-[node name="BathroomDoor" type="MeshInstance3D" parent="Geometry"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1.05, 4.47)
+[node name="WashroomDoorOpen" type="StaticBody3D" parent="Geometry"]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 1.75, 1.05, -3.35)
+
+[node name="Mesh" type="MeshInstance3D" parent="Geometry/WashroomDoorOpen"]
 mesh = SubResource("m_door")
 surface_material_override/0 = SubResource("mat_door")
 
+[node name="Col" type="CollisionShape3D" parent="Geometry/WashroomDoorOpen"]
+shape = SubResource("s_door")
+
 [node name="FrontDoor" type="StaticBody3D" parent="Geometry"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.95, 1.05, -1.0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.95, 1.05, -2.5)
 
 [node name="Mesh" type="MeshInstance3D" parent="Geometry/FrontDoor"]
 mesh = SubResource("m_door_w")
@@ -385,151 +752,310 @@ shape = SubResource("s_door_w")
 [node name="Furniture" type="Node3D" parent="."]
 
 [node name="Bed" type="StaticBody3D" parent="Furniture"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.4, 0, -3.3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.4, 0, -3.8)
 
-[node name="Frame" type="MeshInstance3D" parent="Furniture/Bed"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.175, 0)
-mesh = SubResource("m_bedframe")
-surface_material_override/0 = SubResource("mat_wood_dark")
-
-[node name="Mattress" type="MeshInstance3D" parent="Furniture/Bed"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.44, 0)
-mesh = SubResource("m_mattress")
-surface_material_override/0 = SubResource("mat_mattress")
-
-[node name="Pillow" type="MeshInstance3D" parent="Furniture/Bed"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.59, -0.8)
-mesh = SubResource("m_pillow")
-surface_material_override/0 = SubResource("mat_white")
+[node name="Model" parent="Furniture/Bed" instance=ExtResource("6_bed_single")]
+transform = Transform3D(1.9, 0, 0, 0, 1.9, 0, 0, 0, 1.9, -1.27395, 0, 1.06875)
 
 [node name="Col" type="CollisionShape3D" parent="Furniture/Bed"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.275, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35625, 0)
 shape = SubResource("s_bed")
 
 [node name="Desk" type="StaticBody3D" parent="Furniture"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0.39, -4.05)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0.39, -4.55)
 
-[node name="Mesh" type="MeshInstance3D" parent="Furniture/Desk"]
-mesh = SubResource("m_desk")
-surface_material_override/0 = SubResource("mat_wood")
+[node name="Model" parent="Furniture/Desk" instance=ExtResource("7_desk")]
+transform = Transform3D(1.72, 0, 0, 0, 1.72, 0, 0, 0, 1.72, -0.614449, -0.39, 0.316222)
 
 [node name="Col" type="CollisionShape3D" parent="Furniture/Desk"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.059409, 0)
 shape = SubResource("s_desk")
 
 [node name="Chair" type="StaticBody3D" parent="Furniture"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0.225, -3.35)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0.225, -3.85)
 
-[node name="Mesh" type="MeshInstance3D" parent="Furniture/Chair"]
-mesh = SubResource("m_chair")
-surface_material_override/0 = SubResource("mat_chair")
+[node name="Model" parent="Furniture/Chair" instance=ExtResource("8_chair_desk")]
+transform = Transform3D(-1.39, 0, 0, 0, 1.39, 0, 0, 0, -1.39, 0.23279, -0.225, -0.218438)
 
 [node name="Col" type="CollisionShape3D" parent="Furniture/Chair"]
-shape = SubResource("s_chair")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.197282, 0)
+shape = SubResource("s_chair_desk")
 
 [node name="Wardrobe" type="StaticBody3D" parent="Furniture"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9, 0.95, -1.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4, 0.95, -2)
 
-[node name="Mesh" type="MeshInstance3D" parent="Furniture/Wardrobe"]
-mesh = SubResource("m_wardrobe")
-surface_material_override/0 = SubResource("mat_wood_dark")
+[node name="Model" parent="Furniture/Wardrobe" instance=ExtResource("9_bookcase_wide")]
+transform = Transform3D(0, 0, -2.4, 0, 2.4, 0, 2.4, 0, 0, 0.3, -0.95, 0.96)
 
 [node name="Col" type="CollisionShape3D" parent="Furniture/Wardrobe"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.002, 0)
 shape = SubResource("s_wardrobe")
 
 [node name="Rug" type="MeshInstance3D" parent="Furniture"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9, 0.01, -2.6)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.4, 0.01, -3.1)
 mesh = SubResource("m_rug")
 surface_material_override/0 = SubResource("mat_rug")
 
 [node name="Phone" type="MeshInstance3D" parent="Furniture"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.85, 0.795, -4.0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.35, 0.795, -4.5)
 mesh = SubResource("m_phone")
 surface_material_override/0 = SubResource("mat_phone")
 
 [node name="WindowPane" type="MeshInstance3D" parent="Furniture"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.01, 1.7, -2.5)
-mesh = SubResource("m_window")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.01, 1.7, -3)
+mesh = SubResource("m_windowpane")
 surface_material_override/0 = SubResource("mat_window")
 
 [node name="Poster" type="MeshInstance3D" parent="Furniture"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9, 1.7, -4.47)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.4, 1.7, -4.97)
 mesh = SubResource("m_poster")
 surface_material_override/0 = SubResource("mat_poster")
 
-[node name="CouchSeat" type="StaticBody3D" parent="Furniture"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0.225, 1.6)
+[node name="BedMaster" type="StaticBody3D" parent="Furniture"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.4, 0, 3.85)
 
-[node name="Mesh" type="MeshInstance3D" parent="Furniture/CouchSeat"]
-mesh = SubResource("m_couch_seat")
-surface_material_override/0 = SubResource("mat_couch")
+[node name="Model" parent="Furniture/BedMaster" instance=ExtResource("10_bed_double")]
+transform = Transform3D(1.82, 0, 0, 0, 1.82, 0, 0, 0, 1.82, -0.86996, 0, 1.02375)
+
+[node name="Col" type="CollisionShape3D" parent="Furniture/BedMaster"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.34125, 0)
+shape = SubResource("s_bed_m")
+
+[node name="Blanket" type="MeshInstance3D" parent="Furniture"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.4, 0.63, 3.4)
+mesh = SubResource("m_blanket")
+surface_material_override/0 = SubResource("mat_blanket")
+
+[node name="Dresser" type="StaticBody3D" parent="Furniture"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.6, 0.45, 0.95)
+
+[node name="Model" parent="Furniture/Dresser" instance=ExtResource("11_dresser")]
+transform = Transform3D(1.75, 0, 0, 0, 1.75, 0, 0, 0, 1.75, -0.7, -0.45, 0.21)
+
+[node name="Col" type="CollisionShape3D" parent="Furniture/Dresser"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.17875, 0)
+shape = SubResource("s_dresser")
+
+[node name="NightstandL" type="StaticBody3D" parent="Furniture"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3, 0.225, 4.7)
+
+[node name="Model" parent="Furniture/NightstandL" instance=ExtResource("12_nightstand")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.257238, -0.225, 0.09885)
+
+[node name="Col" type="CollisionShape3D" parent="Furniture/NightstandL"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.032796, 0)
+shape = SubResource("s_chair")
+
+[node name="NightstandR" type="StaticBody3D" parent="Furniture"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0.225, 4.7)
+
+[node name="Model" parent="Furniture/NightstandR" instance=ExtResource("12_nightstand")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.257238, -0.225, 0.09885)
+
+[node name="Col" type="CollisionShape3D" parent="Furniture/NightstandR"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.032796, 0)
+shape = SubResource("s_chair")
+
+[node name="RugMaster" type="MeshInstance3D" parent="Furniture"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.4, 0.01, 2.1)
+mesh = SubResource("m_rug")
+surface_material_override/0 = SubResource("mat_rug")
+
+[node name="ToiletEnsuite" type="StaticBody3D" parent="Furniture"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.7, 0.225, 4.6)
+
+[node name="Model" parent="Furniture/ToiletEnsuite" instance=ExtResource("13_toilet")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.239192, -0.225, 0.032276)
+
+[node name="Col" type="CollisionShape3D" parent="Furniture/ToiletEnsuite"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.094624, 0)
+shape = SubResource("s_toilet")
+
+[node name="SinkEnsuite" type="StaticBody3D" parent="Furniture"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.65, 0.425, 4.7)
+
+[node name="Model" parent="Furniture/SinkEnsuite" instance=ExtResource("14_sink")]
+transform = Transform3D(1.56, 0, 0, 0, 1.56, 0, 0, 0, 1.56, -0.2652, 0.199, 0.2262)
+
+[node name="Col" type="CollisionShape3D" parent="Furniture/SinkEnsuite"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0118, 0)
+shape = SubResource("s_sink")
+
+[node name="MirrorEnsuite" type="Node3D" parent="Furniture"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.65, 1.5, 4.96)
+
+[node name="Model" parent="Furniture/MirrorEnsuite" instance=ExtResource("15_mirror")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -0.226005, -0.3, -0.0351)
+
+[node name="ShowerBase" type="Node3D" parent="Furniture"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.55, 0.05, 3.75)
+
+[node name="Model" parent="Furniture/ShowerBase" instance=ExtResource("17_shower")]
+transform = Transform3D(0.85, 0, 0, 0, 0.85, 0, 0, 0, 0.85, 0.238752, -0.05, 0.518237)
+
+[node name="Tub" type="StaticBody3D" parent="Furniture"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.45, 0.275, -4.15)
+
+[node name="Model" parent="Furniture/Tub" instance=ExtResource("16_tub")]
+transform = Transform3D(0, 0, -1.27, 0, 1.27, 0, 1.27, 0, 0, 0.3556, -0.275, 0.75565)
+
+[node name="Col" type="CollisionShape3D" parent="Furniture/Tub"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0083, 0)
+shape = SubResource("s_tub")
+
+[node name="ToiletWashroom" type="StaticBody3D" parent="Furniture"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.65, 0.225, -3.2)
+
+[node name="Model" parent="Furniture/ToiletWashroom" instance=ExtResource("13_toilet")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.239192, -0.225, 0.032276)
+
+[node name="Col" type="CollisionShape3D" parent="Furniture/ToiletWashroom"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.094624, 0)
+shape = SubResource("s_toilet")
+
+[node name="SinkWashroom" type="StaticBody3D" parent="Furniture"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3, 0.425, -4.7)
+
+[node name="Model" parent="Furniture/SinkWashroom" instance=ExtResource("14_sink")]
+transform = Transform3D(1.56, 0, 0, 0, 1.56, 0, 0, 0, 1.56, -0.2652, 0.199, 0.2262)
+
+[node name="Col" type="CollisionShape3D" parent="Furniture/SinkWashroom"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0118, 0)
+shape = SubResource("s_sink")
+
+[node name="MirrorWashroom" type="Node3D" parent="Furniture"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3, 1.5, -4.96)
+
+[node name="Model" parent="Furniture/MirrorWashroom" instance=ExtResource("15_mirror")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -0.226005, -0.3, -0.0351)
+
+[node name="TowelOnFloor" type="MeshInstance3D" parent="Furniture"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.015, -3.6)
+mesh = SubResource("m_towel")
+surface_material_override/0 = SubResource("mat_white")
+
+[node name="CouchSeat" type="StaticBody3D" parent="Furniture"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 0.225, -2.8)
+
+[node name="ModelL" parent="Furniture/CouchSeat" instance=ExtResource("18_sofa")]
+transform = Transform3D(1.122, 0, 0, 0, 1.122, 0, 0, 0, 1.122, -1.09978, -0.225, 0.0)
+
+[node name="ModelR" parent="Furniture/CouchSeat" instance=ExtResource("18_sofa")]
+transform = Transform3D(1.122, 0, 0, 0, 1.122, 0, 0, 0, 1.122, 0.00022, -0.225, 0.0)
 
 [node name="Col" type="CollisionShape3D" parent="Furniture/CouchSeat"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.03306, 0)
 shape = SubResource("s_couch_seat")
 
-[node name="CouchBack" type="MeshInstance3D" parent="Furniture"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0.725, 1.275)
-mesh = SubResource("m_couch_back")
-surface_material_override/0 = SubResource("mat_couch")
-
 [node name="CoffeeTable" type="StaticBody3D" parent="Furniture"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0.175, 3.0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 0.175, -3.8)
 
-[node name="Mesh" type="MeshInstance3D" parent="Furniture/CoffeeTable"]
-mesh = SubResource("m_coffee")
-surface_material_override/0 = SubResource("mat_wood_dark")
+[node name="Model" parent="Furniture/CoffeeTable" instance=ExtResource("19_coffee_table")]
+transform = Transform3D(1.56, 0, 0, 0, 1.56, 0, 0, 0, 1.56, 0.203577, -0.175, 0.156)
 
 [node name="Col" type="CollisionShape3D" parent="Furniture/CoffeeTable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0044, 0)
 shape = SubResource("s_coffee")
 
-[node name="DiningTable" type="StaticBody3D" parent="Furniture"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 0.375, 3.5)
+[node name="TVStand" type="StaticBody3D" parent="Furniture"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 0.2, -4.7)
 
-[node name="Mesh" type="MeshInstance3D" parent="Furniture/DiningTable"]
-mesh = SubResource("m_table")
-surface_material_override/0 = SubResource("mat_wood")
+[node name="Model" parent="Furniture/TVStand" instance=ExtResource("20_tv_stand")]
+transform = Transform3D(1.63, 0, 0, 0, 1.63, 0, 0, 0, 1.63, -0.652, -0.2, 0.20375)
+
+[node name="Col" type="CollisionShape3D" parent="Furniture/TVStand"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05265, 0)
+shape = SubResource("s_tvstand")
+
+[node name="TV" type="Node3D" parent="Furniture"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 1, -4.75)
+
+[node name="Model" parent="Furniture/TV" instance=ExtResource("21_tv")]
+transform = Transform3D(1.9, 0, 0, 0, 1.9, 0, 0, 0, 1.9, 0.0, -0.4, 0.0)
+
+[node name="DiningTable" type="StaticBody3D" parent="Furniture"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.375, 3)
+
+[node name="Model" parent="Furniture/DiningTable" instance=ExtResource("22_dining_table")]
+transform = Transform3D(1.6, 0, 0, 0, 1.6, 0, 0, 0, 1.6, -0.67319, -0.375, 0.357899)
 
 [node name="Col" type="CollisionShape3D" parent="Furniture/DiningTable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.113613, 0)
 shape = SubResource("s_table")
 
 [node name="Fridge" type="StaticBody3D" parent="Furniture"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.6, 0.85, 0.6)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.55, 0.85, 4.4)
 
-[node name="Mesh" type="MeshInstance3D" parent="Furniture/Fridge"]
-mesh = SubResource("m_fridge")
-surface_material_override/0 = SubResource("mat_white")
+[node name="Model" parent="Furniture/Fridge" instance=ExtResource("23_fridge")]
+transform = Transform3D(1.85, 0, 0, 0, 1.85, 0, 0, 0, 1.85, -0.39775, -0.85, 0.251539)
 
 [node name="Col" type="CollisionShape3D" parent="Furniture/Fridge"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.001, 0)
 shape = SubResource("s_fridge")
 
 [node name="Counter" type="StaticBody3D" parent="Furniture"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.7, 0.45, 2.8)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.7, 0.45, 2.5)
 
-[node name="Mesh" type="MeshInstance3D" parent="Furniture/Counter"]
-mesh = SubResource("m_counter")
-surface_material_override/0 = SubResource("mat_counter")
+[node name="Model1" parent="Furniture/Counter" instance=ExtResource("24_kitchen_cabinet")]
+transform = Transform3D(0, 0, -1.333, 0, 1.333, 0, 1.333, 0, 0, 0.299925, -0.45, -0.859405)
+
+[node name="Model2" parent="Furniture/Counter" instance=ExtResource("24_kitchen_cabinet")]
+transform = Transform3D(0, 0, -1.333, 0, 1.333, 0, 1.333, 0, 0, 0.299925, -0.45, -0.286405)
+
+[node name="Model3" parent="Furniture/Counter" instance=ExtResource("24_kitchen_cabinet")]
+transform = Transform3D(0, 0, -1.333, 0, 1.333, 0, 1.333, 0, 0, 0.299925, -0.45, 0.286595)
+
+[node name="Model4" parent="Furniture/Counter" instance=ExtResource("24_kitchen_cabinet")]
+transform = Transform3D(0, 0, -1.333, 0, 1.333, 0, 1.333, 0, 0, 0.299925, -0.45, 0.859595)
+
+[node name="Model5" parent="Furniture/Counter" instance=ExtResource("24_kitchen_cabinet")]
+transform = Transform3D(0, 0, -1.333, 0, 1.333, 0, 1.333, 0, 0, 0.299925, -0.45, 1.432595)
 
 [node name="Col" type="CollisionShape3D" parent="Furniture/Counter"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.150075, 0)
 shape = SubResource("s_counter")
 
-[node name="TVStand" type="StaticBody3D" parent="Furniture"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0.2, 4.2)
+[node name="Skyline" type="Node3D" parent="."]
 
-[node name="Mesh" type="MeshInstance3D" parent="Furniture/TVStand"]
-mesh = SubResource("m_tvstand")
-surface_material_override/0 = SubResource("mat_wood_dark")
+[node name="Tower1" type="MeshInstance3D" parent="Skyline"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28, 3, 52)
+mesh = SubResource("m_tower1")
+surface_material_override/0 = SubResource("mat_tower")
 
-[node name="Col" type="CollisionShape3D" parent="Furniture/TVStand"]
-shape = SubResource("s_tvstand")
+[node name="Tower2" type="MeshInstance3D" parent="Skyline"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 8, 56)
+mesh = SubResource("m_tower2")
+surface_material_override/0 = SubResource("mat_tower")
 
-[node name="TV" type="MeshInstance3D" parent="Furniture"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 1.0, 4.28)
-mesh = SubResource("m_tv")
-surface_material_override/0 = SubResource("mat_tv")
+[node name="Tower3" type="MeshInstance3D" parent="Skyline"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1, 47)
+mesh = SubResource("m_tower3")
+surface_material_override/0 = SubResource("mat_tower")
+
+[node name="Tower4" type="MeshInstance3D" parent="Skyline"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 6, 58)
+mesh = SubResource("m_tower4")
+surface_material_override/0 = SubResource("mat_tower")
+
+[node name="CNShaft" type="MeshInstance3D" parent="Skyline"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 5, 48)
+mesh = SubResource("m_cn_shaft")
+surface_material_override/0 = SubResource("mat_cn")
+
+[node name="CNPod" type="MeshInstance3D" parent="Skyline"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 16.5, 48)
+mesh = SubResource("m_cn_pod")
+surface_material_override/0 = SubResource("mat_cn")
+
+[node name="CNSpire" type="MeshInstance3D" parent="Skyline"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 24, 48)
+mesh = SubResource("m_cn_spire")
+surface_material_override/0 = SubResource("mat_cn")
 
 [node name="Interactables" type="Node3D" parent="."]
 
 [node name="PhoneInteract" type="Area3D" parent="Interactables"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.85, 0.9, -3.8)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.35, 0.9, -4.3)
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("1_interact")
@@ -541,7 +1067,7 @@ dialogue_entry = "phone_1"
 shape = SubResource("s_ia_phone")
 
 [node name="WindowInteract" type="Area3D" parent="Interactables"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.55, 1.3, -2.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.55, 1.3, -3)
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("1_interact")
@@ -552,44 +1078,76 @@ dialogue_entry = "window_1"
 [node name="Col" type="CollisionShape3D" parent="Interactables/WindowInteract"]
 shape = SubResource("s_ia_window")
 
-[node name="ParentsDoorInteract" type="Area3D" parent="Interactables"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9, 1.1, 0.5)
+[node name="MaInteract" type="Area3D" parent="Interactables"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9, 1, 3.5)
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("1_interact")
-prompt = "E — Parents' room"
+prompt = "E — Ma"
 dialogue_file = "res://data/dialogue/act0_bedroom.json"
-dialogue_entry = "parents_1"
+dialogue_entry = "ma_1"
 
-[node name="Col" type="CollisionShape3D" parent="Interactables/ParentsDoorInteract"]
-shape = SubResource("s_ia_door")
+[node name="Col" type="CollisionShape3D" parent="Interactables/MaInteract"]
+shape = SubResource("s_ia_room")
 
-[node name="BathroomDoorInteract" type="Area3D" parent="Interactables"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1.1, 4.3)
+[node name="EnsuiteInteract" type="Area3D" parent="Interactables"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 1.1, 4.2)
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("1_interact")
-prompt = "E — Bathroom"
+prompt = "E — Ensuite"
 dialogue_file = "res://data/dialogue/act0_bedroom.json"
-dialogue_entry = "bathroom_1"
+dialogue_entry = "ensuite_1"
 
-[node name="Col" type="CollisionShape3D" parent="Interactables/BathroomDoorInteract"]
-shape = SubResource("s_ia_door")
+[node name="Col" type="CollisionShape3D" parent="Interactables/EnsuiteInteract"]
+shape = SubResource("s_ia_room")
+
+[node name="WashroomInteract" type="Area3D" parent="Interactables"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2, 1.1, -4.3)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_interact")
+prompt = "E — Washroom sink"
+dialogue_file = "res://data/dialogue/act0_bedroom.json"
+dialogue_entry = "washroom_1"
+
+[node name="Col" type="CollisionShape3D" parent="Interactables/WashroomInteract"]
+shape = SubResource("s_ia_room")
+
+[node name="BalconyInteract" type="Area3D" parent="Interactables"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.25, 1.1, 6.4)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_interact")
+prompt = "E — Take in the view"
+dialogue_file = "res://data/dialogue/act0_bedroom.json"
+dialogue_entry = "balcony_1"
+
+[node name="Col" type="CollisionShape3D" parent="Interactables/BalconyInteract"]
+shape = SubResource("s_ia_balcony")
 
 [node name="FrontDoorInteract" type="Area3D" parent="Interactables"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.8, 1.1, -1.0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.7, 1.1, -2.5)
 collision_layer = 2
 collision_mask = 0
-script = ExtResource("1_interact")
+script = ExtResource("25_front_door")
 prompt = "E — Front door"
 dialogue_file = "res://data/dialogue/act0_bedroom.json"
 dialogue_entry = "front_1"
+exit_scene = "res://scenes/world/jane_finch.tscn"
+exit_marker = "SpawnFromApartment"
 
 [node name="Col" type="CollisionShape3D" parent="Interactables/FrontDoorInteract"]
 shape = SubResource("s_ia_door_w")
 
+[node name="Ma" parent="." instance=ExtResource("5_figure")]
+transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 3, 0.6, 2.98)
+
 [node name="Player" parent="." instance=ExtResource("2_player")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9, 0.05, -1.8)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0.05, -2.2)
+
+[node name="SpawnFromStreet" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0.05, -2.2)
 
 [node name="HUD" parent="." instance=ExtResource("3_hud")]
 

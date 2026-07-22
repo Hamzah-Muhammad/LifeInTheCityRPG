@@ -13,17 +13,21 @@ const MOUSE_SENSITIVITY := 0.0025
 const PITCH_MIN := -1.1
 const PITCH_MAX := 0.5
 
+const ANIM_BLEND := 0.2
+
 @onready var _pivot: Node3D = $CameraPivot
+@onready var _anim: AnimationPlayer = $Malik/Model/AnimationPlayer
 
 var _nearest: Interactable = null
 
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	_anim.play("Idle", ANIM_BLEND)
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	if DialogueManager.active:
+	if DialogueManager.active or StationManager.active:
 		return
 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 		rotate_y(-event.relative.x * MOUSE_SENSITIVITY)
@@ -44,7 +48,7 @@ func _physics_process(delta: float) -> void:
 		velocity.y -= GRAVITY * delta
 
 	var input_dir := Vector2.ZERO
-	if not DialogueManager.active:
+	if not DialogueManager.active and not StationManager.active:
 		input_dir = Input.get_vector("move_left", "move_right", "move_forward", "move_back")
 
 	var direction := (transform.basis * Vector3(input_dir.x, 0.0, input_dir.y)).normalized()
@@ -58,6 +62,16 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 	_update_nearest_interactable()
+	_update_animation(speed)
+
+
+func _update_animation(speed: float) -> void:
+	var horizontal_speed := Vector2(velocity.x, velocity.z).length()
+	var target := "Idle"
+	if horizontal_speed > 0.1:
+		target = "Run" if is_equal_approx(speed, SPRINT_SPEED) else "Walk"
+	if _anim.current_animation != target:
+		_anim.play(target, ANIM_BLEND)
 
 
 func _update_nearest_interactable() -> void:

@@ -1,0 +1,15 @@
+Ultimate Modular Men Pack (February 2022)
+
+Created/distributed by Quaternius (https://quaternius.com)
+Source: https://quaternius.com/packs/ultimatemodularcharacters.html
+
+License: Creative Commons Zero (CC0)
+https://creativecommons.org/publicdomain/zero/1.0/
+
+Free to use in personal and commercial projects. Attribution not required
+but appreciated (credit Quaternius / quaternius.com).
+
+11 characters, 24 shared animations, modular (each character split into
+4 swappable parts). Provided in FBX, OBJ, glTF, and Blender (.blend) formats.
+This project keeps Humans_Master.fbx (game-ready, all characters+animations)
+and Humans_Master.blend (editable Blender source).

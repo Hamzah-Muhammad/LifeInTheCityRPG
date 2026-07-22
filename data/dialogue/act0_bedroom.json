@@ -35,14 +35,24 @@
 		"text": "Fourteen floors up. Jane and Finch spread out under the sodium lights — the towers across the lot, the plaza, the 36 hissing down toward Finch station. Somewhere past all of it, downtown glows like it's a different city. From up here you can see everything Malik wants and every way there is to lose it.",
 		"next": "end"
 	},
-	"parents_1": {
+	"ma_1": {
 		"speaker": "",
-		"text": "Ma and Baba's room. Door's shut. Baba's on night shift; Ma fell asleep with the recitation still playing off her phone, same as every night. Keep it quiet.",
+		"text": "Ma. Out cold on her side of the bed, the recitation still murmuring off her phone on the nightstand. Baba's side is untouched — he's at the warehouse till six, same as always. If Malik walks out tonight, this is who he's walking out on.",
 		"next": "end"
 	},
-	"bathroom_1": {
+	"ensuite_1": {
 		"speaker": "",
-		"text": "The bathroom. Somebody's towel is on the floor again. It's Malik's. It's always Malik's.",
+		"text": "Their ensuite. Baba's razor lined up straight on the edge of the sink, Ma's kohl beside it. Twenty-two years of marriage in fifteen square feet.",
+		"next": "end"
+	},
+	"washroom_1": {
+		"speaker": "",
+		"text": "The washroom. Somebody's towel is on the floor again. It's Malik's. It's always Malik's.",
+		"next": "end"
+	},
+	"balcony_1": {
+		"speaker": "",
+		"text": "Cold night air, fourteen floors of it. Right below, the lot behind the building sits in its pool of orange light — that's where Ty wants to meet. Past it the towers, the plaza, and way south, downtown burning white against the sky. The CN Tower blinks slow and steady, like it's counting something down.",
 		"next": "end"
 	},
 	"front_1": {
@@ -55,7 +65,8 @@
 	},
 	"front_2": {
 		"speaker": "",
-		"text": "— END OF TEST SCENE — \nAct 1, Scene 1: \"The Lot\" is coming next. This is where Malik's story really starts.",
-		"next": "end"
+		"text": "Malik eases the door shut behind him and steps into the hallway. Fourteen floors down, then out into the cold — the lot, and whatever Ty's got waiting, are only a few minutes away now.",
+		"next": "end",
+		"effects": { "flags": ["left_apartment_tonight"] }
 	}
 }
