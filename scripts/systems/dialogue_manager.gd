@@ -69,7 +69,35 @@ func _enter(id: String) -> void:
 	_current_id = id
 	var node: Dictionary = _nodes[id]
 	_apply_effects(node.get("effects", {}))
-	node_entered.emit(node)
+	node_entered.emit(_resolve_node(node))
+
+
+## Dialogue text may reference the player via {name}/{name_lower}/{He}/{he}/
+## {his}/{him} placeholders so it reads correctly regardless of the name and
+## gender chosen at New Game. Resolved on a duplicate so _nodes stays as-authored.
+func _resolve_node(node: Dictionary) -> Dictionary:
+	var resolved: Dictionary = node.duplicate(true)
+	resolved["speaker"] = _resolve_text(str(node.get("speaker", "")))
+	resolved["text"] = _resolve_text(str(node.get("text", "")))
+	var choices: Array = resolved.get("choices", [])
+	for choice: Dictionary in choices:
+		choice["text"] = _resolve_text(str(choice.get("text", "")))
+	return resolved
+
+
+func _resolve_text(text: String) -> String:
+	var subs := {
+		"{name}": GameState.player_name,
+		"{name_lower}": GameState.player_name.to_lower(),
+		"{He}": GameState.pronoun_He(),
+		"{he}": GameState.pronoun_he(),
+		"{his}": GameState.pronoun_his(),
+		"{him}": GameState.pronoun_him(),
+	}
+	var result := text
+	for token: String in subs:
+		result = result.replace(token, str(subs[token]))
+	return result
 
 
 func _apply_effects(effects: Dictionary) -> void:
