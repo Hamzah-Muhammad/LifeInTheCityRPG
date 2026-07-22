@@ -12,6 +12,8 @@ signal stat_changed(stat: String, value: int)
 signal flag_set(flag: String)
 
 const STATS: Array[String] = ["rep", "heat", "loyalty", "cash"]
+const DEFAULT_NAME := "Malik"
+const DEFAULT_GENDER := "male"
 
 var rep: int = 0
 var heat: int = 0
@@ -19,6 +21,10 @@ var loyalty: int = 0
 var cash: int = 40
 
 var flags: Dictionary = {}
+
+## Chosen at New Game via the character-creation screen. "male" or "female".
+var player_name: String = DEFAULT_NAME
+var player_gender: String = DEFAULT_GENDER
 
 
 func adjust(stat: String, amount: int) -> void:
@@ -38,9 +44,27 @@ func has_flag(flag: String) -> bool:
 	return flags.get(flag, false)
 
 
+func pronoun_he() -> String:
+	return "he" if player_gender == "male" else "she"
+
+
+func pronoun_He() -> String:
+	return "He" if player_gender == "male" else "She"
+
+
+func pronoun_his() -> String:
+	return "his" if player_gender == "male" else "her"
+
+
+func pronoun_him() -> String:
+	return "him" if player_gender == "male" else "her"
+
+
 func reset() -> void:
 	rep = 0
 	heat = 0
 	loyalty = 0
 	cash = 40
 	flags.clear()
+	player_name = DEFAULT_NAME
+	player_gender = DEFAULT_GENDER

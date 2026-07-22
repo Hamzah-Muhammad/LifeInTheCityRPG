@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3]
+[gd_scene load_steps=3 format=3]
 
 [ext_resource type="Script" path="res://scripts/ui/main_menu.gd" id="1_menu"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_gender"]
 
 [node name="MainMenu" type="CanvasLayer"]
 script = ExtResource("1_menu")
@@ -57,7 +59,7 @@ text = "New Game"
 
 [node name="LoadGameButton" type="Button" parent="MenuPanel/Margin/VBox"]
 layout_mode = 2
-tooltip_text = "No save file yet — save/load is still in development."
+tooltip_text = "No save file yet."
 disabled = true
 text = "Load Game"
 
@@ -200,3 +202,75 @@ value = 1.0
 [node name="BackButton" type="Button" parent="OptionsPanel/Margin/VBox"]
 layout_mode = 2
 text = "Back"
+
+[node name="CharacterCreationPanel" type="PanelContainer" parent="."]
+visible = false
+anchor_left = 0.34
+anchor_top = 0.3
+anchor_right = 0.66
+anchor_bottom = 0.72
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Margin" type="MarginContainer" parent="CharacterCreationPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 18
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 18
+
+[node name="VBox" type="VBoxContainer" parent="CharacterCreationPanel/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Title" type="Label" parent="CharacterCreationPanel/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.82, 0.4, 1)
+theme_override_font_sizes/font_size = 24
+text = "Who Are You?"
+
+[node name="NameLabel" type="Label" parent="CharacterCreationPanel/Margin/VBox"]
+layout_mode = 2
+text = "Name"
+
+[node name="NameEdit" type="LineEdit" parent="CharacterCreationPanel/Margin/VBox"]
+layout_mode = 2
+placeholder_text = "Malik"
+max_length = 24
+
+[node name="GenderLabel" type="Label" parent="CharacterCreationPanel/Margin/VBox"]
+layout_mode = 2
+text = "Gender"
+
+[node name="GenderRow" type="HBoxContainer" parent="CharacterCreationPanel/Margin/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="MaleButton" type="Button" parent="CharacterCreationPanel/Margin/VBox/GenderRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+button_pressed = true
+button_group = SubResource("ButtonGroup_gender")
+text = "Male"
+
+[node name="FemaleButton" type="Button" parent="CharacterCreationPanel/Margin/VBox/GenderRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+button_group = SubResource("ButtonGroup_gender")
+text = "Female"
+
+[node name="ButtonRow" type="HBoxContainer" parent="CharacterCreationPanel/Margin/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="BackButton" type="Button" parent="CharacterCreationPanel/Margin/VBox/ButtonRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Back"
+
+[node name="BeginButton" type="Button" parent="CharacterCreationPanel/Margin/VBox/ButtonRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Begin"

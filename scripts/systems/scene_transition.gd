@@ -6,6 +6,8 @@ extends Node
 ## somewhere in the new scene and snaps the player (found via the "player"
 ## group) onto it. Two process_frame waits give change_scene_to_file's
 ## deferred swap time to actually land before we go looking for nodes in it.
+## Every real inter-scene travel path (front door, subway) routes through
+## here, so this is also the single choke point for the autosave.
 
 var _pending_marker: String = ""
 
@@ -18,6 +20,7 @@ func go(scene_path: String, marker_name: String) -> void:
 	await get_tree().process_frame
 	await get_tree().process_frame
 	_place_player()
+	SaveManager.save_game()
 
 
 func _place_player() -> void:

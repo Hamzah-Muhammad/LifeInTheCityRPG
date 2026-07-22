@@ -1,12 +1,12 @@
 {
 	"phone_1": {
 		"speaker": "",
-		"text": "Malik's phone buzzes against the desk. 11:47 PM. Three unread from Ty.",
+		"text": "{name}'s phone buzzes against the desk. 11:47 PM. Three unread from Ty.",
 		"next": "phone_2"
 	},
 	"phone_2": {
 		"speaker": "Ty (texts)",
-		"text": "\"yo malik. u up?\"\n\"big tings tonight ahlie\"\n\"pull up to the lot behind the building. 10 mins. dont be a wasteman\"",
+		"text": "\"yo {name_lower}. u up?\"\n\"big tings tonight ahlie\"\n\"pull up to the lot behind the building. 10 mins. dont be a wasteman\"",
 		"choices": [
 			{
 				"text": "Text back: \"say less. omw.\"",
@@ -21,23 +21,23 @@
 		]
 	},
 	"phone_yes": {
-		"speaker": "Malik",
-		"text": "Malik pulls his hoodie off the chair. Ma's asleep. Baba's on nights at the warehouse until six. Ten minutes. Whatever Ty's got going in that lot, it starts tonight.",
+		"speaker": "{name}",
+		"text": "{name} pulls {his} hoodie off the chair. Ma's asleep. Baba's on nights at the warehouse until six. Ten minutes. Whatever Ty's got going in that lot, it starts tonight.",
 		"next": "end"
 	},
 	"phone_no": {
-		"speaker": "Malik",
-		"text": "He flips the phone face-down. Ty's gonna chirp him about it tomorrow — 'man's got school in the morning' — like that's ever stopped anybody around here. Still. Not tonight.",
+		"speaker": "{name}",
+		"text": "{He} flips the phone face-down. Ty's gonna chirp him about it tomorrow — 'man's got school in the morning' — like that's ever stopped anybody around here. Still. Not tonight.",
 		"next": "end"
 	},
 	"window_1": {
 		"speaker": "",
-		"text": "Fourteen floors up. Jane and Finch spread out under the sodium lights — the towers across the lot, the plaza, the 36 hissing down toward Finch station. Somewhere past all of it, downtown glows like it's a different city. From up here you can see everything Malik wants and every way there is to lose it.",
+		"text": "Fourteen floors up. Jane and Finch spread out under the sodium lights — the towers across the lot, the plaza, the 36 hissing down toward Finch station. Somewhere past all of it, downtown glows like it's a different city. From up here you can see everything {name} wants and every way there is to lose it.",
 		"next": "end"
 	},
 	"ma_1": {
 		"speaker": "",
-		"text": "Ma. Out cold on her side of the bed, the recitation still murmuring off her phone on the nightstand. Baba's side is untouched — he's at the warehouse till six, same as always. If Malik walks out tonight, this is who he's walking out on.",
+		"text": "Ma. Out cold on her side of the bed, the recitation still murmuring off her phone on the nightstand. Baba's side is untouched — he's at the warehouse till six, same as always. If {name} walks out tonight, this is who {he}'s walking out on.",
 		"next": "end"
 	},
 	"ensuite_1": {
@@ -47,7 +47,7 @@
 	},
 	"washroom_1": {
 		"speaker": "",
-		"text": "The washroom. Somebody's towel is on the floor again. It's Malik's. It's always Malik's.",
+		"text": "The washroom. Somebody's towel is on the floor again. It's {name}'s. It's always {name}'s.",
 		"next": "end"
 	},
 	"balcony_1": {
@@ -56,8 +56,8 @@
 		"next": "end"
 	},
 	"front_1": {
-		"speaker": "Malik",
-		"text": "The front door. Eighteen years coming in and out of this door with groceries, school bags, excuses. Once he starts stepping out at midnight, that's a choice that doesn't un-choose itself.",
+		"speaker": "{name}",
+		"text": "The front door. Eighteen years coming in and out of this door with groceries, school bags, excuses. Once {he} starts stepping out at midnight, that's a choice that doesn't un-choose itself.",
 		"choices": [
 			{ "text": "Head out to the lot", "next": "front_2" },
 			{ "text": "Stay in tonight", "next": "end" }
@@ -65,7 +65,7 @@
 	},
 	"front_2": {
 		"speaker": "",
-		"text": "Malik eases the door shut behind him and steps into the hallway. Fourteen floors down, then out into the cold — the lot, and whatever Ty's got waiting, are only a few minutes away now.",
+		"text": "{name} eases the door shut behind {him} and steps into the hallway. Fourteen floors down, then out into the cold — the lot, and whatever Ty's got waiting, are only a few minutes away now.",
 		"next": "end",
 		"effects": { "flags": ["left_apartment_tonight"] }
 	}
