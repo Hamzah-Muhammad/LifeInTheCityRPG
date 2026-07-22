@@ -65,7 +65,8 @@
 	},
 	"front_2": {
 		"speaker": "",
-		"text": "— END OF TEST SCENE — \nAct 1, Scene 1: \"The Lot\" is coming next. This is where Malik's story really starts.",
-		"next": "end"
+		"text": "Malik eases the door shut behind him and steps into the hallway. Fourteen floors down, then out into the cold — the lot, and whatever Ty's got waiting, are only a few minutes away now.",
+		"next": "end",
+		"effects": { "flags": ["left_apartment_tonight"] }
 	}
 }

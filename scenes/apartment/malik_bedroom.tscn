@@ -24,6 +24,7 @@
 [ext_resource type="PackedScene" path="res://assets/kenney_furniture_kit/models/table.glb" id="22_dining_table"]
 [ext_resource type="PackedScene" path="res://assets/kenney_furniture_kit/models/kitchenFridge.glb" id="23_fridge"]
 [ext_resource type="PackedScene" path="res://assets/kenney_furniture_kit/models/kitchenCabinet.glb" id="24_kitchen_cabinet"]
+[ext_resource type="Script" path="res://scripts/interaction/apartment_front_door.gd" id="25_front_door"]
 
 [sub_resource type="Environment" id="env"]
 background_mode = 1
@@ -1129,10 +1130,12 @@ shape = SubResource("s_ia_balcony")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.7, 1.1, -2.5)
 collision_layer = 2
 collision_mask = 0
-script = ExtResource("1_interact")
+script = ExtResource("25_front_door")
 prompt = "E — Front door"
 dialogue_file = "res://data/dialogue/act0_bedroom.json"
 dialogue_entry = "front_1"
+exit_scene = "res://scenes/world/jane_finch.tscn"
+exit_marker = "SpawnFromApartment"
 
 [node name="Col" type="CollisionShape3D" parent="Interactables/FrontDoorInteract"]
 shape = SubResource("s_ia_door_w")
@@ -1141,6 +1144,9 @@ shape = SubResource("s_ia_door_w")
 transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 3, 0.6, 2.98)
 
 [node name="Player" parent="." instance=ExtResource("2_player")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0.05, -2.2)
+
+[node name="SpawnFromStreet" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0.05, -2.2)
 
 [node name="HUD" parent="." instance=ExtResource("3_hud")]

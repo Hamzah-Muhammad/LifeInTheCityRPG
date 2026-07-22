@@ -27,7 +27,7 @@ func _ready() -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	if DialogueManager.active:
+	if DialogueManager.active or StationManager.active:
 		return
 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 		rotate_y(-event.relative.x * MOUSE_SENSITIVITY)
@@ -48,7 +48,7 @@ func _physics_process(delta: float) -> void:
 		velocity.y -= GRAVITY * delta
 
 	var input_dir := Vector2.ZERO
-	if not DialogueManager.active:
+	if not DialogueManager.active and not StationManager.active:
 		input_dir = Input.get_vector("move_left", "move_right", "move_forward", "move_back")
 
 	var direction := (transform.basis * Vector3(input_dir.x, 0.0, input_dir.y)).normalized()
