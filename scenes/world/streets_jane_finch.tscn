@@ -1,0 +1,973 @@
+[gd_scene load_steps=8 format=3]
+
+[ext_resource type="PackedScene" path="res://assets/kenney_city_kit_roads/models/road-intersection-path.glb" id="1_road_crossroad"]
+[ext_resource type="PackedScene" path="res://assets/kenney_city_kit_roads/models/road-straight.glb" id="2_road_straight"]
+[ext_resource type="PackedScene" path="res://assets/kenney_city_kit_roads/models/road-end.glb" id="3_road_end"]
+[ext_resource type="PackedScene" path="res://assets/kenney_city_kit_roads/models/tile-slant.glb" id="4_sidewalk_slant"]
+[ext_resource type="PackedScene" path="res://assets/kenney_city_kit_roads/models/tile-high.glb" id="5_sidewalk_high"]
+[ext_resource type="PackedScene" path="res://assets/kenney_city_kit_roads/models/light-curved.glb" id="6_streetlight"]
+
+[sub_resource type="StandardMaterial3D" id="mat_sidewalk"]
+albedo_color = Color(0.55, 0.55, 0.53, 1)
+
+[node name="StreetsJaneFinch" type="Node3D"]
+
+[node name="Tiles" type="Node3D" parent="."]
+
+[node name="road_crossroad_1" parent="Tiles" instance=ExtResource("1_road_crossroad")]
+transform = Transform3D(14.0, 0, 0.0, 0, 1.0, 0, 0.0, 0, 14.0, 0.0, 0, 0.0)
+
+[node name="road_straight_2" parent="Tiles" instance=ExtResource("2_road_straight")]
+transform = Transform3D(0.0, 0, -14.0, 0, 1.0, 0, 14.0, 0, 0.0, 0.0, 0, 14.0)
+
+[node name="road_straight_3" parent="Tiles" instance=ExtResource("2_road_straight")]
+transform = Transform3D(0.0, 0, -14.0, 0, 1.0, 0, 14.0, 0, 0.0, 0.0, 0, 28.0)
+
+[node name="road_straight_4" parent="Tiles" instance=ExtResource("2_road_straight")]
+transform = Transform3D(0.0, 0, -14.0, 0, 1.0, 0, 14.0, 0, 0.0, 0.0, 0, 42.0)
+
+[node name="road_straight_5" parent="Tiles" instance=ExtResource("2_road_straight")]
+transform = Transform3D(0.0, 0, -14.0, 0, 1.0, 0, 14.0, 0, 0.0, 0.0, 0, 56.0)
+
+[node name="road_end_6" parent="Tiles" instance=ExtResource("3_road_end")]
+transform = Transform3D(0.0, 0, -14.0, 0, 1.0, 0, 14.0, 0, 0.0, 0.0, 0, 63.0)
+
+[node name="sidewalk_slant_7" parent="Tiles" instance=ExtResource("4_sidewalk_slant")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, 8.5, 0, 14.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_slant_8" parent="Tiles" instance=ExtResource("4_sidewalk_slant")]
+transform = Transform3D(-3.0, 0, -0.0, 0, 0.5, 0, 0.0, 0, -3.0, -8.5, 0, 14.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_high_9" parent="Tiles" instance=ExtResource("5_sidewalk_high")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, 11.5, 0, 14.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_high_10" parent="Tiles" instance=ExtResource("5_sidewalk_high")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, -11.5, 0, 14.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_slant_11" parent="Tiles" instance=ExtResource("4_sidewalk_slant")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, 8.5, 0, 17.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_slant_12" parent="Tiles" instance=ExtResource("4_sidewalk_slant")]
+transform = Transform3D(-3.0, 0, -0.0, 0, 0.5, 0, 0.0, 0, -3.0, -8.5, 0, 17.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_high_13" parent="Tiles" instance=ExtResource("5_sidewalk_high")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, 11.5, 0, 17.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_high_14" parent="Tiles" instance=ExtResource("5_sidewalk_high")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, -11.5, 0, 17.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_slant_15" parent="Tiles" instance=ExtResource("4_sidewalk_slant")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, 8.5, 0, 20.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_slant_16" parent="Tiles" instance=ExtResource("4_sidewalk_slant")]
+transform = Transform3D(-3.0, 0, -0.0, 0, 0.5, 0, 0.0, 0, -3.0, -8.5, 0, 20.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_high_17" parent="Tiles" instance=ExtResource("5_sidewalk_high")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, 11.5, 0, 20.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_high_18" parent="Tiles" instance=ExtResource("5_sidewalk_high")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, -11.5, 0, 20.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_slant_19" parent="Tiles" instance=ExtResource("4_sidewalk_slant")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, 8.5, 0, 23.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_slant_20" parent="Tiles" instance=ExtResource("4_sidewalk_slant")]
+transform = Transform3D(-3.0, 0, -0.0, 0, 0.5, 0, 0.0, 0, -3.0, -8.5, 0, 23.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_high_21" parent="Tiles" instance=ExtResource("5_sidewalk_high")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, 11.5, 0, 23.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_high_22" parent="Tiles" instance=ExtResource("5_sidewalk_high")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, -11.5, 0, 23.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_slant_23" parent="Tiles" instance=ExtResource("4_sidewalk_slant")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, 8.5, 0, 26.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_slant_24" parent="Tiles" instance=ExtResource("4_sidewalk_slant")]
+transform = Transform3D(-3.0, 0, -0.0, 0, 0.5, 0, 0.0, 0, -3.0, -8.5, 0, 26.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_high_25" parent="Tiles" instance=ExtResource("5_sidewalk_high")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, 11.5, 0, 26.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_high_26" parent="Tiles" instance=ExtResource("5_sidewalk_high")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, -11.5, 0, 26.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_slant_27" parent="Tiles" instance=ExtResource("4_sidewalk_slant")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, 8.5, 0, 29.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_slant_28" parent="Tiles" instance=ExtResource("4_sidewalk_slant")]
+transform = Transform3D(-3.0, 0, -0.0, 0, 0.5, 0, 0.0, 0, -3.0, -8.5, 0, 29.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_high_29" parent="Tiles" instance=ExtResource("5_sidewalk_high")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, 11.5, 0, 29.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_high_30" parent="Tiles" instance=ExtResource("5_sidewalk_high")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, -11.5, 0, 29.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_slant_31" parent="Tiles" instance=ExtResource("4_sidewalk_slant")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, 8.5, 0, 32.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_slant_32" parent="Tiles" instance=ExtResource("4_sidewalk_slant")]
+transform = Transform3D(-3.0, 0, -0.0, 0, 0.5, 0, 0.0, 0, -3.0, -8.5, 0, 32.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_high_33" parent="Tiles" instance=ExtResource("5_sidewalk_high")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, 11.5, 0, 32.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_high_34" parent="Tiles" instance=ExtResource("5_sidewalk_high")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, -11.5, 0, 32.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_slant_35" parent="Tiles" instance=ExtResource("4_sidewalk_slant")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, 8.5, 0, 35.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_slant_36" parent="Tiles" instance=ExtResource("4_sidewalk_slant")]
+transform = Transform3D(-3.0, 0, -0.0, 0, 0.5, 0, 0.0, 0, -3.0, -8.5, 0, 35.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_high_37" parent="Tiles" instance=ExtResource("5_sidewalk_high")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, 11.5, 0, 35.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_high_38" parent="Tiles" instance=ExtResource("5_sidewalk_high")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, -11.5, 0, 35.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_slant_39" parent="Tiles" instance=ExtResource("4_sidewalk_slant")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, 8.5, 0, 38.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_slant_40" parent="Tiles" instance=ExtResource("4_sidewalk_slant")]
+transform = Transform3D(-3.0, 0, -0.0, 0, 0.5, 0, 0.0, 0, -3.0, -8.5, 0, 38.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_high_41" parent="Tiles" instance=ExtResource("5_sidewalk_high")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, 11.5, 0, 38.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_high_42" parent="Tiles" instance=ExtResource("5_sidewalk_high")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, -11.5, 0, 38.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_slant_43" parent="Tiles" instance=ExtResource("4_sidewalk_slant")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, 8.5, 0, 41.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_slant_44" parent="Tiles" instance=ExtResource("4_sidewalk_slant")]
+transform = Transform3D(-3.0, 0, -0.0, 0, 0.5, 0, 0.0, 0, -3.0, -8.5, 0, 41.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_high_45" parent="Tiles" instance=ExtResource("5_sidewalk_high")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, 11.5, 0, 41.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_high_46" parent="Tiles" instance=ExtResource("5_sidewalk_high")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, -11.5, 0, 41.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_slant_47" parent="Tiles" instance=ExtResource("4_sidewalk_slant")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, 8.5, 0, 44.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_slant_48" parent="Tiles" instance=ExtResource("4_sidewalk_slant")]
+transform = Transform3D(-3.0, 0, -0.0, 0, 0.5, 0, 0.0, 0, -3.0, -8.5, 0, 44.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_high_49" parent="Tiles" instance=ExtResource("5_sidewalk_high")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, 11.5, 0, 44.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_high_50" parent="Tiles" instance=ExtResource("5_sidewalk_high")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, -11.5, 0, 44.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_slant_51" parent="Tiles" instance=ExtResource("4_sidewalk_slant")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, 8.5, 0, 47.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_slant_52" parent="Tiles" instance=ExtResource("4_sidewalk_slant")]
+transform = Transform3D(-3.0, 0, -0.0, 0, 0.5, 0, 0.0, 0, -3.0, -8.5, 0, 47.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_high_53" parent="Tiles" instance=ExtResource("5_sidewalk_high")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, 11.5, 0, 47.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_high_54" parent="Tiles" instance=ExtResource("5_sidewalk_high")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, -11.5, 0, 47.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_slant_55" parent="Tiles" instance=ExtResource("4_sidewalk_slant")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, 8.5, 0, 50.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_slant_56" parent="Tiles" instance=ExtResource("4_sidewalk_slant")]
+transform = Transform3D(-3.0, 0, -0.0, 0, 0.5, 0, 0.0, 0, -3.0, -8.5, 0, 50.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_high_57" parent="Tiles" instance=ExtResource("5_sidewalk_high")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, 11.5, 0, 50.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_high_58" parent="Tiles" instance=ExtResource("5_sidewalk_high")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, -11.5, 0, 50.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_slant_59" parent="Tiles" instance=ExtResource("4_sidewalk_slant")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, 8.5, 0, 53.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_slant_60" parent="Tiles" instance=ExtResource("4_sidewalk_slant")]
+transform = Transform3D(-3.0, 0, -0.0, 0, 0.5, 0, 0.0, 0, -3.0, -8.5, 0, 53.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_high_61" parent="Tiles" instance=ExtResource("5_sidewalk_high")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, 11.5, 0, 53.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_high_62" parent="Tiles" instance=ExtResource("5_sidewalk_high")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, -11.5, 0, 53.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_slant_63" parent="Tiles" instance=ExtResource("4_sidewalk_slant")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, 8.5, 0, 56.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_slant_64" parent="Tiles" instance=ExtResource("4_sidewalk_slant")]
+transform = Transform3D(-3.0, 0, -0.0, 0, 0.5, 0, 0.0, 0, -3.0, -8.5, 0, 56.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_high_65" parent="Tiles" instance=ExtResource("5_sidewalk_high")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, 11.5, 0, 56.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_high_66" parent="Tiles" instance=ExtResource("5_sidewalk_high")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, -11.5, 0, 56.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_slant_67" parent="Tiles" instance=ExtResource("4_sidewalk_slant")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, 8.5, 0, 59.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_slant_68" parent="Tiles" instance=ExtResource("4_sidewalk_slant")]
+transform = Transform3D(-3.0, 0, -0.0, 0, 0.5, 0, 0.0, 0, -3.0, -8.5, 0, 59.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_high_69" parent="Tiles" instance=ExtResource("5_sidewalk_high")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, 11.5, 0, 59.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_high_70" parent="Tiles" instance=ExtResource("5_sidewalk_high")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, -11.5, 0, 59.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_slant_71" parent="Tiles" instance=ExtResource("4_sidewalk_slant")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, 8.5, 0, 62.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_slant_72" parent="Tiles" instance=ExtResource("4_sidewalk_slant")]
+transform = Transform3D(-3.0, 0, -0.0, 0, 0.5, 0, 0.0, 0, -3.0, -8.5, 0, 62.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_high_73" parent="Tiles" instance=ExtResource("5_sidewalk_high")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, 11.5, 0, 62.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_high_74" parent="Tiles" instance=ExtResource("5_sidewalk_high")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, -11.5, 0, 62.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="road_straight_75" parent="Tiles" instance=ExtResource("2_road_straight")]
+transform = Transform3D(0.0, 0, -14.0, 0, 1.0, 0, 14.0, 0, 0.0, 0.0, 0, -14.0)
+
+[node name="road_straight_76" parent="Tiles" instance=ExtResource("2_road_straight")]
+transform = Transform3D(0.0, 0, -14.0, 0, 1.0, 0, 14.0, 0, 0.0, 0.0, 0, -28.0)
+
+[node name="road_end_77" parent="Tiles" instance=ExtResource("3_road_end")]
+transform = Transform3D(0.0, 0, -14.0, 0, 1.0, 0, 14.0, 0, 0.0, 0.0, 0, -35.0)
+
+[node name="sidewalk_slant_78" parent="Tiles" instance=ExtResource("4_sidewalk_slant")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, 8.5, 0, -14.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_slant_79" parent="Tiles" instance=ExtResource("4_sidewalk_slant")]
+transform = Transform3D(-3.0, 0, -0.0, 0, 0.5, 0, 0.0, 0, -3.0, -8.5, 0, -14.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_high_80" parent="Tiles" instance=ExtResource("5_sidewalk_high")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, 11.5, 0, -14.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_high_81" parent="Tiles" instance=ExtResource("5_sidewalk_high")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, -11.5, 0, -14.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_slant_82" parent="Tiles" instance=ExtResource("4_sidewalk_slant")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, 8.5, 0, -17.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_slant_83" parent="Tiles" instance=ExtResource("4_sidewalk_slant")]
+transform = Transform3D(-3.0, 0, -0.0, 0, 0.5, 0, 0.0, 0, -3.0, -8.5, 0, -17.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_high_84" parent="Tiles" instance=ExtResource("5_sidewalk_high")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, 11.5, 0, -17.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_high_85" parent="Tiles" instance=ExtResource("5_sidewalk_high")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, -11.5, 0, -17.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_slant_86" parent="Tiles" instance=ExtResource("4_sidewalk_slant")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, 8.5, 0, -20.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_slant_87" parent="Tiles" instance=ExtResource("4_sidewalk_slant")]
+transform = Transform3D(-3.0, 0, -0.0, 0, 0.5, 0, 0.0, 0, -3.0, -8.5, 0, -20.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_high_88" parent="Tiles" instance=ExtResource("5_sidewalk_high")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, 11.5, 0, -20.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_high_89" parent="Tiles" instance=ExtResource("5_sidewalk_high")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, -11.5, 0, -20.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_slant_90" parent="Tiles" instance=ExtResource("4_sidewalk_slant")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, 8.5, 0, -23.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_slant_91" parent="Tiles" instance=ExtResource("4_sidewalk_slant")]
+transform = Transform3D(-3.0, 0, -0.0, 0, 0.5, 0, 0.0, 0, -3.0, -8.5, 0, -23.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_high_92" parent="Tiles" instance=ExtResource("5_sidewalk_high")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, 11.5, 0, -23.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_high_93" parent="Tiles" instance=ExtResource("5_sidewalk_high")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, -11.5, 0, -23.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_slant_94" parent="Tiles" instance=ExtResource("4_sidewalk_slant")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, 8.5, 0, -26.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_slant_95" parent="Tiles" instance=ExtResource("4_sidewalk_slant")]
+transform = Transform3D(-3.0, 0, -0.0, 0, 0.5, 0, 0.0, 0, -3.0, -8.5, 0, -26.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_high_96" parent="Tiles" instance=ExtResource("5_sidewalk_high")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, 11.5, 0, -26.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_high_97" parent="Tiles" instance=ExtResource("5_sidewalk_high")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, -11.5, 0, -26.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_slant_98" parent="Tiles" instance=ExtResource("4_sidewalk_slant")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, 8.5, 0, -29.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_slant_99" parent="Tiles" instance=ExtResource("4_sidewalk_slant")]
+transform = Transform3D(-3.0, 0, -0.0, 0, 0.5, 0, 0.0, 0, -3.0, -8.5, 0, -29.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_high_100" parent="Tiles" instance=ExtResource("5_sidewalk_high")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, 11.5, 0, -29.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_high_101" parent="Tiles" instance=ExtResource("5_sidewalk_high")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, -11.5, 0, -29.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_slant_102" parent="Tiles" instance=ExtResource("4_sidewalk_slant")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, 8.5, 0, -32.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_slant_103" parent="Tiles" instance=ExtResource("4_sidewalk_slant")]
+transform = Transform3D(-3.0, 0, -0.0, 0, 0.5, 0, 0.0, 0, -3.0, -8.5, 0, -32.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_high_104" parent="Tiles" instance=ExtResource("5_sidewalk_high")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, 11.5, 0, -32.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_high_105" parent="Tiles" instance=ExtResource("5_sidewalk_high")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, -11.5, 0, -32.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="road_straight_106" parent="Tiles" instance=ExtResource("2_road_straight")]
+transform = Transform3D(14.0, 0, 0.0, 0, 1.0, 0, 0.0, 0, 14.0, 14.0, 0, 0.0)
+
+[node name="road_straight_107" parent="Tiles" instance=ExtResource("2_road_straight")]
+transform = Transform3D(14.0, 0, 0.0, 0, 1.0, 0, 0.0, 0, 14.0, 28.0, 0, 0.0)
+
+[node name="road_straight_108" parent="Tiles" instance=ExtResource("2_road_straight")]
+transform = Transform3D(14.0, 0, 0.0, 0, 1.0, 0, 0.0, 0, 14.0, 42.0, 0, 0.0)
+
+[node name="road_straight_109" parent="Tiles" instance=ExtResource("2_road_straight")]
+transform = Transform3D(14.0, 0, 0.0, 0, 1.0, 0, 0.0, 0, 14.0, 56.0, 0, 0.0)
+
+[node name="road_end_110" parent="Tiles" instance=ExtResource("3_road_end")]
+transform = Transform3D(14.0, 0, 0.0, 0, 1.0, 0, 0.0, 0, 14.0, 63.0, 0, 0.0)
+
+[node name="sidewalk_slant_111" parent="Tiles" instance=ExtResource("4_sidewalk_slant")]
+transform = Transform3D(0.0, 0, -3.0, 0, 0.5, 0, 3.0, 0, 0.0, 14.5, 0, 8.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_slant_112" parent="Tiles" instance=ExtResource("4_sidewalk_slant")]
+transform = Transform3D(-0.0, 0, 3.0, 0, 0.5, 0, -3.0, 0, -0.0, 14.5, 0, -8.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_high_113" parent="Tiles" instance=ExtResource("5_sidewalk_high")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, 14.5, 0, 11.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_high_114" parent="Tiles" instance=ExtResource("5_sidewalk_high")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, 14.5, 0, -11.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_slant_115" parent="Tiles" instance=ExtResource("4_sidewalk_slant")]
+transform = Transform3D(0.0, 0, -3.0, 0, 0.5, 0, 3.0, 0, 0.0, 17.5, 0, 8.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_slant_116" parent="Tiles" instance=ExtResource("4_sidewalk_slant")]
+transform = Transform3D(-0.0, 0, 3.0, 0, 0.5, 0, -3.0, 0, -0.0, 17.5, 0, -8.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_high_117" parent="Tiles" instance=ExtResource("5_sidewalk_high")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, 17.5, 0, 11.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_high_118" parent="Tiles" instance=ExtResource("5_sidewalk_high")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, 17.5, 0, -11.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_slant_119" parent="Tiles" instance=ExtResource("4_sidewalk_slant")]
+transform = Transform3D(0.0, 0, -3.0, 0, 0.5, 0, 3.0, 0, 0.0, 20.5, 0, 8.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_slant_120" parent="Tiles" instance=ExtResource("4_sidewalk_slant")]
+transform = Transform3D(-0.0, 0, 3.0, 0, 0.5, 0, -3.0, 0, -0.0, 20.5, 0, -8.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_high_121" parent="Tiles" instance=ExtResource("5_sidewalk_high")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, 20.5, 0, 11.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_high_122" parent="Tiles" instance=ExtResource("5_sidewalk_high")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, 20.5, 0, -11.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_slant_123" parent="Tiles" instance=ExtResource("4_sidewalk_slant")]
+transform = Transform3D(0.0, 0, -3.0, 0, 0.5, 0, 3.0, 0, 0.0, 23.5, 0, 8.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_slant_124" parent="Tiles" instance=ExtResource("4_sidewalk_slant")]
+transform = Transform3D(-0.0, 0, 3.0, 0, 0.5, 0, -3.0, 0, -0.0, 23.5, 0, -8.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_high_125" parent="Tiles" instance=ExtResource("5_sidewalk_high")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, 23.5, 0, 11.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_high_126" parent="Tiles" instance=ExtResource("5_sidewalk_high")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, 23.5, 0, -11.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_slant_127" parent="Tiles" instance=ExtResource("4_sidewalk_slant")]
+transform = Transform3D(0.0, 0, -3.0, 0, 0.5, 0, 3.0, 0, 0.0, 26.5, 0, 8.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_slant_128" parent="Tiles" instance=ExtResource("4_sidewalk_slant")]
+transform = Transform3D(-0.0, 0, 3.0, 0, 0.5, 0, -3.0, 0, -0.0, 26.5, 0, -8.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_high_129" parent="Tiles" instance=ExtResource("5_sidewalk_high")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, 26.5, 0, 11.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_high_130" parent="Tiles" instance=ExtResource("5_sidewalk_high")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, 26.5, 0, -11.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_slant_131" parent="Tiles" instance=ExtResource("4_sidewalk_slant")]
+transform = Transform3D(0.0, 0, -3.0, 0, 0.5, 0, 3.0, 0, 0.0, 29.5, 0, 8.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_slant_132" parent="Tiles" instance=ExtResource("4_sidewalk_slant")]
+transform = Transform3D(-0.0, 0, 3.0, 0, 0.5, 0, -3.0, 0, -0.0, 29.5, 0, -8.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_high_133" parent="Tiles" instance=ExtResource("5_sidewalk_high")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, 29.5, 0, 11.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_high_134" parent="Tiles" instance=ExtResource("5_sidewalk_high")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, 29.5, 0, -11.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_slant_135" parent="Tiles" instance=ExtResource("4_sidewalk_slant")]
+transform = Transform3D(0.0, 0, -3.0, 0, 0.5, 0, 3.0, 0, 0.0, 32.5, 0, 8.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_slant_136" parent="Tiles" instance=ExtResource("4_sidewalk_slant")]
+transform = Transform3D(-0.0, 0, 3.0, 0, 0.5, 0, -3.0, 0, -0.0, 32.5, 0, -8.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_high_137" parent="Tiles" instance=ExtResource("5_sidewalk_high")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, 32.5, 0, 11.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_high_138" parent="Tiles" instance=ExtResource("5_sidewalk_high")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, 32.5, 0, -11.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_slant_139" parent="Tiles" instance=ExtResource("4_sidewalk_slant")]
+transform = Transform3D(0.0, 0, -3.0, 0, 0.5, 0, 3.0, 0, 0.0, 35.5, 0, 8.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_slant_140" parent="Tiles" instance=ExtResource("4_sidewalk_slant")]
+transform = Transform3D(-0.0, 0, 3.0, 0, 0.5, 0, -3.0, 0, -0.0, 35.5, 0, -8.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_high_141" parent="Tiles" instance=ExtResource("5_sidewalk_high")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, 35.5, 0, 11.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_high_142" parent="Tiles" instance=ExtResource("5_sidewalk_high")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, 35.5, 0, -11.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_slant_143" parent="Tiles" instance=ExtResource("4_sidewalk_slant")]
+transform = Transform3D(0.0, 0, -3.0, 0, 0.5, 0, 3.0, 0, 0.0, 38.5, 0, 8.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_slant_144" parent="Tiles" instance=ExtResource("4_sidewalk_slant")]
+transform = Transform3D(-0.0, 0, 3.0, 0, 0.5, 0, -3.0, 0, -0.0, 38.5, 0, -8.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_high_145" parent="Tiles" instance=ExtResource("5_sidewalk_high")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, 38.5, 0, 11.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_high_146" parent="Tiles" instance=ExtResource("5_sidewalk_high")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, 38.5, 0, -11.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_slant_147" parent="Tiles" instance=ExtResource("4_sidewalk_slant")]
+transform = Transform3D(0.0, 0, -3.0, 0, 0.5, 0, 3.0, 0, 0.0, 41.5, 0, 8.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_slant_148" parent="Tiles" instance=ExtResource("4_sidewalk_slant")]
+transform = Transform3D(-0.0, 0, 3.0, 0, 0.5, 0, -3.0, 0, -0.0, 41.5, 0, -8.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_high_149" parent="Tiles" instance=ExtResource("5_sidewalk_high")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, 41.5, 0, 11.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_high_150" parent="Tiles" instance=ExtResource("5_sidewalk_high")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, 41.5, 0, -11.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_slant_151" parent="Tiles" instance=ExtResource("4_sidewalk_slant")]
+transform = Transform3D(0.0, 0, -3.0, 0, 0.5, 0, 3.0, 0, 0.0, 44.5, 0, 8.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_slant_152" parent="Tiles" instance=ExtResource("4_sidewalk_slant")]
+transform = Transform3D(-0.0, 0, 3.0, 0, 0.5, 0, -3.0, 0, -0.0, 44.5, 0, -8.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_high_153" parent="Tiles" instance=ExtResource("5_sidewalk_high")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, 44.5, 0, 11.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_high_154" parent="Tiles" instance=ExtResource("5_sidewalk_high")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, 44.5, 0, -11.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_slant_155" parent="Tiles" instance=ExtResource("4_sidewalk_slant")]
+transform = Transform3D(0.0, 0, -3.0, 0, 0.5, 0, 3.0, 0, 0.0, 47.5, 0, 8.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_slant_156" parent="Tiles" instance=ExtResource("4_sidewalk_slant")]
+transform = Transform3D(-0.0, 0, 3.0, 0, 0.5, 0, -3.0, 0, -0.0, 47.5, 0, -8.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_high_157" parent="Tiles" instance=ExtResource("5_sidewalk_high")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, 47.5, 0, 11.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_high_158" parent="Tiles" instance=ExtResource("5_sidewalk_high")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, 47.5, 0, -11.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_slant_159" parent="Tiles" instance=ExtResource("4_sidewalk_slant")]
+transform = Transform3D(0.0, 0, -3.0, 0, 0.5, 0, 3.0, 0, 0.0, 50.5, 0, 8.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_slant_160" parent="Tiles" instance=ExtResource("4_sidewalk_slant")]
+transform = Transform3D(-0.0, 0, 3.0, 0, 0.5, 0, -3.0, 0, -0.0, 50.5, 0, -8.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_high_161" parent="Tiles" instance=ExtResource("5_sidewalk_high")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, 50.5, 0, 11.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_high_162" parent="Tiles" instance=ExtResource("5_sidewalk_high")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, 50.5, 0, -11.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_slant_163" parent="Tiles" instance=ExtResource("4_sidewalk_slant")]
+transform = Transform3D(0.0, 0, -3.0, 0, 0.5, 0, 3.0, 0, 0.0, 53.5, 0, 8.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_slant_164" parent="Tiles" instance=ExtResource("4_sidewalk_slant")]
+transform = Transform3D(-0.0, 0, 3.0, 0, 0.5, 0, -3.0, 0, -0.0, 53.5, 0, -8.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_high_165" parent="Tiles" instance=ExtResource("5_sidewalk_high")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, 53.5, 0, 11.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_high_166" parent="Tiles" instance=ExtResource("5_sidewalk_high")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, 53.5, 0, -11.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_slant_167" parent="Tiles" instance=ExtResource("4_sidewalk_slant")]
+transform = Transform3D(0.0, 0, -3.0, 0, 0.5, 0, 3.0, 0, 0.0, 56.5, 0, 8.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_slant_168" parent="Tiles" instance=ExtResource("4_sidewalk_slant")]
+transform = Transform3D(-0.0, 0, 3.0, 0, 0.5, 0, -3.0, 0, -0.0, 56.5, 0, -8.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_high_169" parent="Tiles" instance=ExtResource("5_sidewalk_high")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, 56.5, 0, 11.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_high_170" parent="Tiles" instance=ExtResource("5_sidewalk_high")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, 56.5, 0, -11.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_slant_171" parent="Tiles" instance=ExtResource("4_sidewalk_slant")]
+transform = Transform3D(0.0, 0, -3.0, 0, 0.5, 0, 3.0, 0, 0.0, 59.5, 0, 8.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_slant_172" parent="Tiles" instance=ExtResource("4_sidewalk_slant")]
+transform = Transform3D(-0.0, 0, 3.0, 0, 0.5, 0, -3.0, 0, -0.0, 59.5, 0, -8.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_high_173" parent="Tiles" instance=ExtResource("5_sidewalk_high")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, 59.5, 0, 11.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_high_174" parent="Tiles" instance=ExtResource("5_sidewalk_high")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, 59.5, 0, -11.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_slant_175" parent="Tiles" instance=ExtResource("4_sidewalk_slant")]
+transform = Transform3D(0.0, 0, -3.0, 0, 0.5, 0, 3.0, 0, 0.0, 62.5, 0, 8.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_slant_176" parent="Tiles" instance=ExtResource("4_sidewalk_slant")]
+transform = Transform3D(-0.0, 0, 3.0, 0, 0.5, 0, -3.0, 0, -0.0, 62.5, 0, -8.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_high_177" parent="Tiles" instance=ExtResource("5_sidewalk_high")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, 62.5, 0, 11.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_high_178" parent="Tiles" instance=ExtResource("5_sidewalk_high")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, 62.5, 0, -11.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="road_straight_179" parent="Tiles" instance=ExtResource("2_road_straight")]
+transform = Transform3D(14.0, 0, 0.0, 0, 1.0, 0, 0.0, 0, 14.0, -14.0, 0, 0.0)
+
+[node name="road_straight_180" parent="Tiles" instance=ExtResource("2_road_straight")]
+transform = Transform3D(14.0, 0, 0.0, 0, 1.0, 0, 0.0, 0, 14.0, -28.0, 0, 0.0)
+
+[node name="road_end_181" parent="Tiles" instance=ExtResource("3_road_end")]
+transform = Transform3D(14.0, 0, 0.0, 0, 1.0, 0, 0.0, 0, 14.0, -35.0, 0, 0.0)
+
+[node name="sidewalk_slant_182" parent="Tiles" instance=ExtResource("4_sidewalk_slant")]
+transform = Transform3D(0.0, 0, -3.0, 0, 0.5, 0, 3.0, 0, 0.0, -14.5, 0, 8.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_slant_183" parent="Tiles" instance=ExtResource("4_sidewalk_slant")]
+transform = Transform3D(-0.0, 0, 3.0, 0, 0.5, 0, -3.0, 0, -0.0, -14.5, 0, -8.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_high_184" parent="Tiles" instance=ExtResource("5_sidewalk_high")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, -14.5, 0, 11.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_high_185" parent="Tiles" instance=ExtResource("5_sidewalk_high")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, -14.5, 0, -11.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_slant_186" parent="Tiles" instance=ExtResource("4_sidewalk_slant")]
+transform = Transform3D(0.0, 0, -3.0, 0, 0.5, 0, 3.0, 0, 0.0, -17.5, 0, 8.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_slant_187" parent="Tiles" instance=ExtResource("4_sidewalk_slant")]
+transform = Transform3D(-0.0, 0, 3.0, 0, 0.5, 0, -3.0, 0, -0.0, -17.5, 0, -8.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_high_188" parent="Tiles" instance=ExtResource("5_sidewalk_high")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, -17.5, 0, 11.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_high_189" parent="Tiles" instance=ExtResource("5_sidewalk_high")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, -17.5, 0, -11.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_slant_190" parent="Tiles" instance=ExtResource("4_sidewalk_slant")]
+transform = Transform3D(0.0, 0, -3.0, 0, 0.5, 0, 3.0, 0, 0.0, -20.5, 0, 8.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_slant_191" parent="Tiles" instance=ExtResource("4_sidewalk_slant")]
+transform = Transform3D(-0.0, 0, 3.0, 0, 0.5, 0, -3.0, 0, -0.0, -20.5, 0, -8.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_high_192" parent="Tiles" instance=ExtResource("5_sidewalk_high")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, -20.5, 0, 11.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_high_193" parent="Tiles" instance=ExtResource("5_sidewalk_high")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, -20.5, 0, -11.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_slant_194" parent="Tiles" instance=ExtResource("4_sidewalk_slant")]
+transform = Transform3D(0.0, 0, -3.0, 0, 0.5, 0, 3.0, 0, 0.0, -23.5, 0, 8.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_slant_195" parent="Tiles" instance=ExtResource("4_sidewalk_slant")]
+transform = Transform3D(-0.0, 0, 3.0, 0, 0.5, 0, -3.0, 0, -0.0, -23.5, 0, -8.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_high_196" parent="Tiles" instance=ExtResource("5_sidewalk_high")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, -23.5, 0, 11.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_high_197" parent="Tiles" instance=ExtResource("5_sidewalk_high")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, -23.5, 0, -11.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_slant_198" parent="Tiles" instance=ExtResource("4_sidewalk_slant")]
+transform = Transform3D(0.0, 0, -3.0, 0, 0.5, 0, 3.0, 0, 0.0, -26.5, 0, 8.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_slant_199" parent="Tiles" instance=ExtResource("4_sidewalk_slant")]
+transform = Transform3D(-0.0, 0, 3.0, 0, 0.5, 0, -3.0, 0, -0.0, -26.5, 0, -8.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_high_200" parent="Tiles" instance=ExtResource("5_sidewalk_high")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, -26.5, 0, 11.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_high_201" parent="Tiles" instance=ExtResource("5_sidewalk_high")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, -26.5, 0, -11.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_slant_202" parent="Tiles" instance=ExtResource("4_sidewalk_slant")]
+transform = Transform3D(0.0, 0, -3.0, 0, 0.5, 0, 3.0, 0, 0.0, -29.5, 0, 8.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_slant_203" parent="Tiles" instance=ExtResource("4_sidewalk_slant")]
+transform = Transform3D(-0.0, 0, 3.0, 0, 0.5, 0, -3.0, 0, -0.0, -29.5, 0, -8.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_high_204" parent="Tiles" instance=ExtResource("5_sidewalk_high")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, -29.5, 0, 11.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_high_205" parent="Tiles" instance=ExtResource("5_sidewalk_high")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, -29.5, 0, -11.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_slant_206" parent="Tiles" instance=ExtResource("4_sidewalk_slant")]
+transform = Transform3D(0.0, 0, -3.0, 0, 0.5, 0, 3.0, 0, 0.0, -32.5, 0, 8.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_slant_207" parent="Tiles" instance=ExtResource("4_sidewalk_slant")]
+transform = Transform3D(-0.0, 0, 3.0, 0, 0.5, 0, -3.0, 0, -0.0, -32.5, 0, -8.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_high_208" parent="Tiles" instance=ExtResource("5_sidewalk_high")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, -32.5, 0, 11.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_high_209" parent="Tiles" instance=ExtResource("5_sidewalk_high")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, -32.5, 0, -11.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_high_210" parent="Tiles" instance=ExtResource("5_sidewalk_high")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, 8.5, 0, 8.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_high_211" parent="Tiles" instance=ExtResource("5_sidewalk_high")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, 8.5, 0, 11.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_high_212" parent="Tiles" instance=ExtResource("5_sidewalk_high")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, 11.5, 0, 8.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_high_213" parent="Tiles" instance=ExtResource("5_sidewalk_high")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, 11.5, 0, 11.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_high_214" parent="Tiles" instance=ExtResource("5_sidewalk_high")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, 8.5, 0, -8.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_high_215" parent="Tiles" instance=ExtResource("5_sidewalk_high")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, 8.5, 0, -11.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_high_216" parent="Tiles" instance=ExtResource("5_sidewalk_high")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, 11.5, 0, -8.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_high_217" parent="Tiles" instance=ExtResource("5_sidewalk_high")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, 11.5, 0, -11.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_high_218" parent="Tiles" instance=ExtResource("5_sidewalk_high")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, -8.5, 0, 8.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_high_219" parent="Tiles" instance=ExtResource("5_sidewalk_high")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, -8.5, 0, 11.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_high_220" parent="Tiles" instance=ExtResource("5_sidewalk_high")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, -11.5, 0, 8.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_high_221" parent="Tiles" instance=ExtResource("5_sidewalk_high")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, -11.5, 0, 11.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_high_222" parent="Tiles" instance=ExtResource("5_sidewalk_high")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, -8.5, 0, -8.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_high_223" parent="Tiles" instance=ExtResource("5_sidewalk_high")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, -8.5, 0, -11.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_high_224" parent="Tiles" instance=ExtResource("5_sidewalk_high")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, -11.5, 0, -8.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="sidewalk_high_225" parent="Tiles" instance=ExtResource("5_sidewalk_high")]
+transform = Transform3D(3.0, 0, 0.0, 0, 0.5, 0, 0.0, 0, 3.0, -11.5, 0, -11.5)
+surface_material_override/0 = SubResource("mat_sidewalk")
+
+[node name="Streetlights" type="Node3D" parent="."]
+
+[node name="Streetlight_1" parent="Streetlights" instance=ExtResource("6_streetlight")]
+transform = Transform3D(7.5, 0, 0.0, 0, 1.0, 0, 0.0, 0, 7.5, 11.5, 0, 23.5)
+
+[node name="Streetlight_2" parent="Streetlights" instance=ExtResource("6_streetlight")]
+transform = Transform3D(-7.5, 0, -0.0, 0, 1.0, 0, 0.0, 0, -7.5, -11.5, 0, 23.5)
+
+[node name="Streetlight_3" parent="Streetlights" instance=ExtResource("6_streetlight")]
+transform = Transform3D(7.5, 0, 0.0, 0, 1.0, 0, 0.0, 0, 7.5, 11.5, 0, 35.5)
+
+[node name="Streetlight_4" parent="Streetlights" instance=ExtResource("6_streetlight")]
+transform = Transform3D(-7.5, 0, -0.0, 0, 1.0, 0, 0.0, 0, -7.5, -11.5, 0, 35.5)
+
+[node name="Streetlight_5" parent="Streetlights" instance=ExtResource("6_streetlight")]
+transform = Transform3D(7.5, 0, 0.0, 0, 1.0, 0, 0.0, 0, 7.5, 11.5, 0, 47.5)
+
+[node name="Streetlight_6" parent="Streetlights" instance=ExtResource("6_streetlight")]
+transform = Transform3D(-7.5, 0, -0.0, 0, 1.0, 0, 0.0, 0, -7.5, -11.5, 0, 47.5)
+
+[node name="Streetlight_7" parent="Streetlights" instance=ExtResource("6_streetlight")]
+transform = Transform3D(7.5, 0, 0.0, 0, 1.0, 0, 0.0, 0, 7.5, 11.5, 0, 59.5)
+
+[node name="Streetlight_8" parent="Streetlights" instance=ExtResource("6_streetlight")]
+transform = Transform3D(-7.5, 0, -0.0, 0, 1.0, 0, 0.0, 0, -7.5, -11.5, 0, 59.5)
+
+[node name="Streetlight_9" parent="Streetlights" instance=ExtResource("6_streetlight")]
+transform = Transform3D(7.5, 0, 0.0, 0, 1.0, 0, 0.0, 0, 7.5, 11.5, 0, -23.5)
+
+[node name="Streetlight_10" parent="Streetlights" instance=ExtResource("6_streetlight")]
+transform = Transform3D(-7.5, 0, -0.0, 0, 1.0, 0, 0.0, 0, -7.5, -11.5, 0, -23.5)
+
+[node name="Streetlight_11" parent="Streetlights" instance=ExtResource("6_streetlight")]
+transform = Transform3D(0.0, 0, -7.5, 0, 1.0, 0, 7.5, 0, 0.0, 23.5, 0, 11.5)
+
+[node name="Streetlight_12" parent="Streetlights" instance=ExtResource("6_streetlight")]
+transform = Transform3D(-0.0, 0, 7.5, 0, 1.0, 0, -7.5, 0, -0.0, 23.5, 0, -11.5)
+
+[node name="Streetlight_13" parent="Streetlights" instance=ExtResource("6_streetlight")]
+transform = Transform3D(0.0, 0, -7.5, 0, 1.0, 0, 7.5, 0, 0.0, 35.5, 0, 11.5)
+
+[node name="Streetlight_14" parent="Streetlights" instance=ExtResource("6_streetlight")]
+transform = Transform3D(-0.0, 0, 7.5, 0, 1.0, 0, -7.5, 0, -0.0, 35.5, 0, -11.5)
+
+[node name="Streetlight_15" parent="Streetlights" instance=ExtResource("6_streetlight")]
+transform = Transform3D(0.0, 0, -7.5, 0, 1.0, 0, 7.5, 0, 0.0, 47.5, 0, 11.5)
+
+[node name="Streetlight_16" parent="Streetlights" instance=ExtResource("6_streetlight")]
+transform = Transform3D(-0.0, 0, 7.5, 0, 1.0, 0, -7.5, 0, -0.0, 47.5, 0, -11.5)
+
+[node name="Streetlight_17" parent="Streetlights" instance=ExtResource("6_streetlight")]
+transform = Transform3D(0.0, 0, -7.5, 0, 1.0, 0, 7.5, 0, 0.0, 59.5, 0, 11.5)
+
+[node name="Streetlight_18" parent="Streetlights" instance=ExtResource("6_streetlight")]
+transform = Transform3D(-0.0, 0, 7.5, 0, 1.0, 0, -7.5, 0, -0.0, 59.5, 0, -11.5)
+
+[node name="Streetlight_19" parent="Streetlights" instance=ExtResource("6_streetlight")]
+transform = Transform3D(0.0, 0, -7.5, 0, 1.0, 0, 7.5, 0, 0.0, -23.5, 0, 11.5)
+
+[node name="Streetlight_20" parent="Streetlights" instance=ExtResource("6_streetlight")]
+transform = Transform3D(-0.0, 0, 7.5, 0, 1.0, 0, -7.5, 0, -0.0, -23.5, 0, -11.5)
+
+[node name="Streetlight_21" parent="Streetlights" instance=ExtResource("6_streetlight")]
+transform = Transform3D(7.5, 0, 0.0, 0, 1.0, 0, 0.0, 0, 7.5, 11.5, 0, 11.5)
+
+[node name="Streetlight_22" parent="Streetlights" instance=ExtResource("6_streetlight")]
+transform = Transform3D(7.5, 0, 0.0, 0, 1.0, 0, 0.0, 0, 7.5, 11.5, 0, -11.5)
+
+[node name="Streetlight_23" parent="Streetlights" instance=ExtResource("6_streetlight")]
+transform = Transform3D(7.5, 0, 0.0, 0, 1.0, 0, 0.0, 0, 7.5, -11.5, 0, 11.5)
+
+[node name="Streetlight_24" parent="Streetlights" instance=ExtResource("6_streetlight")]
+transform = Transform3D(7.5, 0, 0.0, 0, 1.0, 0, 0.0, 0, 7.5, -11.5, 0, -11.5)
+

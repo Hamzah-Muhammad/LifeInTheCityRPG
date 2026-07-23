@@ -1,0 +1,269 @@
+[gd_scene load_steps=25 format=3]
+
+[ext_resource type="PackedScene" path="res://assets/kenney_city_kit_commercial/models/building-m.glb" id="1_hr_building_m"]
+[ext_resource type="PackedScene" path="res://assets/kenney_city_kit_commercial/models/building-skyscraper-d.glb" id="2_hr_skyscraper_d"]
+[ext_resource type="PackedScene" path="res://assets/kenney_city_kit_commercial/models/building-skyscraper-a.glb" id="3_hr_skyscraper_a"]
+[ext_resource type="PackedScene" path="res://assets/kenney_city_kit_commercial/models/building-l.glb" id="4_hr_building_l"]
+
+[sub_resource type="BoxShape3D" id="s_hr_building_m_1"]
+size = Vector3(13.2162866992411, 33.5736315343624, 13.2162866992411)
+
+[sub_resource type="BoxShape3D" id="s_hr_skyscraper_d_2"]
+size = Vector3(7.90062637314007, 33.7628330164658, 8.5795864520818)
+
+[sub_resource type="BoxShape3D" id="s_hr_skyscraper_a_3"]
+size = Vector3(15.4779515782127, 32.7768386362152, 15.4779515782127)
+
+[sub_resource type="BoxShape3D" id="s_hr_skyscraper_d_4"]
+size = Vector3(6.88733495707127, 29.4325954806092, 7.47921530494458)
+
+[sub_resource type="BoxShape3D" id="s_hr_skyscraper_a_5"]
+size = Vector3(14.0051119187784, 29.6578840632955, 14.0051119187784)
+
+[sub_resource type="BoxShape3D" id="s_hr_skyscraper_d_6"]
+size = Vector3(6.07701925352706, 25.9697619662446, 6.59926309562705)
+
+[sub_resource type="BoxShape3D" id="s_hr_building_l_7"]
+size = Vector3(14.7002855665834, 24.3574074716382, 15.0221896300852)
+
+[sub_resource type="BoxShape3D" id="s_hr_skyscraper_d_8"]
+size = Vector3(5.348279350189, 22.8555375355733, 5.80789710684587)
+
+[sub_resource type="BoxShape3D" id="s_hr_skyscraper_d_9"]
+size = Vector3(7.94242843657432, 33.9414715219231, 8.62498088034242)
+
+[sub_resource type="BoxShape3D" id="s_hr_building_m_10"]
+size = Vector3(8.8187967049488, 22.4025884037006, 8.8187967049488)
+
+[sub_resource type="BoxShape3D" id="s_hr_skyscraper_d_11"]
+size = Vector3(5.37917678561055, 22.9875757947576, 5.84144979062396)
+
+[sub_resource type="BoxShape3D" id="s_hr_skyscraper_d_12"]
+size = Vector3(7.7532497681886, 33.1330283062435, 8.4195446701423)
+
+[sub_resource type="BoxShape3D" id="s_hr_skyscraper_a_13"]
+size = Vector3(11.2621418443858, 23.849241552817, 11.2621418443858)
+
+[sub_resource type="BoxShape3D" id="s_hr_building_m_14"]
+size = Vector3(10.4007130216807, 26.4211661437856, 10.4007130216807)
+
+[sub_resource type="BoxShape3D" id="s_hr_skyscraper_a_15"]
+size = Vector3(11.1731121984806, 23.6607081850177, 11.1731121984806)
+
+[sub_resource type="BoxShape3D" id="s_hr_skyscraper_a_16"]
+size = Vector3(10.4590971502125, 22.148676318097, 10.4590971502125)
+
+[sub_resource type="BoxShape3D" id="s_hr_skyscraper_d_17"]
+size = Vector3(5.14974207732454, 22.0071009085666, 5.59229803709462)
+
+[sub_resource type="BoxShape3D" id="s_hr_skyscraper_d_18"]
+size = Vector3(6.24454533401825, 26.6856742008436, 6.78118594866044)
+
+[sub_resource type="BoxShape3D" id="s_hr_skyscraper_a_19"]
+size = Vector3(13.0415592291341, 27.6174195440487, 13.0415592291341)
+
+[sub_resource type="BoxShape3D" id="s_hr_skyscraper_d_20"]
+size = Vector3(6.20072920146199, 26.4984286968727, 6.73360436721263)
+
+[node name="HighrisesJaneFinch" type="Node3D"]
+
+[node name="hr_building_m_1" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -51.621753692627, 0, -37.4987335205078)
+
+[node name="Model" parent="hr_building_m_1" instance=ExtResource("1_hr_building_m")]
+transform = Transform3D(0.0, 0, -10.6582957251944, 0, 10.6582957251944, 0, 10.6582957251944, 0, 0.0, 0, 0, 0)
+
+[node name="Col" type="CollisionShape3D" parent="hr_building_m_1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16.7868157671812, 0)
+shape = SubResource("s_hr_building_m_1")
+
+[node name="hr_skyscraper_d_2" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45.334587097168, 0, 24.9487762451172)
+
+[node name="Model" parent="hr_skyscraper_d_2" instance=ExtResource("2_hr_skyscraper_d")]
+transform = Transform3D(-0.0, 0, 6.17236435401568, 0, 6.17236435401568, 0, -6.17236435401568, 0, -0.0, 0, 0, 0)
+
+[node name="Col" type="CollisionShape3D" parent="hr_skyscraper_d_2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16.8814165082329, 0)
+shape = SubResource("s_hr_skyscraper_d_2")
+
+[node name="hr_skyscraper_a_3" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.1131448745728, 0, 26.5193901062012)
+
+[node name="Model" parent="hr_skyscraper_a_3" instance=ExtResource("3_hr_skyscraper_a")]
+transform = Transform3D(11.3808467486858, 0, 0.0, 0, 11.3808467486858, 0, 0.0, 0, 11.3808467486858, 0, 0, 0)
+
+[node name="Col" type="CollisionShape3D" parent="hr_skyscraper_a_3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16.3884193181076, 0)
+shape = SubResource("s_hr_skyscraper_a_3")
+
+[node name="hr_skyscraper_d_4" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.03175662830472, 0, -52.0735626220703)
+
+[node name="Model" parent="hr_skyscraper_d_4" instance=ExtResource("2_hr_skyscraper_d")]
+transform = Transform3D(5.38073043521193, 0, 0.0, 0, 5.38073043521193, 0, 0.0, 0, 5.38073043521193, 0, 0, 0)
+
+[node name="Col" type="CollisionShape3D" parent="hr_skyscraper_d_4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 14.7162977403046, 0)
+shape = SubResource("s_hr_skyscraper_d_4")
+
+[node name="hr_skyscraper_a_5" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.8307609558105, 0, 47.8290138244629)
+
+[node name="Model" parent="hr_skyscraper_a_5" instance=ExtResource("3_hr_skyscraper_a")]
+transform = Transform3D(-0.0, 0, 10.2978764108665, 0, 10.2978764108665, 0, -10.2978764108665, 0, -0.0, 0, 0, 0)
+
+[node name="Col" type="CollisionShape3D" parent="hr_skyscraper_a_5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 14.8289420316477, 0)
+shape = SubResource("s_hr_skyscraper_a_5")
+
+[node name="hr_skyscraper_d_6" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.4660568237305, 0, 5.61787128448486)
+
+[node name="Model" parent="hr_skyscraper_d_6" instance=ExtResource("2_hr_skyscraper_d")]
+transform = Transform3D(-0.0, 0, 4.74767129181802, 0, 4.74767129181802, 0, -4.74767129181802, 0, -0.0, 0, 0, 0)
+
+[node name="Col" type="CollisionShape3D" parent="hr_skyscraper_d_6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12.9848809831223, 0)
+shape = SubResource("s_hr_skyscraper_d_6")
+
+[node name="hr_building_l_7" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.9407348632813, 0, 27.0361919403076)
+
+[node name="Model" parent="hr_building_l_7" instance=ExtResource("4_hr_building_l")]
+transform = Transform3D(-0.0, 0, 10.7301354500609, 0, 10.7301354500609, 0, -10.7301354500609, 0, -0.0, 0, 0, 0)
+
+[node name="Col" type="CollisionShape3D" parent="hr_building_l_7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12.1787037358191, 0)
+shape = SubResource("s_hr_building_l_7")
+
+[node name="hr_skyscraper_d_8" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47.9807891845703, 0, 6.85295248031616)
+
+[node name="Model" parent="hr_skyscraper_d_8" instance=ExtResource("2_hr_skyscraper_d")]
+transform = Transform3D(-0.0, 0, 4.17834324233516, 0, 4.17834324233516, 0, -4.17834324233516, 0, -0.0, 0, 0, 0)
+
+[node name="Col" type="CollisionShape3D" parent="hr_skyscraper_d_8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.4277687677867, 0)
+shape = SubResource("s_hr_skyscraper_d_8")
+
+[node name="hr_skyscraper_d_9" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.0678672790527, 0, -51.6182556152344)
+
+[node name="Model" parent="hr_skyscraper_d_9" instance=ExtResource("2_hr_skyscraper_d")]
+transform = Transform3D(-6.20502221607369, 0, -0.0, 0, 6.20502221607369, 0, 0.0, 0, -6.20502221607369, 0, 0, 0)
+
+[node name="Col" type="CollisionShape3D" parent="hr_skyscraper_d_9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16.9707357609615, 0)
+shape = SubResource("s_hr_skyscraper_d_9")
+
+[node name="hr_building_m_10" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.70031499862671, 0, -37.0473747253418)
+
+[node name="Model" parent="hr_building_m_10" instance=ExtResource("1_hr_building_m")]
+transform = Transform3D(7.11193282657162, 0, 0.0, 0, 7.11193282657162, 0, 0.0, 0, 7.11193282657162, 0, 0, 0)
+
+[node name="Col" type="CollisionShape3D" parent="hr_building_m_10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.2012942018503, 0)
+shape = SubResource("s_hr_building_m_10")
+
+[node name="hr_skyscraper_d_11" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.3099842071533, 0, 39.6666984558105)
+
+[node name="Model" parent="hr_skyscraper_d_11" instance=ExtResource("2_hr_skyscraper_d")]
+transform = Transform3D(4.20248186375824, 0, 0.0, 0, 4.20248186375824, 0, 0.0, 0, 4.20248186375824, 0, 0, 0)
+
+[node name="Col" type="CollisionShape3D" parent="hr_skyscraper_d_11"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.4937878973788, 0)
+shape = SubResource("s_hr_skyscraper_d_11")
+
+[node name="hr_skyscraper_d_12" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.8666687011719, 0, 5.56716537475586)
+
+[node name="Model" parent="hr_skyscraper_d_12" instance=ExtResource("2_hr_skyscraper_d")]
+transform = Transform3D(-6.05722638139734, 0, -0.0, 0, 6.05722638139734, 0, 0.0, 0, -6.05722638139734, 0, 0, 0)
+
+[node name="Col" type="CollisionShape3D" parent="hr_skyscraper_d_12"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16.5665141531217, 0)
+shape = SubResource("s_hr_skyscraper_d_12")
+
+[node name="hr_skyscraper_a_13" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.3642692565918, 0, 47.4237823486328)
+
+[node name="Model" parent="hr_skyscraper_a_13" instance=ExtResource("3_hr_skyscraper_a")]
+transform = Transform3D(8.28098665028368, 0, 0.0, 0, 8.28098665028368, 0, 0.0, 0, 8.28098665028368, 0, 0, 0)
+
+[node name="Col" type="CollisionShape3D" parent="hr_skyscraper_a_13"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.9246207764085, 0)
+shape = SubResource("s_hr_skyscraper_a_13")
+
+[node name="hr_building_m_14" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.6620178222656, 0, -49.7192764282227)
+
+[node name="Model" parent="hr_building_m_14" instance=ExtResource("1_hr_building_m")]
+transform = Transform3D(-8.38767179167796, 0, -0.0, 0, 8.38767179167796, 0, 0.0, 0, -8.38767179167796, 0, 0, 0)
+
+[node name="Col" type="CollisionShape3D" parent="hr_building_m_14"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 13.2105830718928, 0)
+shape = SubResource("s_hr_building_m_14")
+
+[node name="hr_skyscraper_a_15" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.6791915893555, 0, -49.1385612487793)
+
+[node name="Model" parent="hr_skyscraper_a_15" instance=ExtResource("3_hr_skyscraper_a")]
+transform = Transform3D(8.21552367535336, 0, 0.0, 0, 8.21552367535336, 0, 0.0, 0, 8.21552367535336, 0, 0, 0)
+
+[node name="Col" type="CollisionShape3D" parent="hr_skyscraper_a_15"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.8303540925088, 0)
+shape = SubResource("s_hr_skyscraper_a_15")
+
+[node name="hr_skyscraper_a_16" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.0265741348267, 0, 47.3295516967773)
+
+[node name="Model" parent="hr_skyscraper_a_16" instance=ExtResource("3_hr_skyscraper_a")]
+transform = Transform3D(-0.0, 0, 7.69051261045035, 0, 7.69051261045035, 0, -7.69051261045035, 0, -0.0, 0, 0, 0)
+
+[node name="Col" type="CollisionShape3D" parent="hr_skyscraper_a_16"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.0743381590485, 0)
+shape = SubResource("s_hr_skyscraper_a_16")
+
+[node name="hr_skyscraper_d_17" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47.109375, 0, -29.0250778198242)
+
+[node name="Model" parent="hr_skyscraper_d_17" instance=ExtResource("2_hr_skyscraper_d")]
+transform = Transform3D(-0.0, 0, 4.0232359979098, 0, 4.0232359979098, 0, -4.0232359979098, 0, -0.0, 0, 0, 0)
+
+[node name="Col" type="CollisionShape3D" parent="hr_skyscraper_d_17"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.0035504542833, 0)
+shape = SubResource("s_hr_skyscraper_d_17")
+
+[node name="hr_skyscraper_d_18" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.4297637939453, 0, 19.0299377441406)
+
+[node name="Model" parent="hr_skyscraper_d_18" instance=ExtResource("2_hr_skyscraper_d")]
+transform = Transform3D(0.0, 0, -4.87855104220176, 0, 4.87855104220176, 0, 4.87855104220176, 0, 0.0, 0, 0, 0)
+
+[node name="Col" type="CollisionShape3D" parent="hr_skyscraper_d_18"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 13.3428371004218, 0)
+shape = SubResource("s_hr_skyscraper_d_18")
+
+[node name="hr_skyscraper_a_19" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.12430477142334, 0, 3.53130459785461)
+
+[node name="Model" parent="hr_skyscraper_a_19" instance=ExtResource("3_hr_skyscraper_a")]
+transform = Transform3D(0.0, 0, -9.58938178612802, 0, 9.58938178612802, 0, 9.58938178612802, 0, 0.0, 0, 0, 0)
+
+[node name="Col" type="CollisionShape3D" parent="hr_skyscraper_a_19"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 13.8087097720243, 0)
+shape = SubResource("s_hr_skyscraper_a_19")
+
+[node name="hr_skyscraper_d_20" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.76436948776245, 0, -24.3820972442627)
+
+[node name="Model" parent="hr_skyscraper_d_20" instance=ExtResource("2_hr_skyscraper_d")]
+transform = Transform3D(-0.0, 0, 4.84431968864218, 0, 4.84431968864218, 0, -4.84431968864218, 0, -0.0, 0, 0, 0)
+
+[node name="Col" type="CollisionShape3D" parent="hr_skyscraper_d_20"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 13.2492143484364, 0)
+shape = SubResource("s_hr_skyscraper_d_20")
+
