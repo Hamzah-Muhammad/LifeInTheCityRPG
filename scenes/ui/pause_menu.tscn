@@ -1,0 +1,56 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/ui/pause_menu.gd" id="1_pause"]
+[ext_resource type="PackedScene" path="res://scenes/ui/options_panel.tscn" id="2_options"]
+
+[node name="PauseMenuUI" type="CanvasLayer"]
+layer = 6
+script = ExtResource("1_pause")
+
+[node name="Background" type="ColorRect" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.02, 0.02, 0.03, 0.6)
+
+[node name="Panel" type="PanelContainer" parent="."]
+visible = false
+anchor_left = 0.38
+anchor_top = 0.4
+anchor_right = 0.62
+anchor_bottom = 0.76
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Margin" type="MarginContainer" parent="Panel"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 16
+
+[node name="VBox" type="VBoxContainer" parent="Panel/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Title" type="Label" parent="Panel/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.82, 0.4, 1)
+theme_override_font_sizes/font_size = 26
+horizontal_alignment = 1
+text = "Paused"
+
+[node name="ResumeButton" type="Button" parent="Panel/Margin/VBox"]
+layout_mode = 2
+text = "Resume"
+
+[node name="OptionsButton" type="Button" parent="Panel/Margin/VBox"]
+layout_mode = 2
+text = "Options"
+
+[node name="QuitToMenuButton" type="Button" parent="Panel/Margin/VBox"]
+layout_mode = 2
+text = "Quit to Main Menu"
+
+[node name="OptionsPanel" parent="." instance=ExtResource("2_options")]
+visible = false

@@ -2,7 +2,8 @@ extends CharacterBody3D
 ## Malik's third-person controller.
 ## WASD moves relative to facing, mouse orbits (X turns the body, Y pitches the
 ## camera arm), Shift sprints, E interacts with the nearest Interactable in
-## range. All input freezes while a dialogue is active.
+## range, Esc opens the pause menu. Movement/interact freeze while dialogue,
+## station-select, or the pause menu is active.
 
 signal interact_target_changed(prompt: String)
 
@@ -38,13 +39,10 @@ func _unhandled_input(event: InputEvent) -> void:
 		_pivot.rotation.x = clampf(
 			_pivot.rotation.x - event.relative.y * sensitivity, PITCH_MIN, PITCH_MAX
 		)
-	elif event.is_action_pressed("interact") and _nearest != null:
+	elif event.is_action_pressed("interact") and _nearest != null and not PauseManager.active:
 		_nearest.interact()
 	elif event.is_action_pressed("ui_cancel"):
-		if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
-			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-		else:
-			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+		PauseManager.toggle()
 
 
 func _physics_process(delta: float) -> void:
@@ -52,7 +50,7 @@ func _physics_process(delta: float) -> void:
 		velocity.y -= GRAVITY * delta
 
 	var input_dir := Vector2.ZERO
-	if not DialogueManager.active and not StationManager.active:
+	if not DialogueManager.active and not StationManager.active and not PauseManager.active:
 		input_dir = Input.get_vector("move_left", "move_right", "move_forward", "move_back")
 
 	var direction := (transform.basis * Vector3(input_dir.x, 0.0, input_dir.y)).normalized()
