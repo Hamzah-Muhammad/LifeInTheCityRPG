@@ -5,4 +5,4 @@
 [node name="Malik" type="Node3D"]
 
 [node name="Model" parent="." instance=ExtResource("1_hoodie")]
-transform = Transform3D(0.9356, 0, 0, 0, 0.9356, 0, 0, 0, 0.9356, 0, 0, 0)
+transform = Transform3D(-0.9356, 0, 0, 0, 0.9356, 0, 0, 0, -0.9356, 0, 0, 0)
