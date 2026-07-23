@@ -1,0 +1,143 @@
+{
+  "_comment": "Reusable furniture catalog for the 2D-first level design pipeline. Every entry's model_offset/collision_size/collision_offset is defined CANONICALLY at rot_y=0 - tools/generate_scene.gd rotates them per-placement. Values below were extracted from (or, for the two rot90 items, back-rotated from) the already-built, headless-clean scenes/apartment/malik_bedroom.tscn - not guessed. Node3D-type items (mirrors, shower base) have no collision.",
+
+  "bed_single": {
+    "model": "res://assets/kenney_furniture_kit/models/bedSingle.glb",
+    "scale": 1.9,
+    "model_offset": [-1.27395, 0, 1.06875],
+    "has_collision": true,
+    "collision_size": [1.0849, 0.7125, 2.1375],
+    "collision_offset": [0, 0.35625, 0]
+  },
+  "desk": {
+    "model": "res://assets/kenney_furniture_kit/models/desk.glb",
+    "scale": 1.72,
+    "model_offset": [-0.614449, -0.39, 0.316222],
+    "has_collision": true,
+    "collision_size": [1.263298, 0.661181, 0.674756],
+    "collision_offset": [0, -0.059409, 0]
+  },
+  "chair_desk": {
+    "model": "res://assets/kenney_furniture_kit/models/chairDesk.glb",
+    "scale": 1.39,
+    "model_offset": [-0.23279, -0.225, 0.218438],
+    "has_collision": true,
+    "collision_size": [0.465581, 0.844564, 0.436876],
+    "collision_offset": [0, 0.197282, 0]
+  },
+  "wardrobe": {
+    "model": "res://assets/kenney_furniture_kit/models/bookcaseClosedWide.glb",
+    "scale": 2.4,
+    "model_offset": [-0.96, -0.95, 0.3],
+    "has_collision": true,
+    "collision_size": [1.92, 1.896, 0.6],
+    "collision_offset": [0, -0.002, 0]
+  },
+  "bed_double": {
+    "model": "res://assets/kenney_furniture_kit/models/bedDouble.glb",
+    "scale": 1.82,
+    "model_offset": [-0.86996, 0, 1.02375],
+    "has_collision": true,
+    "collision_size": [1.73992, 0.6825, 2.0475],
+    "collision_offset": [0, 0.34125, 0]
+  },
+  "dresser": {
+    "model": "res://assets/kenney_furniture_kit/models/cabinetTelevisionDoors.glb",
+    "scale": 1.75,
+    "model_offset": [-0.7, -0.45, 0.21],
+    "has_collision": true,
+    "collision_size": [1.4, 0.5425, 0.455],
+    "collision_offset": [0, -0.17875, 0]
+  },
+  "nightstand": {
+    "model": "res://assets/kenney_furniture_kit/models/sideTableDrawers.glb",
+    "scale": 1.0,
+    "model_offset": [-0.257238, -0.225, 0.09885],
+    "has_collision": true,
+    "collision_size": [0.534475, 0.384408, 0.2223],
+    "collision_offset": [0, -0.032796, 0]
+  },
+  "toilet": {
+    "model": "res://assets/kenney_furniture_kit/models/toilet.glb",
+    "scale": 0.5,
+    "model_offset": [-0.239192, -0.225, 0.032276],
+    "has_collision": true,
+    "collision_size": [0.478385, 0.260753, 0.541729],
+    "collision_offset": [0, -0.094624, 0]
+  },
+  "bathroom_sink": {
+    "model": "res://assets/kenney_furniture_kit/models/bathroomSink.glb",
+    "scale": 1.56,
+    "model_offset": [-0.2652, 0.199, 0.2262],
+    "has_collision": true,
+    "collision_size": [0.5304, 0.8736, 0.4524],
+    "collision_offset": [0, 0.0118, 0]
+  },
+  "bathroom_mirror": {
+    "model": "res://assets/kenney_furniture_kit/models/bathroomMirror.glb",
+    "scale": 1.5,
+    "model_offset": [-0.226005, -0.3, -0.0351],
+    "has_collision": false
+  },
+  "bathtub": {
+    "model": "res://assets/kenney_furniture_kit/models/bathtub.glb",
+    "scale": 1.27,
+    "model_offset": [-0.75565, -0.275, 0.3556],
+    "has_collision": true,
+    "collision_size": [1.5113, 0.5334, 0.7112],
+    "collision_offset": [0, -0.0083, 0]
+  },
+  "shower": {
+    "model": "res://assets/kenney_furniture_kit/models/shower.glb",
+    "scale": 0.85,
+    "model_offset": [0.238752, -0.05, 0.518237],
+    "has_collision": false
+  },
+  "coffee_table": {
+    "model": "res://assets/kenney_furniture_kit/models/tableCoffee.glb",
+    "scale": 1.56,
+    "model_offset": [0.203577, -0.175, 0.156],
+    "has_collision": true,
+    "collision_size": [1.031154, 0.3588, 0.624],
+    "collision_offset": [0, 0.0044, 0]
+  },
+  "tv_stand": {
+    "model": "res://assets/kenney_furniture_kit/models/cabinetTelevision.glb",
+    "scale": 1.63,
+    "model_offset": [-0.652, -0.2, 0.20375],
+    "has_collision": true,
+    "collision_size": [1.304, 0.5053, 0.4075],
+    "collision_offset": [0, 0.05265, 0]
+  },
+  "television": {
+    "model": "res://assets/kenney_furniture_kit/models/televisionModern.glb",
+    "scale": 1.9,
+    "model_offset": [0.0, -0.4, 0.0],
+    "has_collision": false
+  },
+  "dining_table": {
+    "model": "res://assets/kenney_furniture_kit/models/table.glb",
+    "scale": 1.6,
+    "model_offset": [-0.67319, -0.375, 0.357899],
+    "has_collision": true,
+    "collision_size": [1.346381, 0.522774, 0.715797],
+    "collision_offset": [0, -0.113613, 0]
+  },
+  "fridge": {
+    "model": "res://assets/kenney_furniture_kit/models/kitchenFridge.glb",
+    "scale": 1.85,
+    "model_offset": [-0.39775, -0.85, 0.251539],
+    "has_collision": true,
+    "collision_size": [0.7955, 1.702, 0.540078],
+    "collision_offset": [0, 0.001, 0]
+  },
+  "sofa_long": {
+    "model": "res://assets/kenney_furniture_kit/models/loungeSofaLong.glb",
+    "scale": 1.122,
+    "model_offset": [-1.09978, -0.225, 0.0],
+    "has_collision": true,
+    "collision_size": [1.09956, 0.51612, 0.92004],
+    "collision_offset": [0, 0.03306, 0],
+    "_comment": "single-seat footprint; the built apartment tiles two of these (ModelL/ModelR) under one shared collision box - place as two separate catalog entries side by side to reproduce that, or as one for a loveseat."
+  }
+}

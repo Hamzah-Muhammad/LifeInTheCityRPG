@@ -1,0 +1,174 @@
+[gd_scene load_steps=23 format=3]
+
+[ext_resource type="PackedScene" path="res://assets/kenney_furniture_kit/models/bedSingle.glb" id="1_bed_single"]
+[ext_resource type="PackedScene" path="res://assets/kenney_furniture_kit/models/desk.glb" id="2_desk"]
+[ext_resource type="PackedScene" path="res://assets/kenney_furniture_kit/models/chairDesk.glb" id="3_chair_desk"]
+[ext_resource type="PackedScene" path="res://assets/kenney_furniture_kit/models/bookcaseClosedWide.glb" id="4_wardrobe"]
+[ext_resource type="Script" path="res://scripts/interaction/scene_door.gd" id="door_script"]
+
+[sub_resource type="StandardMaterial3D" id="mat_wall"]
+albedo_color = Color(0.78, 0.75, 0.7, 1)
+
+[sub_resource type="StandardMaterial3D" id="mat_floor"]
+albedo_color = Color(0.42, 0.34, 0.26, 1)
+
+[sub_resource type="BoxMesh" id="m_wall_1"]
+size = Vector3(6.0, 2.6, 0.2)
+
+[sub_resource type="BoxShape3D" id="s_wall_1"]
+size = Vector3(6.0, 2.6, 0.2)
+
+[sub_resource type="BoxMesh" id="m_wall_2"]
+size = Vector3(6.0, 2.6, 0.2)
+
+[sub_resource type="BoxShape3D" id="s_wall_2"]
+size = Vector3(6.0, 2.6, 0.2)
+
+[sub_resource type="BoxMesh" id="m_wall_3"]
+size = Vector3(6.0, 2.6, 0.2)
+
+[sub_resource type="BoxShape3D" id="s_wall_3"]
+size = Vector3(6.0, 2.6, 0.2)
+
+[sub_resource type="BoxMesh" id="m_wall_4"]
+size = Vector3(2.40000009536743, 2.6, 0.2)
+
+[sub_resource type="BoxShape3D" id="s_wall_4"]
+size = Vector3(2.40000009536743, 2.6, 0.2)
+
+[sub_resource type="BoxMesh" id="m_wall_5"]
+size = Vector3(2.40000009536743, 2.6, 0.2)
+
+[sub_resource type="BoxShape3D" id="s_wall_5"]
+size = Vector3(2.40000009536743, 2.6, 0.2)
+
+[sub_resource type="BoxShape3D" id="s_bed_single_1"]
+size = Vector3(1.0849, 0.7125, 2.1375)
+
+[sub_resource type="BoxShape3D" id="s_desk_2"]
+size = Vector3(1.263298, 0.661181, 0.674756)
+
+[sub_resource type="BoxShape3D" id="s_chair_desk_3"]
+size = Vector3(0.465581, 0.844564, 0.436876)
+
+[sub_resource type="BoxShape3D" id="s_wardrobe_4"]
+size = Vector3(1.92, 1.896, 0.6)
+
+[sub_resource type="BoxShape3D" id="s_door_TestDoor"]
+size = Vector3(1.0, 2.1, 1.0)
+
+[node name="ScratchTest" type="Node3D"]
+
+[node name="Geometry" type="Node3D" parent="."]
+
+[node name="Wall1" type="StaticBody3D" parent="Geometry"]
+transform = Transform3D(0.0, 0, 1.0, 0, 1.0, 0, -1.0, 0, 0.0, 0.0, 1.3, 3.0)
+
+[node name="Mesh" type="MeshInstance3D" parent="Geometry/Wall1"]
+mesh = SubResource("m_wall_1")
+surface_material_override/0 = SubResource("mat_wall")
+
+[node name="Col" type="CollisionShape3D" parent="Geometry/Wall1"]
+shape = SubResource("s_wall_1")
+
+[node name="Wall2" type="StaticBody3D" parent="Geometry"]
+transform = Transform3D(1.0, 0, 0.0, 0, 1.0, 0, 0.0, 0, 1.0, 3.0, 1.3, 6.0)
+
+[node name="Mesh" type="MeshInstance3D" parent="Geometry/Wall2"]
+mesh = SubResource("m_wall_2")
+surface_material_override/0 = SubResource("mat_wall")
+
+[node name="Col" type="CollisionShape3D" parent="Geometry/Wall2"]
+shape = SubResource("s_wall_2")
+
+[node name="Wall3" type="StaticBody3D" parent="Geometry"]
+transform = Transform3D(0.0, 0, -1.0, 0, 1.0, 0, 1.0, 0, 0.0, 6.0, 1.3, 3.0)
+
+[node name="Mesh" type="MeshInstance3D" parent="Geometry/Wall3"]
+mesh = SubResource("m_wall_3")
+surface_material_override/0 = SubResource("mat_wall")
+
+[node name="Col" type="CollisionShape3D" parent="Geometry/Wall3"]
+shape = SubResource("s_wall_3")
+
+[node name="Wall4" type="StaticBody3D" parent="Geometry"]
+transform = Transform3D(1.0, 0, 0.0, 0, 1.0, 0, 0.0, 0, 1.0, 1.2, 1.3, 0.0)
+
+[node name="Mesh" type="MeshInstance3D" parent="Geometry/Wall4"]
+mesh = SubResource("m_wall_4")
+surface_material_override/0 = SubResource("mat_wall")
+
+[node name="Col" type="CollisionShape3D" parent="Geometry/Wall4"]
+shape = SubResource("s_wall_4")
+
+[node name="Wall5" type="StaticBody3D" parent="Geometry"]
+transform = Transform3D(1.0, 0, 0.0, 0, 1.0, 0, 0.0, 0, 1.0, 4.8, 1.3, 0.0)
+
+[node name="Mesh" type="MeshInstance3D" parent="Geometry/Wall5"]
+mesh = SubResource("m_wall_5")
+surface_material_override/0 = SubResource("mat_wall")
+
+[node name="Col" type="CollisionShape3D" parent="Geometry/Wall5"]
+shape = SubResource("s_wall_5")
+
+[node name="Furniture" type="Node3D" parent="."]
+
+[node name="BedSingle_1" type="StaticBody3D" parent="Furniture"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 4.5)
+
+[node name="Model" parent="Furniture/BedSingle_1" instance=ExtResource("1_bed_single")]
+transform = Transform3D(1.9, 0, 0.0, 0, 1.9, 0, 0.0, 0, 1.9, -1.27394998073578, 0.0, 1.06875002384186)
+
+[node name="Col" type="CollisionShape3D" parent="Furniture/BedSingle_1"]
+transform = Transform3D(1.0, 0, 0.0, 0, 1.0, 0, 0.0, 0, 1.0, 0.0, 0.35624998807907, 0.0)
+shape = SubResource("s_bed_single_1")
+
+[node name="Desk_2" type="StaticBody3D" parent="Furniture"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0, 4.8)
+
+[node name="Model" parent="Furniture/Desk_2" instance=ExtResource("2_desk")]
+transform = Transform3D(-1.72, 0, -0.0, 0, 1.72, 0, 0.0, 0, -1.72, 0.61444902420044, -0.38999998569489, -0.316222012043)
+
+[node name="Col" type="CollisionShape3D" parent="Furniture/Desk_2"]
+transform = Transform3D(-1.0, 0, -0.0, 0, 1.0, 0, 0.0, 0, -1.0, 0.0, -0.0594089999795, 0.0)
+shape = SubResource("s_desk_2")
+
+[node name="ChairDesk_3" type="StaticBody3D" parent="Furniture"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0, 4.0)
+
+[node name="Model" parent="Furniture/ChairDesk_3" instance=ExtResource("3_chair_desk")]
+transform = Transform3D(1.39, 0, 0.0, 0, 1.39, 0, 0.0, 0, 1.39, -0.23278999328613, -0.22499999403954, 0.21843799948692)
+
+[node name="Col" type="CollisionShape3D" parent="Furniture/ChairDesk_3"]
+transform = Transform3D(1.0, 0, 0.0, 0, 1.0, 0, 0.0, 0, 1.0, 0.0, 0.19728200137615, 0.0)
+shape = SubResource("s_chair_desk_3")
+
+[node name="Wardrobe_4" type="StaticBody3D" parent="Furniture"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7, 0, 1.3)
+
+[node name="Model" parent="Furniture/Wardrobe_4" instance=ExtResource("4_wardrobe")]
+transform = Transform3D(0.0, 0, -2.4, 0, 2.4, 0, 2.4, 0, 0.0, 0.30000001192093, -0.94999998807907, 0.95999997854233)
+
+[node name="Col" type="CollisionShape3D" parent="Furniture/Wardrobe_4"]
+transform = Transform3D(0.0, 0, -1.0, 0, 1.0, 0, 1.0, 0, 0.0, 0.0, -0.00200000009499, 0.0)
+shape = SubResource("s_wardrobe_4")
+
+[node name="Markers" type="Node3D" parent="."]
+
+[node name="SpawnPoint" type="Marker3D" parent="Markers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.0, 0.05, 3.0)
+
+[node name="Doors" type="Node3D" parent="."]
+
+[node name="TestDoor" type="Area3D" parent="Doors"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.0, 1.1, 0.0)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("door_script")
+prompt = "E — Test Door"
+target_scene = ""
+target_marker = ""
+
+[node name="Col" type="CollisionShape3D" parent="Doors/TestDoor"]
+shape = SubResource("s_door_TestDoor")
+
