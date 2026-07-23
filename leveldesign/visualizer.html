@@ -1,0 +1,450 @@
+<title>Floor Plan — ScratchTest</title>
+<style>
+  :root {
+    --bg: #0d0d14;
+    --bg-elevated: #16161f;
+    --panel-border: #262633;
+    --grid-line: #23242f;
+    --grid-line-major: #33344a;
+    --accent: #ffd166;
+    --accent-dim: #8a6f35;
+    --structural: #7d8699;
+    --marker: #5ec8c0;
+    --door: #e0955c;
+    --danger: #ff5d5d;
+    --danger-fill: rgba(255, 93, 93, 0.16);
+    --text-primary: #f2f0e8;
+    --text-muted: #8b8a94;
+    --mono: "Cascadia Code", "SF Mono", Consolas, "Liberation Mono", monospace;
+    --sans: -apple-system, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  }
+  :root[data-theme="light"] {
+    --bg: #f1efe6;
+    --bg-elevated: #ffffff;
+    --panel-border: #ddd9c8;
+    --grid-line: #e3ded0;
+    --grid-line-major: #cfc9b6;
+    --accent: #b8860f;
+    --accent-dim: #d9c48a;
+    --structural: #5c6470;
+    --marker: #1f8f86;
+    --door: #b5652c;
+    --danger: #c93a3a;
+    --danger-fill: rgba(201, 58, 58, 0.12);
+    --text-primary: #23221c;
+    --text-muted: #6b6a60;
+  }
+  @media (prefers-color-scheme: light) {
+    :root:not([data-theme="dark"]) {
+      --bg: #f1efe6;
+      --bg-elevated: #ffffff;
+      --panel-border: #ddd9c8;
+      --grid-line: #e3ded0;
+      --grid-line-major: #cfc9b6;
+      --accent: #b8860f;
+      --accent-dim: #d9c48a;
+      --structural: #5c6470;
+      --marker: #1f8f86;
+      --door: #b5652c;
+      --danger: #c93a3a;
+      --danger-fill: rgba(201, 58, 58, 0.12);
+      --text-primary: #23221c;
+      --text-muted: #6b6a60;
+    }
+  }
+
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    height: 100%;
+    background: var(--bg);
+    color: var(--text-primary);
+    font-family: var(--sans);
+    overflow: hidden;
+  }
+  body {
+    display: flex;
+    flex-direction: column;
+  }
+
+  header {
+    display: flex;
+    align-items: baseline;
+    gap: 1.5rem;
+    padding: 0.9rem 1.25rem;
+    border-bottom: 1px solid var(--panel-border);
+    background: var(--bg-elevated);
+    flex-shrink: 0;
+  }
+  header h1 {
+    font-family: var(--mono);
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    margin: 0;
+    color: var(--accent);
+  }
+  header .sep { color: var(--panel-border); }
+  .stat {
+    font-family: var(--mono);
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    white-space: nowrap;
+  }
+  .stat b { color: var(--text-primary); font-weight: 600; font-variant-numeric: tabular-nums; }
+  .stat.danger { color: var(--danger); }
+  .stat.danger b { color: var(--danger); }
+  .spacer { flex: 1; }
+  .legend {
+    display: flex;
+    gap: 1rem;
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    color: var(--text-muted);
+  }
+  .legend span { display: inline-flex; align-items: center; gap: 0.35rem; }
+  .swatch { width: 0.7rem; height: 0.7rem; border-radius: 2px; display: inline-block; }
+
+  main {
+    position: relative;
+    flex: 1;
+    min-height: 0;
+  }
+  svg { width: 100%; height: 100%; display: block; cursor: grab; }
+  svg:active { cursor: grabbing; }
+
+  /* vector-effect: non-scaling-stroke is load-bearing here - without it,
+     stroke-width is interpreted in SVG user units (meters, per the viewBox),
+     not screen pixels, so e.g. 1.5 means a 1.5m-thick border. On a 1m door
+     box that renders as a solid crosshatched mess, not a thin outline. */
+  .wall { fill: none; stroke: var(--structural); stroke-width: 2.5; vector-effect: non-scaling-stroke; }
+  .wall-overlap { stroke: var(--danger) !important; }
+  .furniture-box {
+    fill: color-mix(in srgb, var(--accent) 22%, transparent);
+    stroke: var(--accent);
+    stroke-width: 1.5;
+    vector-effect: non-scaling-stroke;
+    transition: fill 0.12s ease, stroke-width 0.12s ease;
+  }
+  .furniture-box:hover { fill: color-mix(in srgb, var(--accent) 40%, transparent); stroke-width: 2.5; }
+  .furniture-box.overlap {
+    fill: var(--danger-fill);
+    stroke: var(--danger);
+    stroke-width: 2.5;
+  }
+  .furniture-label {
+    font-family: var(--mono);
+    font-size: 0.19px;
+    fill: var(--text-primary);
+    pointer-events: none;
+    text-anchor: middle;
+  }
+  .marker-dot { fill: var(--marker); stroke: var(--bg); stroke-width: 0.06; }
+  .marker-label { font-family: var(--mono); font-size: 0.18px; fill: var(--marker); pointer-events: none; }
+  .door-box {
+    fill: color-mix(in srgb, var(--door) 30%, transparent);
+    stroke: var(--door);
+    stroke-width: 1.5;
+    stroke-dasharray: 6 4;
+    vector-effect: non-scaling-stroke;
+  }
+  .door-label { font-family: var(--mono); font-size: 0.17px; fill: var(--door); pointer-events: none; text-anchor: middle; }
+
+  #tooltip {
+    position: absolute;
+    pointer-events: none;
+    background: var(--bg-elevated);
+    border: 1px solid var(--panel-border);
+    border-radius: 6px;
+    padding: 0.5rem 0.65rem;
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    line-height: 1.5;
+    color: var(--text-primary);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+    display: none;
+    white-space: nowrap;
+    z-index: 10;
+  }
+  #tooltip .t-label { color: var(--accent); font-weight: 600; }
+  #tooltip .t-danger { color: var(--danger); font-weight: 600; }
+
+  footer {
+    padding: 0.5rem 1.25rem;
+    border-top: 1px solid var(--panel-border);
+    background: var(--bg-elevated);
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    flex-shrink: 0;
+  }
+</style>
+
+<header>
+  <h1 id="scene-title">FLOOR PLAN</h1>
+  <span class="sep">/</span>
+  <span class="stat" id="stat-dims">— × —</span>
+  <span class="stat" id="stat-furniture"><b>0</b> furniture</span>
+  <span class="stat" id="stat-doors"><b>0</b> doors</span>
+  <span class="stat" id="stat-overlaps"><b>0</b> overlaps</span>
+  <span class="spacer"></span>
+  <div class="legend">
+    <span><i class="swatch" style="background:var(--structural)"></i>wall</span>
+    <span><i class="swatch" style="background:var(--accent)"></i>furniture</span>
+    <span><i class="swatch" style="background:var(--marker)"></i>marker</span>
+    <span><i class="swatch" style="background:var(--door)"></i>door</span>
+    <span><i class="swatch" style="background:var(--danger)"></i>overlap</span>
+  </div>
+</header>
+
+<main>
+  <svg id="plan" viewBox="0 0 10 10" preserveAspectRatio="xMidYMid meet"></svg>
+  <div id="tooltip"></div>
+</main>
+
+<footer>drag to pan · scroll to zoom · hover any box for exact coordinates</footer>
+
+<script>
+  // Floor plan data embedded at publish time from leveldesign/floorplans/_scratch_test.json
+  // and leveldesign/furniture_catalog.json - this is a static snapshot, republish the
+  // artifact whenever the source JSON changes.
+  const FLOORPLAN = {
+    "scene_name": "ScratchTest",
+    "walls": [
+      {"from": [0, 0], "to": [0, 6], "height": 2.6, "thickness": 0.2},
+      {"from": [0, 6], "to": [6, 6], "height": 2.6, "thickness": 0.2},
+      {"from": [6, 6], "to": [6, 0], "height": 2.6, "thickness": 0.2},
+      {"from": [0, 0], "to": [2.4, 0], "height": 2.6, "thickness": 0.2},
+      {"from": [3.6, 0], "to": [6, 0], "height": 2.6, "thickness": 0.2}
+    ],
+    "furniture": [
+      {"catalog_id": "bed_single", "pos": [1.5, 4.5], "rot_y": 0},
+      {"catalog_id": "desk", "pos": [4.5, 4.8], "rot_y": 180},
+      {"catalog_id": "chair_desk", "pos": [4.5, 4.0], "rot_y": 0},
+      {"catalog_id": "wardrobe", "pos": [0.7, 1.3], "rot_y": 90}
+    ],
+    "markers": [
+      {"name": "SpawnPoint", "pos": [3, 3], "rot_y": 0}
+    ],
+    "doors": [
+      {"name": "TestDoor", "pos": [3, 0], "prompt": "E — Test Door"}
+    ]
+  };
+
+  const CATALOG = {
+    "bed_single": { "collision_size": [1.0849, 0.7125, 2.1375], "collision_offset": [0, 0.35625, 0] },
+    "desk": { "collision_size": [1.263298, 0.661181, 0.674756], "collision_offset": [0, -0.059409, 0] },
+    "chair_desk": { "collision_size": [0.465581, 0.844564, 0.436876], "collision_offset": [0, 0.197282, 0] },
+    "wardrobe": { "collision_size": [1.92, 1.896, 0.6], "collision_offset": [0, -0.002, 0] }
+  };
+
+  const svgns = "http://www.w3.org/2000/svg";
+
+  function rotateXZ([x, , z], deg) {
+    const r = deg * Math.PI / 180;
+    const c = Math.cos(r), s = Math.sin(r);
+    return [x * c + z * s, -x * s + z * c];
+  }
+
+  function obbCorners(cx, cz, hw, hd, deg) {
+    const r = deg * Math.PI / 180;
+    const c = Math.cos(r), s = Math.sin(r);
+    return [[-hw, -hd], [hw, -hd], [hw, hd], [-hw, hd]].map(([lx, lz]) => [
+      cx + lx * c + lz * s,
+      cz + (-lx * s + lz * c),
+    ]);
+  }
+
+  function sat(a, b) {
+    for (const poly of [a, b]) {
+      for (let i = 0; i < poly.length; i++) {
+        const [x1, y1] = poly[i], [x2, y2] = poly[(i + 1) % poly.length];
+        const len = Math.hypot(y1 - y2, x2 - x1) || 1;
+        const ax = -(y2 - y1) / len, ay = (x2 - x1) / len;
+        const proj = (p) => p[0] * ax + p[1] * ay;
+        const pa = a.map(proj), pb = b.map(proj);
+        if (Math.max(...pa) < Math.min(...pb) || Math.max(...pb) < Math.min(...pa)) return false;
+      }
+    }
+    return true;
+  }
+
+  // --- Build footprints ---
+  const furnitureFootprints = FLOORPLAN.furniture.map((item, i) => {
+    const cat = CATALOG[item.catalog_id];
+    const [ox, oz] = rotateXZ(cat.collision_offset, item.rot_y);
+    const cx = item.pos[0] + ox, cz = item.pos[1] + oz;
+    const [sx, , sz] = cat.collision_size;
+    return {
+      index: i, item, cx, cz,
+      corners: obbCorners(cx, cz, sx / 2, sz / 2, item.rot_y),
+      dims: [sx, sz],
+    };
+  });
+
+  const wallFootprints = FLOORPLAN.walls.map((w) => {
+    const dx = w.to[0] - w.from[0], dz = w.to[1] - w.from[1];
+    const length = Math.hypot(dx, dz);
+    const angle = Math.atan2(-dz, dx) * 180 / Math.PI;
+    const cx = (w.from[0] + w.to[0]) / 2, cz = (w.from[1] + w.to[1]) / 2;
+    return { corners: obbCorners(cx, cz, length / 2, w.thickness / 2, angle) };
+  });
+
+  const overlapSet = new Set();
+  for (let i = 0; i < furnitureFootprints.length; i++) {
+    for (let j = i + 1; j < furnitureFootprints.length; j++) {
+      if (sat(furnitureFootprints[i].corners, furnitureFootprints[j].corners)) {
+        overlapSet.add(i); overlapSet.add(j);
+      }
+    }
+    for (const w of wallFootprints) {
+      if (sat(furnitureFootprints[i].corners, w.corners)) overlapSet.add(i);
+    }
+  }
+
+  // --- Compute scene bounds ---
+  const allX = FLOORPLAN.walls.flatMap(w => [w.from[0], w.to[0]]);
+  const allZ = FLOORPLAN.walls.flatMap(w => [w.from[1], w.to[1]]);
+  let minX = Math.min(...allX) - 1, maxX = Math.max(...allX) + 1;
+  let minZ = Math.min(...allZ) - 1, maxZ = Math.max(...allZ) + 1;
+  let w = maxX - minX, h = maxZ - minZ;
+
+  const svg = document.getElementById("plan");
+
+  // preserveAspectRatio="xMidYMid meet" letterboxes whichever axis doesn't
+  // match the container's aspect ratio - expand the room bounds (centered)
+  // to match the actual container shape so the plan fills the viewport
+  // instead of sitting in a narrow centered strip on wide windows.
+  const containerRect = svg.parentElement.getBoundingClientRect();
+  const containerAspect = containerRect.width / containerRect.height;
+  const roomAspect = w / h;
+  if (containerAspect > roomAspect) {
+    const newW = h * containerAspect;
+    minX -= (newW - w) / 2;
+    w = newW;
+  } else {
+    const newH = w / containerAspect;
+    minZ -= (newH - h) / 2;
+    h = newH;
+  }
+
+  svg.setAttribute("viewBox", `${minX} ${minZ} ${w} ${h}`);
+
+  function el(tag, attrs, parent) {
+    const e = document.createElementNS(svgns, tag);
+    for (const k in attrs) e.setAttribute(k, attrs[k]);
+    (parent || svg).appendChild(e);
+    return e;
+  }
+
+  // Grid
+  const gridGroup = el("g", {});
+  for (let x = Math.floor(minX); x <= Math.ceil(maxX); x++) {
+    el("line", { x1: x, y1: minZ, x2: x, y2: maxZ, stroke: "var(--grid-line)", "stroke-width": x % 5 === 0 ? 0.03 : 0.015 }, gridGroup);
+  }
+  for (let z = Math.floor(minZ); z <= Math.ceil(maxZ); z++) {
+    el("line", { x1: minX, y1: z, x2: maxX, y2: z, stroke: "var(--grid-line)", "stroke-width": z % 5 === 0 ? 0.03 : 0.015 }, gridGroup);
+  }
+
+  const tooltip = document.getElementById("tooltip");
+  function showTip(evt, html) {
+    tooltip.innerHTML = html;
+    tooltip.style.display = "block";
+    tooltip.style.left = (evt.clientX + 14) + "px";
+    tooltip.style.top = (evt.clientY + 14) + "px";
+  }
+  function hideTip() { tooltip.style.display = "none"; }
+
+  // Walls
+  for (const wall of FLOORPLAN.walls) {
+    const isOverlap = false; // wall-vs-wall never flagged, matches generator
+    el("line", {
+      x1: wall.from[0], y1: wall.from[1], x2: wall.to[0], y2: wall.to[1],
+      class: "wall" + (isOverlap ? " wall-overlap" : ""),
+      "vector-effect": "non-scaling-stroke",
+    }).addEventListener("mouseenter", (e) => {
+      const len = Math.hypot(wall.to[0] - wall.from[0], wall.to[1] - wall.from[1]).toFixed(2);
+      showTip(e, `<span class="t-label">wall</span><br>length ${len}m · thickness ${wall.thickness}m`);
+    });
+  }
+  svg.querySelectorAll(".wall").forEach(n => n.addEventListener("mousemove", (e) => {
+    tooltip.style.left = (e.clientX + 14) + "px"; tooltip.style.top = (e.clientY + 14) + "px";
+  }));
+  svg.querySelectorAll(".wall").forEach(n => n.addEventListener("mouseleave", hideTip));
+
+  // Furniture
+  furnitureFootprints.forEach((fp) => {
+    const isOverlap = overlapSet.has(fp.index);
+    const poly = fp.corners.map(c => c.join(",")).join(" ");
+    const box = el("polygon", { points: poly, class: "furniture-box" + (isOverlap ? " overlap" : "") });
+    box.addEventListener("mouseenter", (e) => {
+      showTip(e, `<span class="${isOverlap ? "t-danger" : "t-label"}">${fp.item.catalog_id}</span><br>` +
+        `pos (${fp.cx.toFixed(2)}, ${fp.cz.toFixed(2)}) · rot ${fp.item.rot_y}°<br>` +
+        `${fp.dims[0].toFixed(2)}m × ${fp.dims[1].toFixed(2)}m` +
+        (isOverlap ? `<br><span class="t-danger">⚠ overlaps another object</span>` : ""));
+    });
+    box.addEventListener("mousemove", (e) => {
+      tooltip.style.left = (e.clientX + 14) + "px"; tooltip.style.top = (e.clientY + 14) + "px";
+    });
+    box.addEventListener("mouseleave", hideTip);
+    el("text", { x: fp.cx, y: fp.cz, class: "furniture-label" }, svg).textContent = fp.item.catalog_id;
+  });
+
+  // Markers
+  FLOORPLAN.markers.forEach((m) => {
+    el("circle", { cx: m.pos[0], cy: m.pos[1], r: 0.12, class: "marker-dot" })
+      .addEventListener("mouseenter", (e) => showTip(e, `<span class="t-label">${m.name}</span><br>pos (${m.pos[0]}, ${m.pos[1]})`));
+    el("text", { x: m.pos[0], y: m.pos[1] - 0.2, class: "marker-label" }, svg).textContent = m.name;
+  });
+  svg.querySelectorAll(".marker-dot").forEach(n => {
+    n.addEventListener("mousemove", (e) => { tooltip.style.left = (e.clientX + 14) + "px"; tooltip.style.top = (e.clientY + 14) + "px"; });
+    n.addEventListener("mouseleave", hideTip);
+  });
+
+  // Doors
+  FLOORPLAN.doors.forEach((d) => {
+    const size = 1.0;
+    el("rect", { x: d.pos[0] - size / 2, y: d.pos[1] - size / 2, width: size, height: size, class: "door-box" })
+      .addEventListener("mouseenter", (e) => showTip(e, `<span class="t-label" style="color:var(--door)">${d.name}</span><br>${d.prompt}<br>pos (${d.pos[0]}, ${d.pos[1]})`));
+    el("text", { x: d.pos[0], y: d.pos[1] + 0.35, class: "door-label" }, svg).textContent = d.name;
+  });
+  svg.querySelectorAll(".door-box").forEach(n => {
+    n.addEventListener("mousemove", (e) => { tooltip.style.left = (e.clientX + 14) + "px"; tooltip.style.top = (e.clientY + 14) + "px"; });
+    n.addEventListener("mouseleave", hideTip);
+  });
+
+  // --- Header stats ---
+  document.getElementById("scene-title").textContent = FLOORPLAN.scene_name.toUpperCase();
+  document.getElementById("stat-dims").textContent = `${w.toFixed(1)}m × ${h.toFixed(1)}m`;
+  document.getElementById("stat-furniture").innerHTML = `<b>${FLOORPLAN.furniture.length}</b> furniture`;
+  document.getElementById("stat-doors").innerHTML = `<b>${FLOORPLAN.doors.length}</b> doors`;
+  const overlapStat = document.getElementById("stat-overlaps");
+  overlapStat.innerHTML = `<b>${overlapSet.size}</b> overlaps`;
+  if (overlapSet.size > 0) overlapStat.classList.add("danger");
+
+  // --- Pan/zoom ---
+  let viewBox = { x: minX, y: minZ, w, h };
+  function applyViewBox() { svg.setAttribute("viewBox", `${viewBox.x} ${viewBox.y} ${viewBox.w} ${viewBox.h}`); }
+  let isPanning = false, panStart = null;
+  svg.addEventListener("mousedown", (e) => { isPanning = true; panStart = { x: e.clientX, y: e.clientY, vb: { ...viewBox } }; });
+  window.addEventListener("mouseup", () => { isPanning = false; });
+  window.addEventListener("mousemove", (e) => {
+    if (!isPanning) return;
+    const rect = svg.getBoundingClientRect();
+    const scaleX = viewBox.w / rect.width, scaleY = viewBox.h / rect.height;
+    viewBox.x = panStart.vb.x - (e.clientX - panStart.x) * scaleX;
+    viewBox.y = panStart.vb.y - (e.clientY - panStart.y) * scaleY;
+    applyViewBox();
+  });
+  svg.addEventListener("wheel", (e) => {
+    e.preventDefault();
+    const factor = e.deltaY > 0 ? 1.1 : 0.9;
+    const rect = svg.getBoundingClientRect();
+    const mx = viewBox.x + (e.clientX - rect.left) / rect.width * viewBox.w;
+    const my = viewBox.y + (e.clientY - rect.top) / rect.height * viewBox.h;
+    viewBox.x = mx - (mx - viewBox.x) * factor;
+    viewBox.y = my - (my - viewBox.y) * factor;
+    viewBox.w *= factor; viewBox.h *= factor;
+    applyViewBox();
+  }, { passive: false });
+</script>
