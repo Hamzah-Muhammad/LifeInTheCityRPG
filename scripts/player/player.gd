@@ -16,6 +16,7 @@ const ANIM_BLEND := 0.2
 
 @onready var _pivot: Node3D = $CameraPivot
 @onready var _anim: AnimationPlayer = $Malik/Model/AnimationPlayer
+@onready var _axis_gizmo: Node3D = $DebugAxisGizmo
 
 var _nearest: Interactable = null
 
@@ -23,6 +24,7 @@ var _nearest: Interactable = null
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	_anim.play("Idle", ANIM_BLEND)
+	_axis_gizmo.visible = SettingsManager.show_debug_axes
 
 
 func _unhandled_input(event: InputEvent) -> void:

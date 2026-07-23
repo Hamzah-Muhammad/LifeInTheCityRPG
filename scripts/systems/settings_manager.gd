@@ -21,6 +21,7 @@ var vsync: bool = true
 var antialiasing: bool = true
 var master_volume: float = 1.0
 var mouse_sensitivity_multiplier: float = 1.0
+var show_debug_axes: bool = false
 
 
 func _ready() -> void:
@@ -71,6 +72,11 @@ func set_mouse_sensitivity(multiplier: float) -> void:
 	_save()
 
 
+func set_show_debug_axes(enabled: bool) -> void:
+	show_debug_axes = enabled
+	_save()
+
+
 func _apply_window_mode() -> void:
 	match window_mode:
 		WindowMode.FULLSCREEN:
@@ -112,6 +118,7 @@ func _load() -> void:
 	mouse_sensitivity_multiplier = cfg.get_value(
 		"controls", "mouse_sensitivity", mouse_sensitivity_multiplier
 	)
+	show_debug_axes = cfg.get_value("debug", "show_debug_axes", show_debug_axes)
 
 
 func _save() -> void:
@@ -122,4 +129,5 @@ func _save() -> void:
 	cfg.set_value("graphics", "antialiasing", antialiasing)
 	cfg.set_value("audio", "master_volume", master_volume)
 	cfg.set_value("controls", "mouse_sensitivity", mouse_sensitivity_multiplier)
+	cfg.set_value("debug", "show_debug_axes", show_debug_axes)
 	cfg.save(SAVE_PATH)

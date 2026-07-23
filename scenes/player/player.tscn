@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3]
+[gd_scene load_steps=6 format=3]
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_player"]
 [ext_resource type="PackedScene" path="res://scenes/characters/malik.tscn" id="2_figure"]
+[ext_resource type="PackedScene" path="res://scenes/debug/debug_axis_gizmo.tscn" id="3_axis_gizmo"]
 
 [sub_resource type="CapsuleShape3D" id="shape_body"]
 radius = 0.32
@@ -19,6 +20,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.875, 0)
 shape = SubResource("shape_body")
 
 [node name="Malik" parent="." instance=ExtResource("2_figure")]
+
+[node name="DebugAxisGizmo" parent="." instance=ExtResource("3_axis_gizmo")]
 
 [node name="CameraPivot" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.35, 1.5, 0)

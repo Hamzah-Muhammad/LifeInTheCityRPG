@@ -22,6 +22,7 @@ const NEW_GAME_SCENE := "res://scenes/apartment/malik_bedroom.tscn"
 @onready var _antialiasing_check: CheckBox = $OptionsPanel/Margin/VBox/GraphicsGrid/AntiAliasingCheck
 @onready var _master_volume_slider: HSlider = $OptionsPanel/Margin/VBox/AudioGrid/MasterVolumeSlider
 @onready var _mouse_sensitivity_slider: HSlider = $OptionsPanel/Margin/VBox/ControlsGrid/MouseSensitivitySlider
+@onready var _show_debug_axes_check: CheckBox = $OptionsPanel/Margin/VBox/DebugGrid/ShowDebugAxesCheck
 @onready var _options_back_button: Button = $OptionsPanel/Margin/VBox/BackButton
 
 @onready var _name_edit: LineEdit = $CharacterCreationPanel/Margin/VBox/NameEdit
@@ -109,6 +110,9 @@ func _populate_options() -> void:
 
 	_mouse_sensitivity_slider.value = SettingsManager.mouse_sensitivity_multiplier
 	_mouse_sensitivity_slider.value_changed.connect(SettingsManager.set_mouse_sensitivity)
+
+	_show_debug_axes_check.button_pressed = SettingsManager.show_debug_axes
+	_show_debug_axes_check.toggled.connect(SettingsManager.set_show_debug_axes)
 
 
 func _on_window_mode_selected(index: int) -> void:
