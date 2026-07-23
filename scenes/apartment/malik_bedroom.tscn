@@ -1122,7 +1122,7 @@ script = ExtResource("25_front_door")
 prompt = "E — Front door"
 dialogue_file = "res://data/dialogue/act0_bedroom.json"
 dialogue_entry = "front_1"
-exit_scene = "res://scenes/world/jane_finch.tscn"
+exit_scene = "res://scenes/world/building_lobby.tscn"
 exit_marker = "SpawnFromApartment"
 
 [node name="Col" type="CollisionShape3D" parent="Interactables/FrontDoorInteract"]

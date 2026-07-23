@@ -1,0 +1,17 @@
+Ultimate Guns Pack (July 2019)
+
+Created/distributed by Quaternius (https://quaternius.com)
+Source: https://quaternius.com/packs/ultimategun.html
+
+License: Creative Commons Zero (CC0)
+https://creativecommons.org/publicdomain/zero/1.0/
+
+Free to use in personal and commercial projects. Attribution not required
+but appreciated (credit Quaternius / quaternius.com).
+
+40 gun models (pistols, rifles, shotguns, sniper rifles, submachine guns)
+plus an Accessories subfolder (magazines, silencers, etc.) - 55 .fbx files
+total, flattened into models/. Only FBX format was available for this pack
+(no glTF, unlike the character packs) - Godot 4.7's built-in FBX importer
+handles these directly, no conversion needed. No textures (flat vertex
+colors), matching the men/women character packs' style.

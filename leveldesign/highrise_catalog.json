@@ -1,0 +1,8 @@
+{
+  "_comment": "Palette for tools/generate_highrises.gd. Trimmed to 4 genuinely tower-shaped (tall relative to footprint) variants after the first generation pass showed building-i/j/k/n ballooning to absurd widths (50m+) once scaled up to highrise height - those stay reserved for the specific named BuildingB/BuildingC roles at controlled one-off scale, not this randomized scatter.",
+
+  "hr_skyscraper_a": { "model": "res://assets/kenney_city_kit_commercial/models/building-skyscraper-a.glb", "native_w": 1.36, "native_h": 2.88, "native_d": 1.36 },
+  "hr_skyscraper_d": { "model": "res://assets/kenney_city_kit_commercial/models/building-skyscraper-d.glb", "native_w": 1.28, "native_h": 5.47, "native_d": 1.39 },
+  "hr_building_l": { "model": "res://assets/kenney_city_kit_commercial/models/building-l.glb", "native_w": 1.37, "native_h": 2.27, "native_d": 1.40 },
+  "hr_building_m": { "model": "res://assets/kenney_city_kit_commercial/models/building-m.glb", "native_w": 1.24, "native_h": 3.15, "native_d": 1.24 }
+}

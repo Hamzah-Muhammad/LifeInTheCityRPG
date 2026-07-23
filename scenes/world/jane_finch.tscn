@@ -1,5 +1,7 @@
-[gd_scene load_steps=15 format=3]
+[gd_scene load_steps=16 format=3]
 
+[ext_resource type="PackedScene" path="res://scenes/world/streets_jane_finch.tscn" id="9_streets"]
+[ext_resource type="PackedScene" path="res://scenes/world/highrises_jane_finch.tscn" id="19_highrises"]
 [ext_resource type="Script" path="res://scripts/interaction/scene_door.gd" id="1_scene_door"]
 [ext_resource type="Script" path="res://scripts/interaction/station_kiosk.gd" id="2_kiosk"]
 [ext_resource type="PackedScene" path="res://scenes/player/player.tscn" id="3_player"]
@@ -8,6 +10,15 @@
 [ext_resource type="PackedScene" path="res://scenes/ui/station_select_ui.tscn" id="6_station_ui"]
 [ext_resource type="PackedScene" path="res://scenes/ui/pause_menu.tscn" id="7_pause_menu"]
 [ext_resource type="PackedScene" path="res://scenes/debug/debug_axis_gizmo.tscn" id="8_axis_gizmo"]
+[ext_resource type="PackedScene" path="res://assets/kenney_city_kit_commercial/models/building-skyscraper-d.glb" id="10_tower_model"]
+[ext_resource type="PackedScene" path="res://assets/kenney_city_kit_commercial/models/building-j.glb" id="11_buildingb_model"]
+[ext_resource type="PackedScene" path="res://assets/kenney_city_kit_commercial/models/building-k.glb" id="12_buildingc_model"]
+[ext_resource type="Script" path="res://scripts/world/traffic_car.gd" id="13_traffic_car"]
+[ext_resource type="PackedScene" path="res://assets/kenney_car_kit/models/sedan.glb" id="14_sedan"]
+[ext_resource type="PackedScene" path="res://assets/kenney_car_kit/models/taxi.glb" id="15_taxi"]
+[ext_resource type="PackedScene" path="res://assets/quaternius_modular_men/individual/Worker.gltf" id="16_ped_worker"]
+[ext_resource type="PackedScene" path="res://assets/quaternius_modular_women/individual/Casual.gltf" id="17_ped_casual"]
+[ext_resource type="PackedScene" path="res://assets/quaternius_modular_men/individual/Punk.gltf" id="18_ped_punk"]
 
 [sub_resource type="Environment" id="env"]
 background_mode = 1
@@ -16,17 +27,19 @@ ambient_light_source = 2
 ambient_light_color = Color(0.15, 0.16, 0.22, 1)
 ambient_light_energy = 0.35
 
+[sub_resource type="StandardMaterial3D" id="mat_moon"]
+shading_mode = 0
+albedo_color = Color(0.85, 0.87, 0.92, 1)
+emission_enabled = true
+emission = Color(0.85, 0.87, 0.95, 1)
+emission_energy_multiplier = 1.8
+
+[sub_resource type="SphereMesh" id="m_moon"]
+radius = 18.0
+height = 36.0
+
 [sub_resource type="StandardMaterial3D" id="mat_plaza"]
 albedo_color = Color(0.2, 0.2, 0.22, 1)
-
-[sub_resource type="StandardMaterial3D" id="mat_tower"]
-albedo_color = Color(0.35, 0.34, 0.36, 1)
-
-[sub_resource type="StandardMaterial3D" id="mat_building_b"]
-albedo_color = Color(0.3, 0.28, 0.3, 1)
-
-[sub_resource type="StandardMaterial3D" id="mat_building_c"]
-albedo_color = Color(0.32, 0.3, 0.32, 1)
 
 [sub_resource type="StandardMaterial3D" id="mat_kiosk"]
 albedo_color = Color(0.5, 0.15, 0.15, 1)
@@ -40,23 +53,20 @@ size = Vector3(110, 0.3, 110)
 [sub_resource type="BoxShape3D" id="s_plaza"]
 size = Vector3(110, 0.3, 110)
 
-[sub_resource type="BoxMesh" id="m_tower"]
-size = Vector3(16, 44, 16)
-
 [sub_resource type="BoxShape3D" id="s_tower"]
-size = Vector3(16, 44, 16)
-
-[sub_resource type="BoxMesh" id="m_building_b"]
-size = Vector3(14, 30, 14)
+size = Vector3(10.5, 44.9, 11.4)
 
 [sub_resource type="BoxShape3D" id="s_building_b"]
-size = Vector3(14, 30, 14)
-
-[sub_resource type="BoxMesh" id="m_building_c"]
-size = Vector3(18, 22, 18)
+size = Vector3(34.4, 27.9, 22.1)
 
 [sub_resource type="BoxShape3D" id="s_building_c"]
-size = Vector3(18, 22, 18)
+size = Vector3(29.8, 21.0, 13.5)
+
+[sub_resource type="StandardMaterial3D" id="mat_sign_pole"]
+albedo_color = Color(0.2, 0.2, 0.22, 1)
+
+[sub_resource type="BoxMesh" id="m_sign_pole"]
+size = Vector3(0.12, 3.5, 0.12)
 
 [sub_resource type="BoxMesh" id="m_canopy"]
 size = Vector3(8, 0.3, 6)
@@ -97,6 +107,12 @@ rotation_degrees = Vector3(-55, -30, 0)
 light_color = Color(0.6, 0.65, 0.85, 1)
 light_energy = 0.15
 
+[node name="Moon" type="MeshInstance3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -85, 245, 150)
+mesh = SubResource("m_moon")
+surface_material_override/0 = SubResource("mat_moon")
+cast_shadow = 0
+
 [node name="StreetLightTower" type="OmniLight3D" parent="Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32, 5, -19.5)
 light_color = Color(1, 0.65, 0.3, 1)
@@ -134,33 +150,33 @@ surface_material_override/0 = SubResource("mat_plaza")
 shape = SubResource("s_plaza")
 
 [node name="Tower" type="StaticBody3D" parent="Geometry"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32, 22, -28)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32, 0, -28)
 
-[node name="Mesh" type="MeshInstance3D" parent="Geometry/Tower"]
-mesh = SubResource("m_tower")
-surface_material_override/0 = SubResource("mat_tower")
+[node name="Model" parent="Geometry/Tower" instance=ExtResource("10_tower_model")]
+transform = Transform3D(8.2, 0, 0, 0, 8.2, 0, 0, 0, 8.2, 0, 0, 0)
 
 [node name="Col" type="CollisionShape3D" parent="Geometry/Tower"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 22.45, 0)
 shape = SubResource("s_tower")
 
 [node name="BuildingB" type="StaticBody3D" parent="Geometry"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 15, -30)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 0, -30)
 
-[node name="Mesh" type="MeshInstance3D" parent="Geometry/BuildingB"]
-mesh = SubResource("m_building_b")
-surface_material_override/0 = SubResource("mat_building_b")
+[node name="Model" parent="Geometry/BuildingB" instance=ExtResource("11_buildingb_model")]
+transform = Transform3D(16.5, 0, 0, 0, 16.5, 0, 0, 0, 16.5, 0, 0, 0)
 
 [node name="Col" type="CollisionShape3D" parent="Geometry/BuildingB"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 13.95, 0)
 shape = SubResource("s_building_b")
 
 [node name="BuildingC" type="StaticBody3D" parent="Geometry"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 11, 22)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, 22)
 
-[node name="Mesh" type="MeshInstance3D" parent="Geometry/BuildingC"]
-mesh = SubResource("m_building_c")
-surface_material_override/0 = SubResource("mat_building_c")
+[node name="Model" parent="Geometry/BuildingC" instance=ExtResource("12_buildingc_model")]
+transform = Transform3D(14.3, 0, 0, 0, 14.3, 0, 0, 0, 14.3, 0, 0, 0)
 
 [node name="Col" type="CollisionShape3D" parent="Geometry/BuildingC"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.5, 0)
 shape = SubResource("s_building_c")
 
 [node name="StationCanopy" type="StaticBody3D" parent="Geometry"]
@@ -242,6 +258,77 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -55, 10, 0)
 [node name="Col" type="CollisionShape3D" parent="Geometry/BoundaryWest"]
 shape = SubResource("s_boundary_ew")
 
+[node name="StreetsJaneFinch" parent="." instance=ExtResource("9_streets")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, -10)
+
+[node name="HighrisesJaneFinch" parent="." instance=ExtResource("19_highrises")]
+
+[node name="Traffic" type="Node3D" parent="."]
+
+[node name="SedanEastbound" parent="Traffic" instance=ExtResource("14_sedan")]
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 0, 0.05, -6.5)
+script = ExtResource("13_traffic_car")
+loop_distance = 40.0
+
+[node name="TaxiWestbound" parent="Traffic" instance=ExtResource("15_taxi")]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 30, 0.05, -13.5)
+script = ExtResource("13_traffic_car")
+loop_distance = 40.0
+
+[node name="StreetSigns" type="Node3D" parent="."]
+
+[node name="JaneStSign" type="StaticBody3D" parent="StreetSigns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 5)
+
+[node name="Pole" type="MeshInstance3D" parent="StreetSigns/JaneStSign"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, 0)
+mesh = SubResource("m_sign_pole")
+surface_material_override/0 = SubResource("mat_sign_pole")
+
+[node name="Label" type="Label3D" parent="StreetSigns/JaneStSign"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, 3.4, 0)
+billboard = 1
+no_depth_test = true
+text = "JANE ST"
+font_size = 48
+outline_size = 8
+
+[node name="FinchAveSign" type="StaticBody3D" parent="StreetSigns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -25)
+
+[node name="Pole" type="MeshInstance3D" parent="StreetSigns/FinchAveSign"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, 0)
+mesh = SubResource("m_sign_pole")
+surface_material_override/0 = SubResource("mat_sign_pole")
+
+[node name="Label" type="Label3D" parent="StreetSigns/FinchAveSign"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, 3.4, 0)
+billboard = 1
+no_depth_test = true
+text = "FINCH AVE"
+font_size = 48
+outline_size = 8
+
+[node name="Pedestrians" type="Node3D" parent="."]
+
+[node name="Pedestrian1" type="Node3D" parent="Pedestrians"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0.13, 1.5)
+
+[node name="Model" parent="Pedestrians/Pedestrian1" instance=ExtResource("16_ped_worker")]
+transform = Transform3D(-0.9356, 0, 0, 0, 0.9356, 0, 0, 0, -0.9356, 0, 0, 0)
+
+[node name="Pedestrian2" type="Node3D" parent="Pedestrians"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0.13, 1.5)
+
+[node name="Model" parent="Pedestrians/Pedestrian2" instance=ExtResource("17_ped_casual")]
+transform = Transform3D(-0.9356, 0, 0, 0, 0.9356, 0, 0, 0, -0.9356, 0, 0, 0)
+
+[node name="Pedestrian3" type="Node3D" parent="Pedestrians"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0.13, 1.5)
+
+[node name="Model" parent="Pedestrians/Pedestrian3" instance=ExtResource("18_ped_punk")]
+transform = Transform3D(-0.9356, 0, 0, 0, 0.9356, 0, 0, 0, -0.9356, 0, 0, 0)
+
 [node name="Interactables" type="Node3D" parent="."]
 
 [node name="TowerEntrance" type="Area3D" parent="Interactables"]
@@ -250,8 +337,8 @@ collision_layer = 2
 collision_mask = 0
 script = ExtResource("1_scene_door")
 prompt = "E — Enter building"
-target_scene = "res://scenes/apartment/malik_bedroom.tscn"
-target_marker = "SpawnFromStreet"
+target_scene = "res://scenes/world/building_lobby.tscn"
+target_marker = "SpawnFromOutside"
 
 [node name="Col" type="CollisionShape3D" parent="Interactables/TowerEntrance"]
 shape = SubResource("s_door_sensor")

@@ -1,0 +1,52 @@
+[gd_scene load_steps=8 format=3]
+
+[sub_resource type="StandardMaterial3D" id="mat_skin"]
+albedo_color = Color(0.55, 0.42, 0.32, 1)
+
+[sub_resource type="StandardMaterial3D" id="mat_hood"]
+albedo_color = Color(0.16, 0.16, 0.18, 1)
+
+[sub_resource type="StandardMaterial3D" id="mat_blanket"]
+albedo_color = Color(0.32, 0.28, 0.24, 1)
+
+[sub_resource type="StandardMaterial3D" id="mat_bag"]
+albedo_color = Color(0.3, 0.22, 0.14, 1)
+
+[sub_resource type="SphereMesh" id="mesh_head"]
+radius = 0.125
+height = 0.25
+
+[sub_resource type="SphereMesh" id="mesh_hood"]
+radius = 0.15
+height = 0.3
+
+[sub_resource type="CapsuleMesh" id="mesh_wrap"]
+radius = 0.19
+height = 1.15
+
+[sub_resource type="BoxMesh" id="mesh_bag"]
+size = Vector3(0.32, 0.22, 0.22)
+
+[node name="HomelessGuy" type="Node3D"]
+## Greybox placeholder NPC, same convention as scenes/characters/ma.tscn -
+## swap for a real CC0 character model in a future art pass.
+
+[node name="Head" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.52, 0)
+mesh = SubResource("mesh_head")
+surface_material_override/0 = SubResource("mat_skin")
+
+[node name="Hood" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.55, -0.02)
+mesh = SubResource("mesh_hood")
+surface_material_override/0 = SubResource("mat_hood")
+
+[node name="BlanketWrap" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+mesh = SubResource("mesh_wrap")
+surface_material_override/0 = SubResource("mat_blanket")
+
+[node name="Bag" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.32, 0.11, 0.05)
+mesh = SubResource("mesh_bag")
+surface_material_override/0 = SubResource("mat_bag")

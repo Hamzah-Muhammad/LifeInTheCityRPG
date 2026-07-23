@@ -1,0 +1,10 @@
+{
+  "_comment": "Catalog for tools/generate_streets.gd. All City Kit Roads pieces are pre-centered 1x1 footprint tiles sitting flush at y=0 (verified via tools/measure_road_kit.gd - no offsets needed, unlike furniture_catalog.json). scale here is CITY_SCALE (world meters per tile), applied uniformly.",
+
+  "road_straight": { "model": "res://assets/kenney_city_kit_roads/models/road-straight.glb" },
+  "road_end": { "model": "res://assets/kenney_city_kit_roads/models/road-end.glb" },
+  "road_crossroad": { "model": "res://assets/kenney_city_kit_roads/models/road-intersection-path.glb", "_comment": "road-intersection-path, NOT road-crossroad - the crossroad pieces are a separate/wider highway-style piece, road-intersection is the correct city-street 4-way junction (same 1x1 footprint as road-straight, verified)" },
+  "sidewalk_high": { "model": "res://assets/kenney_city_kit_roads/models/tile-high.glb" },
+  "sidewalk_slant": { "model": "res://assets/kenney_city_kit_roads/models/tile-slant.glb" },
+  "streetlight": { "model": "res://assets/kenney_city_kit_roads/models/light-curved.glb" }
+}

@@ -1,0 +1,352 @@
+[gd_scene load_steps=45 format=3]
+
+[ext_resource type="Script" path="res://scripts/interaction/scene_door.gd" id="door_script"]
+[ext_resource type="Script" path="res://scripts/interaction/interactable.gd" id="interact_script"]
+[ext_resource type="PackedScene" path="res://scenes/player/player.tscn" id="10_player"]
+[ext_resource type="PackedScene" path="res://scenes/ui/hud.tscn" id="11_hud"]
+[ext_resource type="PackedScene" path="res://scenes/ui/dialogue_ui.tscn" id="12_dlgui"]
+[ext_resource type="PackedScene" path="res://scenes/ui/pause_menu.tscn" id="13_pause_menu"]
+[ext_resource type="PackedScene" path="res://scenes/debug/debug_axis_gizmo.tscn" id="14_axis_gizmo"]
+[ext_resource type="PackedScene" path="res://scenes/characters/homeless_guy.tscn" id="15_homeless"]
+
+[sub_resource type="Environment" id="env"]
+background_mode = 1
+background_color = Color(0.03, 0.04, 0.08, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.5, 0.52, 0.6, 1)
+ambient_light_energy = 0.5
+
+[sub_resource type="StandardMaterial3D" id="mat_wall"]
+albedo_color = Color(0.78, 0.75, 0.7, 1)
+
+[sub_resource type="StandardMaterial3D" id="mat_floor"]
+albedo_color = Color(0.42, 0.34, 0.26, 1)
+
+[sub_resource type="StandardMaterial3D" id="mat_ceiling"]
+albedo_color = Color(0.85, 0.85, 0.84, 1)
+
+[sub_resource type="StandardMaterial3D" id="mat_glass"]
+transparency = 1
+albedo_color = Color(0.6, 0.75, 0.85, 0.25)
+
+[sub_resource type="StandardMaterial3D" id="mat_security_door"]
+albedo_color = Color(0.22, 0.24, 0.27, 1)
+metallic = 0.6
+roughness = 0.35
+
+[sub_resource type="StandardMaterial3D" id="mat_elevator_door"]
+albedo_color = Color(0.55, 0.55, 0.58, 1)
+metallic = 0.7
+roughness = 0.3
+
+[sub_resource type="StandardMaterial3D" id="mat_gym_door"]
+albedo_color = Color(0.42, 0.29, 0.18, 1)
+
+[sub_resource type="BoxMesh" id="m_floor"]
+size = Vector3(13.0, 0.3, 10.0)
+
+[sub_resource type="BoxShape3D" id="s_floor"]
+size = Vector3(13.0, 0.3, 10.0)
+
+[sub_resource type="BoxMesh" id="m_ceiling"]
+size = Vector3(13.0, 0.3, 10.0)
+
+[sub_resource type="BoxShape3D" id="s_ceiling"]
+size = Vector3(13.0, 0.3, 10.0)
+
+[sub_resource type="BoxShape3D" id="s_ia_homeless"]
+size = Vector3(1.6, 1.8, 1.6)
+
+[sub_resource type="BoxShape3D" id="s_ia_gymdoor"]
+size = Vector3(1.2, 2.1, 1.0)
+
+[sub_resource type="BoxMesh" id="m_security_door"]
+size = Vector3(2.0, 2.1, 0.12)
+
+[sub_resource type="BoxShape3D" id="s_security_door"]
+size = Vector3(2.0, 2.2, 0.12)
+
+[sub_resource type="BoxMesh" id="m_elevator_door"]
+size = Vector3(0.12, 2.1, 1.0)
+
+[sub_resource type="BoxShape3D" id="s_elevator_door"]
+size = Vector3(0.12, 2.2, 1.0)
+
+[sub_resource type="BoxMesh" id="m_gym_door"]
+size = Vector3(0.12, 2.1, 1.0)
+
+[sub_resource type="BoxShape3D" id="s_gym_door"]
+size = Vector3(0.12, 2.2, 1.0)
+
+[sub_resource type="BoxMesh" id="m_wall_1"]
+size = Vector3(5.5, 2.6, 0.2)
+
+[sub_resource type="BoxShape3D" id="s_wall_1"]
+size = Vector3(5.5, 2.6, 0.2)
+
+[sub_resource type="BoxMesh" id="m_wall_2"]
+size = Vector3(5.5, 2.6, 0.2)
+
+[sub_resource type="BoxShape3D" id="s_wall_2"]
+size = Vector3(5.5, 2.6, 0.2)
+
+[sub_resource type="BoxMesh" id="m_wall_3"]
+size = Vector3(13.0, 2.6, 0.2)
+
+[sub_resource type="BoxShape3D" id="s_wall_3"]
+size = Vector3(13.0, 2.6, 0.2)
+
+[sub_resource type="BoxMesh" id="m_wall_4"]
+size = Vector3(4.5, 2.6, 0.2)
+
+[sub_resource type="BoxShape3D" id="s_wall_4"]
+size = Vector3(4.5, 2.6, 0.2)
+
+[sub_resource type="BoxMesh" id="m_wall_5"]
+size = Vector3(4.5, 2.6, 0.2)
+
+[sub_resource type="BoxShape3D" id="s_wall_5"]
+size = Vector3(4.5, 2.6, 0.2)
+
+[sub_resource type="BoxMesh" id="m_wall_6"]
+size = Vector3(4.5, 2.6, 0.2)
+
+[sub_resource type="BoxShape3D" id="s_wall_6"]
+size = Vector3(4.5, 2.6, 0.2)
+
+[sub_resource type="BoxMesh" id="m_wall_7"]
+size = Vector3(4.5, 2.6, 0.2)
+
+[sub_resource type="BoxShape3D" id="s_wall_7"]
+size = Vector3(4.5, 2.6, 0.2)
+
+[sub_resource type="BoxShape3D" id="s_door_OutsideDoor"]
+size = Vector3(1.0, 2.1, 1.0)
+
+[sub_resource type="BoxShape3D" id="s_door_ElevatorDoor"]
+size = Vector3(1.0, 2.1, 1.0)
+
+[node name="BuildingLobby" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("env")
+
+[node name="Lights" type="Node3D" parent="."]
+
+[node name="LobbyLightA" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2, 2.4, 5)
+light_color = Color(1, 0.95, 0.85, 1)
+light_energy = 1.2
+omni_range = 7
+
+[node name="LobbyLightB" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 2.4, 5)
+light_color = Color(1, 0.95, 0.85, 1)
+light_energy = 1.2
+omni_range = 7
+
+[node name="LobbyLightC" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.8, 2.4, 5)
+light_color = Color(1, 0.95, 0.85, 1)
+light_energy = 1.2
+omni_range = 7
+
+[node name="Geometry" type="Node3D" parent="."]
+
+[node name="Floor" type="StaticBody3D" parent="Geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, -0.15, 5.0)
+
+[node name="Mesh" type="MeshInstance3D" parent="Geometry/Floor"]
+mesh = SubResource("m_floor")
+surface_material_override/0 = SubResource("mat_floor")
+
+[node name="Col" type="CollisionShape3D" parent="Geometry/Floor"]
+shape = SubResource("s_floor")
+
+[node name="Ceiling" type="StaticBody3D" parent="Geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 2.75, 5.0)
+
+[node name="Mesh" type="MeshInstance3D" parent="Geometry/Ceiling"]
+mesh = SubResource("m_ceiling")
+surface_material_override/0 = SubResource("mat_ceiling")
+
+[node name="Col" type="CollisionShape3D" parent="Geometry/Ceiling"]
+shape = SubResource("s_ceiling")
+
+[node name="Wall1" type="StaticBody3D" parent="Geometry"]
+transform = Transform3D(1.0, 0, 0.0, 0, 1.0, 0, 0.0, 0, 1.0, 2.75, 1.3, 0.0)
+
+[node name="Mesh" type="MeshInstance3D" parent="Geometry/Wall1"]
+mesh = SubResource("m_wall_1")
+surface_material_override/0 = SubResource("mat_glass")
+
+[node name="Col" type="CollisionShape3D" parent="Geometry/Wall1"]
+shape = SubResource("s_wall_1")
+
+[node name="Wall2" type="StaticBody3D" parent="Geometry"]
+transform = Transform3D(1.0, 0, 0.0, 0, 1.0, 0, 0.0, 0, 1.0, 10.25, 1.3, 0.0)
+
+[node name="Mesh" type="MeshInstance3D" parent="Geometry/Wall2"]
+mesh = SubResource("m_wall_2")
+surface_material_override/0 = SubResource("mat_glass")
+
+[node name="Col" type="CollisionShape3D" parent="Geometry/Wall2"]
+shape = SubResource("s_wall_2")
+
+[node name="Wall3" type="StaticBody3D" parent="Geometry"]
+transform = Transform3D(1.0, 0, 0.0, 0, 1.0, 0, 0.0, 0, 1.0, 6.5, 1.3, 10.0)
+
+[node name="Mesh" type="MeshInstance3D" parent="Geometry/Wall3"]
+mesh = SubResource("m_wall_3")
+surface_material_override/0 = SubResource("mat_wall")
+
+[node name="Col" type="CollisionShape3D" parent="Geometry/Wall3"]
+shape = SubResource("s_wall_3")
+
+[node name="Wall4" type="StaticBody3D" parent="Geometry"]
+transform = Transform3D(0.0, 0, 1.0, 0, 1.0, 0, -1.0, 0, 0.0, 0.0, 1.3, 2.25)
+
+[node name="Mesh" type="MeshInstance3D" parent="Geometry/Wall4"]
+mesh = SubResource("m_wall_4")
+surface_material_override/0 = SubResource("mat_wall")
+
+[node name="Col" type="CollisionShape3D" parent="Geometry/Wall4"]
+shape = SubResource("s_wall_4")
+
+[node name="Wall5" type="StaticBody3D" parent="Geometry"]
+transform = Transform3D(0.0, 0, 1.0, 0, 1.0, 0, -1.0, 0, 0.0, 0.0, 1.3, 7.75)
+
+[node name="Mesh" type="MeshInstance3D" parent="Geometry/Wall5"]
+mesh = SubResource("m_wall_5")
+surface_material_override/0 = SubResource("mat_wall")
+
+[node name="Col" type="CollisionShape3D" parent="Geometry/Wall5"]
+shape = SubResource("s_wall_5")
+
+[node name="Wall6" type="StaticBody3D" parent="Geometry"]
+transform = Transform3D(0.0, 0, 1.0, 0, 1.0, 0, -1.0, 0, 0.0, 13.0, 1.3, 2.25)
+
+[node name="Mesh" type="MeshInstance3D" parent="Geometry/Wall6"]
+mesh = SubResource("m_wall_6")
+surface_material_override/0 = SubResource("mat_wall")
+
+[node name="Col" type="CollisionShape3D" parent="Geometry/Wall6"]
+shape = SubResource("s_wall_6")
+
+[node name="Wall7" type="StaticBody3D" parent="Geometry"]
+transform = Transform3D(0.0, 0, 1.0, 0, 1.0, 0, -1.0, 0, 0.0, 13.0, 1.3, 7.75)
+
+[node name="Mesh" type="MeshInstance3D" parent="Geometry/Wall7"]
+mesh = SubResource("m_wall_7")
+surface_material_override/0 = SubResource("mat_wall")
+
+[node name="Col" type="CollisionShape3D" parent="Geometry/Wall7"]
+shape = SubResource("s_wall_7")
+
+[node name="Furniture" type="Node3D" parent="."]
+
+[node name="Markers" type="Node3D" parent="."]
+
+[node name="SpawnFromApartment" type="Marker3D" parent="Markers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.0, 0.05, 5.0)
+
+[node name="SpawnFromOutside" type="Marker3D" parent="Markers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 0.05, 1.3)
+
+[node name="Doors" type="Node3D" parent="."]
+
+[node name="OutsideDoor" type="Area3D" parent="Doors"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 1.1, 0.0)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("door_script")
+prompt = "E — Go outside"
+target_scene = "res://scenes/world/jane_finch.tscn"
+target_marker = "SpawnFromApartment"
+
+[node name="Col" type="CollisionShape3D" parent="Doors/OutsideDoor"]
+shape = SubResource("s_door_OutsideDoor")
+
+[node name="ElevatorDoor" type="Area3D" parent="Doors"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.0, 1.1, 5.0)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("door_script")
+prompt = "E — Take the elevator up"
+target_scene = "res://scenes/apartment/malik_bedroom.tscn"
+target_marker = "SpawnFromStreet"
+
+[node name="Col" type="CollisionShape3D" parent="Doors/ElevatorDoor"]
+shape = SubResource("s_door_ElevatorDoor")
+
+[node name="SecurityDoor" type="StaticBody3D" parent="Geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 1.05, 0.0)
+
+[node name="Mesh" type="MeshInstance3D" parent="Geometry/SecurityDoor"]
+mesh = SubResource("m_security_door")
+surface_material_override/0 = SubResource("mat_security_door")
+
+[node name="Col" type="CollisionShape3D" parent="Geometry/SecurityDoor"]
+shape = SubResource("s_security_door")
+
+[node name="ElevatorDoorPanel" type="StaticBody3D" parent="Geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.0, 1.05, 5.0)
+
+[node name="Mesh" type="MeshInstance3D" parent="Geometry/ElevatorDoorPanel"]
+mesh = SubResource("m_elevator_door")
+surface_material_override/0 = SubResource("mat_elevator_door")
+
+[node name="Col" type="CollisionShape3D" parent="Geometry/ElevatorDoorPanel"]
+shape = SubResource("s_elevator_door")
+
+[node name="GymDoorPanel" type="StaticBody3D" parent="Geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 1.05, 5.0)
+
+[node name="Mesh" type="MeshInstance3D" parent="Geometry/GymDoorPanel"]
+mesh = SubResource("m_gym_door")
+surface_material_override/0 = SubResource("mat_gym_door")
+
+[node name="Col" type="CollisionShape3D" parent="Geometry/GymDoorPanel"]
+shape = SubResource("s_gym_door")
+
+[node name="HomelessGuy" parent="." instance=ExtResource("15_homeless")]
+transform = Transform3D(0.7071, 0, 0.7071, 0, 1, 0, -0.7071, 0, 0.7071, 1.3, 0, 8.7)
+
+[node name="Interactables" type="Node3D" parent="."]
+
+[node name="HomelessGuyInteract" type="Area3D" parent="Interactables"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3, 1.0, 8.7)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("interact_script")
+prompt = "E — Look"
+dialogue_file = "res://data/dialogue/lobby_homeless.json"
+dialogue_entry = "start"
+
+[node name="Col" type="CollisionShape3D" parent="Interactables/HomelessGuyInteract"]
+shape = SubResource("s_ia_homeless")
+
+[node name="GymDoorInteract" type="Area3D" parent="Interactables"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 1.1, 5.0)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("interact_script")
+prompt = "E — Try the door"
+dialogue_file = "res://data/dialogue/lobby_gym_door.json"
+dialogue_entry = "start"
+
+[node name="Col" type="CollisionShape3D" parent="Interactables/GymDoorInteract"]
+shape = SubResource("s_ia_gymdoor")
+
+[node name="Player" parent="." instance=ExtResource("10_player")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.0, 0.05, 5.0)
+
+[node name="HUD" parent="." instance=ExtResource("11_hud")]
+
+[node name="DialogueUI" parent="." instance=ExtResource("12_dlgui")]
+
+[node name="PauseMenuUI" parent="." instance=ExtResource("13_pause_menu")]
+
+[node name="DebugAxisGizmo" parent="." instance=ExtResource("14_axis_gizmo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.0, 1.2, 5.0)
+
