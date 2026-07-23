@@ -3,6 +3,8 @@ extends Node
 ## Persists to user://settings.cfg and applies them to the engine on load
 ## and whenever a setter is called from the Options menu.
 
+signal show_debug_axes_changed(enabled: bool)
+
 const SAVE_PATH := "user://settings.cfg"
 const BASE_MOUSE_SENSITIVITY := 0.0025
 
@@ -75,6 +77,7 @@ func set_mouse_sensitivity(multiplier: float) -> void:
 func set_show_debug_axes(enabled: bool) -> void:
 	show_debug_axes = enabled
 	_save()
+	show_debug_axes_changed.emit(enabled)
 
 
 func _apply_window_mode() -> void:
