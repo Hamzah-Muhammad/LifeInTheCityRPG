@@ -8,3 +8,4 @@ extends Node3D
 
 func _ready() -> void:
 	visible = SettingsManager.show_debug_axes
+	SettingsManager.show_debug_axes_changed.connect(func(enabled: bool) -> void: visible = enabled)
