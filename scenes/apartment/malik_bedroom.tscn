@@ -1,4 +1,4 @@
-[gd_scene load_steps=144 format=3]
+[gd_scene load_steps=145 format=3]
 
 [ext_resource type="Script" path="res://scripts/interaction/interactable.gd" id="1_interact"]
 [ext_resource type="PackedScene" path="res://scenes/player/player.tscn" id="2_player"]
@@ -24,6 +24,7 @@
 [ext_resource type="PackedScene" path="res://assets/kenney_furniture_kit/models/kitchenFridge.glb" id="23_fridge"]
 [ext_resource type="PackedScene" path="res://assets/kenney_furniture_kit/models/kitchenCabinet.glb" id="24_kitchen_cabinet"]
 [ext_resource type="Script" path="res://scripts/interaction/apartment_front_door.gd" id="25_front_door"]
+[ext_resource type="PackedScene" path="res://scenes/ui/pause_menu.tscn" id="26_pause_menu"]
 
 [sub_resource type="Environment" id="env"]
 background_mode = 1
@@ -1138,3 +1139,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0.05, -2.2)
 [node name="HUD" parent="." instance=ExtResource("3_hud")]
 
 [node name="DialogueUI" parent="." instance=ExtResource("4_dlgui")]
+
+[node name="PauseMenuUI" parent="." instance=ExtResource("26_pause_menu")]

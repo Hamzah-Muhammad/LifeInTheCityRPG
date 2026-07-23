@@ -24,6 +24,7 @@ SceneTransition="*res://scripts/systems/scene_transition.gd"
 StationManager="*res://scripts/systems/station_manager.gd"
 SettingsManager="*res://scripts/systems/settings_manager.gd"
 SaveManager="*res://scripts/systems/save_manager.gd"
+PauseManager="*res://scripts/systems/pause_manager.gd"
 
 [display]
 

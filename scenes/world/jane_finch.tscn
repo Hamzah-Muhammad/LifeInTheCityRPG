@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3]
+[gd_scene load_steps=14 format=3]
 
 [ext_resource type="Script" path="res://scripts/interaction/scene_door.gd" id="1_scene_door"]
 [ext_resource type="Script" path="res://scripts/interaction/station_kiosk.gd" id="2_kiosk"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" path="res://scenes/ui/hud.tscn" id="4_hud"]
 [ext_resource type="PackedScene" path="res://scenes/ui/dialogue_ui.tscn" id="5_dlgui"]
 [ext_resource type="PackedScene" path="res://scenes/ui/station_select_ui.tscn" id="6_station_ui"]
+[ext_resource type="PackedScene" path="res://scenes/ui/pause_menu.tscn" id="7_pause_menu"]
 
 [sub_resource type="Environment" id="env"]
 background_mode = 1
@@ -278,3 +279,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32, 0.05, -17)
 [node name="DialogueUI" parent="." instance=ExtResource("5_dlgui")]
 
 [node name="StationSelectUI" parent="." instance=ExtResource("6_station_ui")]
+
+[node name="PauseMenuUI" parent="." instance=ExtResource("7_pause_menu")]
