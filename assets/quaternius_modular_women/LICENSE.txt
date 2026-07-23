@@ -1,0 +1,16 @@
+Ultimate Modular Women Pack (April 2022)
+
+Created/distributed by Quaternius (https://quaternius.com)
+Source: https://quaternius.com/packs/ultimatemodularwomen.html
+
+License: Creative Commons Zero (CC0)
+https://creativecommons.org/publicdomain/zero/1.0/
+
+Free to use in personal and commercial projects. Attribution not required
+but appreciated (credit Quaternius / quaternius.com).
+
+10 characters (Adventurer, Casual, Formal, Medieval, Punk, SciFi, Soldier,
+Suit, Witch, Worker), 24 shared animations, modular (each character split
+into 4 swappable parts). Only the Individual Characters/glTF format was
+downloaded (self-contained per-character glTF, no external textures) -
+same convention as assets/quaternius_modular_men/.
