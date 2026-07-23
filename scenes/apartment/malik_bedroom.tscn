@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" path="res://assets/kenney_furniture_kit/models/bedSingle.glb" id="6_bed_single"]
 [ext_resource type="PackedScene" path="res://assets/kenney_furniture_kit/models/desk.glb" id="7_desk"]
 [ext_resource type="PackedScene" path="res://assets/kenney_furniture_kit/models/chairDesk.glb" id="8_chair_desk"]
-[ext_resource type="PackedScene" path="res://assets/kenney_furniture_kit/models/bookcaseClosedWide.glb" id="9_bookcase_wide"]
 [ext_resource type="PackedScene" path="res://assets/kenney_furniture_kit/models/bedDouble.glb" id="10_bed_double"]
 [ext_resource type="PackedScene" path="res://assets/kenney_furniture_kit/models/cabinetTelevisionDoors.glb" id="11_dresser"]
 [ext_resource type="PackedScene" path="res://assets/kenney_furniture_kit/models/sideTableDrawers.glb" id="12_nightstand"]
@@ -362,9 +361,6 @@ size = Vector3(0.534475, 0.384408, 0.2223)
 
 [sub_resource type="BoxShape3D" id="s_chair_desk"]
 size = Vector3(0.465581, 0.844564, 0.436876)
-
-[sub_resource type="BoxShape3D" id="s_wardrobe"]
-size = Vector3(0.6, 1.896, 1.92)
 
 [sub_resource type="BoxShape3D" id="s_bed_m"]
 size = Vector3(1.73992, 0.6825, 2.0475)
@@ -780,16 +776,6 @@ transform = Transform3D(-1.39, 0, 0, 0, 1.39, 0, 0, 0, -1.39, 0.23279, -0.225, -
 [node name="Col" type="CollisionShape3D" parent="Furniture/Chair"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.197282, 0)
 shape = SubResource("s_chair_desk")
-
-[node name="Wardrobe" type="StaticBody3D" parent="Furniture"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4, 0.95, -2)
-
-[node name="Model" parent="Furniture/Wardrobe" instance=ExtResource("9_bookcase_wide")]
-transform = Transform3D(0, 0, -2.4, 0, 2.4, 0, 2.4, 0, 0, 0.3, -0.95, 0.96)
-
-[node name="Col" type="CollisionShape3D" parent="Furniture/Wardrobe"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.002, 0)
-shape = SubResource("s_wardrobe")
 
 [node name="Rug" type="MeshInstance3D" parent="Furniture"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.4, 0.01, -3.1)
