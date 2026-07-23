@@ -1,23 +1,25 @@
 extends Node
-## Verifies the debug axis gizmo's visibility actually follows
-## SettingsManager.show_debug_axes, both ways. Exit 0 on pass, 1 on fail.
+## Verifies the debug axis gizmo's own visibility follows
+## SettingsManager.show_debug_axes. Redesigned 2026-07-22: the gizmo now
+## manages its own visibility in _ready() (see debug_axis_gizmo.gd) since
+## it's fixed to the map rather than a child of the player, so this tests
+## the gizmo scene directly instead of going through player.tscn.
+## Exit 0 on pass, 1 on fail.
 ## Run: godot --headless --path . res://test/debug_axes_toggle_test.tscn
 
-const PLAYER_SCENE := "res://scenes/player/player.tscn"
+const GIZMO_SCENE := "res://scenes/debug/debug_axis_gizmo.tscn"
 
 
 func _ready() -> void:
 	SettingsManager.show_debug_axes = true
-	var player_on: Node = (load(PLAYER_SCENE) as PackedScene).instantiate()
-	add_child(player_on)
-	var gizmo_on: Node3D = player_on.get_node("DebugAxisGizmo")
+	var gizmo_on: Node3D = (load(GIZMO_SCENE) as PackedScene).instantiate()
+	add_child(gizmo_on)
 	var visible_when_on := gizmo_on.visible
-	player_on.queue_free()
+	gizmo_on.queue_free()
 
 	SettingsManager.show_debug_axes = false
-	var player_off: Node = (load(PLAYER_SCENE) as PackedScene).instantiate()
-	add_child(player_off)
-	var gizmo_off: Node3D = player_off.get_node("DebugAxisGizmo")
+	var gizmo_off: Node3D = (load(GIZMO_SCENE) as PackedScene).instantiate()
+	add_child(gizmo_off)
 	var visible_when_off := gizmo_off.visible
 
 	print("gizmo visible when setting=true:  %s" % visible_when_on)

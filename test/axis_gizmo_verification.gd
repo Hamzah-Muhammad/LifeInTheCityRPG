@@ -1,19 +1,14 @@
 extends Node
-## Proves the debug axis gizmo draws Godot's REAL world/local axes - the
-## same coordinate system used everywhere else in the project (furniture
-## Transform3D placement in malik_bedroom.tscn, the camera rig, and
-## tools/generate_scene.gd's Basis.rotated(Vector3.UP, angle) math) - not
-## an invented/arbitrary visual scheme.
-##
-## Also checks the gizmo's overall radius against the actual camera
-## distance (from the real bedroom scene) to catch the class of bug where
-## the gizmo's arms reach far enough to overlap the camera itself (found
-## 2026-07-22: original 1.5m-radius gizmo nearly touched a ~1.49m-away
-## camera - fixed by shrinking to 0.8m radius, verified here so it can't
-## silently regress).
+## Verifies the debug axis gizmo (redesigned 2026-07-22 to be fixed to the
+## map instead of attached to the player, after the user correctly pointed
+## out a player-attached gizmo is useless for reading off map/furniture
+## coordinates, which don't rotate with you) draws real Godot world axes,
+## stays fixed regardless of what the player does, and is genuinely absent
+## from the player's own node subtree - not just visually appearing fixed.
 ##
 ## Run: godot --headless --path . res://test/axis_gizmo_verification.tscn
 
+const GIZMO_SCENE := "res://scenes/debug/debug_axis_gizmo.tscn"
 const PLAYER_SCENE := "res://scenes/player/player.tscn"
 const BEDROOM_SCENE := "res://scenes/apartment/malik_bedroom.tscn"
 const GIZMO_ARM_LENGTH := 0.8
@@ -22,25 +17,17 @@ const SAFETY_MARGIN := 0.3
 
 func _ready() -> void:
 	SettingsManager.show_debug_axes = true
-	var player: Node3D = (load(PLAYER_SCENE) as PackedScene).instantiate()
-	add_child(player)
-
-	# Non-trivial position + non-axis-aligned yaw, so this can't pass by
-	# accident (e.g. if X/Z were silently swapped, a 0-degree test might
-	# still look right).
-	player.global_position = Vector3(12.0, 0.0, -8.0)
-	player.rotation.y = deg_to_rad(37.0)
-
-	var gizmo: Node3D = player.get_node("DebugAxisGizmo")
-
+	var all_ok := true
 	print("== AXIS GIZMO VERIFICATION ==")
-	print("player.global_transform.basis = %s" % player.global_transform.basis)
-	print("gizmo.global_transform.basis  = %s" % gizmo.global_transform.basis)
-	var basis_matches := player.global_transform.basis.is_equal_approx(gizmo.global_transform.basis)
-	print("gizmo basis matches player basis exactly (no hidden extra rotation): %s" % basis_matches)
-	print("")
 
-	var all_ok := basis_matches
+	# --- Geometry check: tips render exactly where Godot's own transform
+	# composition predicts, at an arbitrary placement - proves the arrows
+	# are real world-axis-aligned geometry. ---
+	var gizmo: Node3D = (load(GIZMO_SCENE) as PackedScene).instantiate()
+	add_child(gizmo)
+	gizmo.global_position = Vector3(12.0, 3.0, -8.0)
+	var gizmo_transform_before: Transform3D = gizmo.global_transform
+
 	var checks := [
 		["TipXPos", Vector3(GIZMO_ARM_LENGTH, 0, 0)],
 		["TipXNeg", Vector3(-GIZMO_ARM_LENGTH, 0, 0)],
@@ -59,32 +46,55 @@ func _ready() -> void:
 		all_ok = all_ok and matches
 		print("%-10s expected=%s  actual=%s  match=%s" % [node_name, expected, actual, matches])
 
-	print("")
-	print("Malik model forward direction (should point along player's -Z, per the")
-	print("facing fix confirmed earlier): %s" % -player.global_transform.basis.z)
-	player.queue_free()
+	# --- Fixed-to-the-map check: a player moving/rotating FAR away, as a
+	# completely separate sibling node (not a parent/child relationship),
+	# must have zero effect on the gizmo's transform. ---
+	var player: CharacterBody3D = (load(PLAYER_SCENE) as PackedScene).instantiate()
+	add_child(player)
+	player.global_position = Vector3(50.0, 0.0, 50.0)
+	player.rotation.y = deg_to_rad(123.0)
+	await get_tree().physics_frame
 
-	# --- Camera-overlap check, against the real bedroom scene ---
-	print("")
-	print("-- camera-overlap check (real bedroom scene) --")
+	var gizmo_unaffected := gizmo.global_transform.is_equal_approx(gizmo_transform_before)
+	all_ok = all_ok and gizmo_unaffected
+	print("gizmo transform unaffected by an unrelated player moving/rotating: %s" % gizmo_unaffected)
+	player.queue_free()
+	gizmo.queue_free()
+
+	# --- Confirm the real bedroom scene's gizmo is a sibling of Player, not
+	# a descendant of it (the actual architectural fix, checked directly in
+	# the real scene tree rather than inferred). ---
 	var bedroom: Node = (load(BEDROOM_SCENE) as PackedScene).instantiate()
 	add_child(bedroom)
 	for i in 15:
 		await get_tree().physics_frame
 	var real_player: Node3D = bedroom.get_node("Player")
+	var real_gizmo: Node3D = bedroom.get_node("DebugAxisGizmo")
+	var gizmo_is_under_player := real_player.is_ancestor_of(real_gizmo)
+	all_ok = all_ok and not gizmo_is_under_player
+	print("gizmo is NOT nested under Player in the real scene: %s" % (not gizmo_is_under_player))
+
+	# --- Camera-overlap check at the gizmo's actual fixed placement ---
 	var pivot: Node3D = real_player.get_node("CameraPivot")
 	var arm: SpringArm3D = pivot.get_node("SpringArm3D")
 	var cam: Camera3D = arm.get_node("Camera3D")
-	var real_gizmo: Node3D = real_player.get_node("DebugAxisGizmo")
-	var cam_to_gizmo_center: float = cam.global_position.distance_to(real_gizmo.global_position)
-	var closest_possible_approach: float = cam_to_gizmo_center - GIZMO_ARM_LENGTH
-	print("camera distance from gizmo center: %f" % cam_to_gizmo_center)
-	print("gizmo arm length: %f" % GIZMO_ARM_LENGTH)
+	var cam_to_gizmo: float = cam.global_position.distance_to(real_gizmo.global_position)
+	var closest_possible_approach: float = cam_to_gizmo - GIZMO_ARM_LENGTH
+	print("camera distance from the gizmo's fixed position: %f" % cam_to_gizmo)
 	print("closest any gizmo geometry gets to the camera: %f" % closest_possible_approach)
 	var camera_clear := closest_possible_approach > SAFETY_MARGIN
-	print("camera stays clear of the gizmo (margin > %.2fm): %s" % [SAFETY_MARGIN, camera_clear])
 	all_ok = all_ok and camera_clear
+	print("camera stays clear of the gizmo (margin > %.2fm): %s" % [SAFETY_MARGIN, camera_clear])
 
 	print("")
-	print("AXIS GIZMO VERIFICATION: %s" % ("PASS - uses real Godot world axes, sized clear of the camera" if all_ok else "FAIL"))
+	print(
+		(
+			"AXIS GIZMO VERIFICATION: %s"
+			% (
+				"PASS - real world axes, fixed to the map, clear of camera"
+				if all_ok
+				else "FAIL"
+			)
+		)
+	)
 	get_tree().quit(0 if all_ok else 1)
