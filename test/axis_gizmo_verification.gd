@@ -5,20 +5,19 @@ extends Node
 ## tools/generate_scene.gd's Basis.rotated(Vector3.UP, angle) math) - not
 ## an invented/arbitrary visual scheme.
 ##
-## Method: instantiate the real player.tscn, rotate the player to a
-## non-trivial, non-axis-aligned yaw (37 degrees) and move it to a
-## non-trivial position, then compute where each gizmo tip SHOULD be in
-## world space using nothing but Godot's own global_transform composition
-## (Node3D global_transform = parent_global_transform * local_transform,
-## which is what every StaticBody3D/furniture placement in the game
-## already relies on) - then compare against the actual rendered
-## MeshInstance3D's real global_position. If they match to float
-## precision, the gizmo's geometry is provably using the real engine
-## axes, not something separate.
+## Also checks the gizmo's overall radius against the actual camera
+## distance (from the real bedroom scene) to catch the class of bug where
+## the gizmo's arms reach far enough to overlap the camera itself (found
+## 2026-07-22: original 1.5m-radius gizmo nearly touched a ~1.49m-away
+## camera - fixed by shrinking to 0.8m radius, verified here so it can't
+## silently regress).
 ##
 ## Run: godot --headless --path . res://test/axis_gizmo_verification.tscn
 
 const PLAYER_SCENE := "res://scenes/player/player.tscn"
+const BEDROOM_SCENE := "res://scenes/apartment/malik_bedroom.tscn"
+const GIZMO_ARM_LENGTH := 0.8
+const SAFETY_MARGIN := 0.3
 
 
 func _ready() -> void:
@@ -43,21 +42,17 @@ func _ready() -> void:
 
 	var all_ok := basis_matches
 	var checks := [
-		["TipXPos", Vector3(1.5, 0, 0)],
-		["TipXNeg", Vector3(-1.5, 0, 0)],
-		["TipYPos", Vector3(0, 1.5, 0)],
-		["TipYNeg", Vector3(0, -1.5, 0)],
-		["TipZPos", Vector3(0, 0, 1.5)],
-		["TipZNeg", Vector3(0, 0, -1.5)],
+		["TipXPos", Vector3(GIZMO_ARM_LENGTH, 0, 0)],
+		["TipXNeg", Vector3(-GIZMO_ARM_LENGTH, 0, 0)],
+		["TipYPos", Vector3(0, GIZMO_ARM_LENGTH, 0)],
+		["TipYNeg", Vector3(0, -GIZMO_ARM_LENGTH, 0)],
+		["TipZPos", Vector3(0, 0, GIZMO_ARM_LENGTH)],
+		["TipZNeg", Vector3(0, 0, -GIZMO_ARM_LENGTH)],
 	]
 	for check in checks:
 		var node_name: String = check[0]
 		var local_offset: Vector3 = check[1]
 		var tip: Node3D = gizmo.get_node(node_name)
-		# Independently computed expected world position, using nothing but
-		# the gizmo's own global_transform composition (Godot's standard
-		# parent*local rule - the same rule every furniture StaticBody3D in
-		# the game relies on for its own placement).
 		var expected: Vector3 = gizmo.global_transform * local_offset
 		var actual: Vector3 = tip.global_position
 		var matches := expected.is_equal_approx(actual)
@@ -67,6 +62,29 @@ func _ready() -> void:
 	print("")
 	print("Malik model forward direction (should point along player's -Z, per the")
 	print("facing fix confirmed earlier): %s" % -player.global_transform.basis.z)
+	player.queue_free()
+
+	# --- Camera-overlap check, against the real bedroom scene ---
 	print("")
-	print("AXIS GIZMO VERIFICATION: %s" % ("PASS - uses real Godot world axes" if all_ok else "FAIL"))
+	print("-- camera-overlap check (real bedroom scene) --")
+	var bedroom: Node = (load(BEDROOM_SCENE) as PackedScene).instantiate()
+	add_child(bedroom)
+	for i in 15:
+		await get_tree().physics_frame
+	var real_player: Node3D = bedroom.get_node("Player")
+	var pivot: Node3D = real_player.get_node("CameraPivot")
+	var arm: SpringArm3D = pivot.get_node("SpringArm3D")
+	var cam: Camera3D = arm.get_node("Camera3D")
+	var real_gizmo: Node3D = real_player.get_node("DebugAxisGizmo")
+	var cam_to_gizmo_center: float = cam.global_position.distance_to(real_gizmo.global_position)
+	var closest_possible_approach: float = cam_to_gizmo_center - GIZMO_ARM_LENGTH
+	print("camera distance from gizmo center: %f" % cam_to_gizmo_center)
+	print("gizmo arm length: %f" % GIZMO_ARM_LENGTH)
+	print("closest any gizmo geometry gets to the camera: %f" % closest_possible_approach)
+	var camera_clear := closest_possible_approach > SAFETY_MARGIN
+	print("camera stays clear of the gizmo (margin > %.2fm): %s" % [SAFETY_MARGIN, camera_clear])
+	all_ok = all_ok and camera_clear
+
+	print("")
+	print("AXIS GIZMO VERIFICATION: %s" % ("PASS - uses real Godot world axes, sized clear of the camera" if all_ok else "FAIL"))
 	get_tree().quit(0 if all_ok else 1)

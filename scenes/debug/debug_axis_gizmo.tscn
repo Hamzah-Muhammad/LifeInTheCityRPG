@@ -1,21 +1,21 @@
 [gd_scene load_steps=15 format=3]
 
 [sub_resource type="BoxMesh" id="shaft_x"]
-size = Vector3(3.0, 0.04, 0.04)
+size = Vector3(1.6, 0.03, 0.03)
 
 [sub_resource type="BoxMesh" id="shaft_y"]
-size = Vector3(0.04, 3.0, 0.04)
+size = Vector3(0.03, 1.6, 0.03)
 
 [sub_resource type="BoxMesh" id="shaft_z"]
-size = Vector3(0.04, 0.04, 3.0)
+size = Vector3(0.03, 0.03, 1.6)
 
 [sub_resource type="SphereMesh" id="tip_pos"]
-radius = 0.1
-height = 0.2
-
-[sub_resource type="SphereMesh" id="tip_neg"]
 radius = 0.06
 height = 0.12
+
+[sub_resource type="SphereMesh" id="tip_neg"]
+radius = 0.035
+height = 0.07
 
 [sub_resource type="StandardMaterial3D" id="mat_x"]
 shading_mode = 0
@@ -62,24 +62,24 @@ mesh = SubResource("shaft_x")
 surface_material_override/0 = SubResource("mat_x")
 
 [node name="TipXPos" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, 0, 0)
 mesh = SubResource("tip_pos")
 surface_material_override/0 = SubResource("mat_x")
 
 [node name="TipXNeg" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8, 0, 0)
 mesh = SubResource("tip_neg")
 surface_material_override/0 = SubResource("mat_x_dim")
 
 [node name="LabelXPos" type="Label3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.75, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.95, 0, 0)
 billboard = 1
 no_depth_test = true
 modulate = Color(1, 0.2, 0.2, 1)
 text = "+X"
 
 [node name="LabelXNeg" type="Label3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.75, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.95, 0, 0)
 billboard = 1
 no_depth_test = true
 modulate = Color(0.45, 0.12, 0.12, 1)
@@ -90,24 +90,24 @@ mesh = SubResource("shaft_y")
 surface_material_override/0 = SubResource("mat_y")
 
 [node name="TipYPos" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
 mesh = SubResource("tip_pos")
 surface_material_override/0 = SubResource("mat_y")
 
 [node name="TipYNeg" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.8, 0)
 mesh = SubResource("tip_neg")
 surface_material_override/0 = SubResource("mat_y_dim")
 
 [node name="LabelYPos" type="Label3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.95, 0)
 billboard = 1
 no_depth_test = true
 modulate = Color(0.25, 1, 0.25, 1)
 text = "+Y"
 
 [node name="LabelYNeg" type="Label3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.75, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.95, 0)
 billboard = 1
 no_depth_test = true
 modulate = Color(0.1, 0.42, 0.1, 1)
@@ -118,24 +118,24 @@ mesh = SubResource("shaft_z")
 surface_material_override/0 = SubResource("mat_z")
 
 [node name="TipZPos" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.8)
 mesh = SubResource("tip_pos")
 surface_material_override/0 = SubResource("mat_z")
 
 [node name="TipZNeg" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.8)
 mesh = SubResource("tip_neg")
 surface_material_override/0 = SubResource("mat_z_dim")
 
 [node name="LabelZPos" type="Label3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.75)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.95)
 billboard = 1
 no_depth_test = true
 modulate = Color(0.3, 0.55, 1, 1)
 text = "+Z (back)"
 
 [node name="LabelZNeg" type="Label3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.75)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.95)
 billboard = 1
 no_depth_test = true
 modulate = Color(0.12, 0.22, 0.42, 1)
